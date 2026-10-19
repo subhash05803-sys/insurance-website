@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upshot Insurance helps individuals, families, and businesses find practical coverage with local guidance in Louisville, Kentucky.">
+  <title>Upshot Insurance | Personal & Business Coverage</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+    :root {
+      --navy: #142c45;
+      --navy-soft: #284864;
+      --teal: #a1272e;
+      --teal-dark: #7e1820;
+      --mint: #f5e7e8;
+      --cream: #f7f4ef;
+      --white: #ffffff;
+      --ink: #192a3c;
+      --muted: #66717d;
+      --line: #dfe3e7;
+      --orange: #d6aa59;
+      --shadow: 0 18px 55px rgba(20, 44, 69, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.locked { overflow: hidden; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; }
+    .container { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--teal);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    h1, h2, h3 { margin-top: 0; font-family: "Manrope", sans-serif; color: var(--navy); }
+    h1 { max-width: 720px; margin-bottom: 24px; font-size: clamp(2.75rem, 5.1vw, 5rem); line-height: 1.03; letter-spacing: -.045em; }
+    h2 { margin-bottom: 18px; font-size: clamp(2rem, 4vw, 3.45rem); line-height: 1.08; letter-spacing: -.04em; }
+    p { line-height: 1.75; }
+    .section-copy { max-width: 650px; margin: 0; color: var(--muted); font-size: 1.08rem; }
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      min-height: 54px;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 25px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      transform: translateZ(0);
+      transition: transform .25s ease, background .2s ease, border-color .2s ease, box-shadow .25s ease;
+    }
+    .btn::before { position: absolute; z-index: -1; top: -100%; left: -45%; width: 35%; height: 300%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); content: ""; transform: rotate(24deg); transition: left .65s ease; }
+    .btn:hover { transform: translateY(-3px) scale(1.015); }
+    .btn:hover::before { left: 120%; }
+    .btn-primary { border-color: rgba(255,255,255,.2); background: linear-gradient(145deg, #c33d46 0%, #9b242c 48%, #72171e 100%); color: var(--white); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(67,6,12,.2), 0 12px 28px rgba(126,24,32,.28); }
+    .btn-primary:hover { background: linear-gradient(145deg, #b8313a, #7e1820); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 17px 36px rgba(126,24,32,.36); }
+    .btn-primary .arrow { transition: transform .2s ease; }
+    .btn-primary:hover .arrow { transform: translateX(3px); }
+    .btn-outline { border-color: rgba(255,255,255,.85); background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.55)); box-shadow: inset 0 1px 0 #fff, 0 10px 25px rgba(20,44,69,.1); color: var(--navy); backdrop-filter: blur(12px); }
+    .btn-outline:hover { border-color: rgba(161,39,46,.35); box-shadow: inset 0 1px 0 #fff, 0 14px 30px rgba(20,44,69,.15); }
+    .arrow { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* Header */
+    .topbar { padding: 9px 0; background: var(--navy); color: rgba(255,255,255,.82); font-size: .8rem; }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .topbar p { margin: 0; line-height: 1.4; }
+    .topbar-links { display: flex; gap: 22px; }
+    .topbar a:hover { color: var(--white); }
+    header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(12, 33, 59, .08);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(16px);
+    }
+    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 11px; font-family: "Manrope", sans-serif; color: var(--navy); font-weight: 800; letter-spacing: -.03em; }
+    .logo-mark { display: grid; width: 58px; height: 58px; place-items: center; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+    .logo-text { font-size: 1.2rem; line-height: 1.05; }
+    .logo-text small { display: block; margin-top: 4px; color: var(--teal); font-family: "DM Sans", sans-serif; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-size: .94rem; font-weight: 600; }
+    .nav-links > a:not(.btn) { position: relative; padding: 28px 0; }
+    .nav-links > a:not(.btn)::after { position: absolute; right: 0; bottom: 20px; left: 0; height: 2px; background: var(--teal); content: ""; transform: scaleX(0); transition: transform .2s; }
+    .nav-links > a:not(.btn):hover::after { transform: scaleX(1); }
+    .nav-links .btn { min-height: 44px; padding-inline: 18px; color: var(--white); }
+    .menu-btn { display: none; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+    .menu-btn span { display: block; width: 24px; height: 2px; margin: 5px auto; background: var(--navy); transition: .2s; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding: 88px 0 76px; background: var(--cream); }
+    .hero::before { position: absolute; top: -260px; left: 44%; width: 760px; height: 760px; border: 1px solid rgba(8,127,122,.12); border-radius: 50%; content: ""; }
+    .hero::after { position: absolute; right: -130px; bottom: -280px; width: 600px; height: 600px; border: 110px solid rgba(8,127,122,.045); border-radius: 50%; content: ""; }
+    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; }
+    .hero h1 span { color: var(--teal); }
+    .hero-copy > p:not(.eyebrow) { max-width: 580px; margin: 0 0 31px; color: var(--muted); font-size: 1.12rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 40px; color: var(--navy-soft); font-size: .86rem; font-weight: 600; }
+    .trust-row span { display: flex; align-items: center; gap: 8px; }
+    .trust-row svg { width: 18px; height: 18px; fill: none; stroke: var(--teal); stroke-width: 2; }
+    .hero-visual { position: relative; min-height: 520px; perspective: 1200px; transform-style: preserve-3d; }
+    .hero-visual::before { position: absolute; inset: 12% -5% 4% 12%; border-radius: 45%; background: radial-gradient(circle, rgba(161,39,46,.2), rgba(214,170,89,.1) 40%, transparent 70%); content: ""; filter: blur(22px); transform: translateZ(-50px); }
+    .image-frame { position: absolute; inset: 0 0 38px 35px; overflow: hidden; border: 5px solid rgba(255,255,255,.82); border-radius: 110px 18px 110px 18px; background: #dbe2e7; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 34px 70px rgba(20,44,69,.24), 0 8px 18px rgba(20,44,69,.12); transform: rotateY(-3deg) rotateX(1deg); transform-style: preserve-3d; transition: box-shadow .35s ease; will-change: transform; }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(1.06) contrast(1.05); transition: transform .6s ease; }
+    .image-frame::before { position: absolute; z-index: 2; top: -45%; left: -75%; width: 45%; height: 190%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent); content: ""; transform: rotate(24deg); animation: heroShine 7s ease-in-out infinite; }
+    .image-frame::after { position: absolute; inset: 0; background: linear-gradient(145deg, rgba(255,255,255,.16), transparent 38%, rgba(20,44,69,.12)); content: ""; }
+    .hero-visual:hover .image-frame img { transform: scale(1.025); }
+    @keyframes heroShine { 0%, 52% { left: -75%; } 72%, 100% { left: 145%; } }
+    .quote-card { position: absolute; z-index: 3; right: -18px; bottom: 0; width: 225px; padding: 21px; border: 1px solid rgba(255,255,255,.85); border-radius: 16px; background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(247,244,239,.78)); box-shadow: inset 0 1px 0 #fff, 0 24px 55px rgba(20,44,69,.2); transform: translateZ(65px) rotateY(-2deg); backdrop-filter: blur(16px); animation: cardFloat 5s ease-in-out infinite; }
+    .quote-card::before { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(120deg, rgba(255,255,255,.5), transparent 35%); content: ""; pointer-events: none; }
+    .quote-card strong, .quote-card p, .quote-card a { position: relative; }
+    .quote-card strong { display: block; margin-bottom: 5px; font-family: "Manrope", sans-serif; color: var(--navy); font-size: 1.03rem; }
+    .quote-card p { margin: 0 0 12px; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+    .quote-card a { color: var(--teal); font-size: .8rem; font-weight: 800; }
+    .rating-card { position: absolute; z-index: 3; top: 52px; left: 0; padding: 15px 18px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; background: linear-gradient(145deg, #294a68, var(--navy) 65%); color: var(--white); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 22px 42px rgba(20,44,69,.28); transform: translateZ(80px); animation: cardFloat 5s ease-in-out -2.5s infinite; }
+    .rating-card .stars { color: var(--orange); letter-spacing: 2px; }
+    .rating-card small { display: block; margin-top: 5px; color: rgba(255,255,255,.68); }
+    @keyframes cardFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+
+    /* Stats */
+    .stats { border-bottom: 1px solid var(--line); background: var(--white); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 32px 26px; border-right: 1px solid var(--line); }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border: 0; }
+    .stat strong { display: block; font-family: "Manrope", sans-serif; color: var(--navy); font-size: 1.65rem; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: .84rem; }
+
+    /* Services */
+    .services { padding: 110px 0; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
+    .section-heading h2 { margin-bottom: 0; }
+    .tabs { display: inline-flex; padding: 5px; border: 1px solid var(--line); border-radius: 11px; background: var(--cream); }
+    .tab { min-height: 43px; padding: 0 18px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); cursor: pointer; font-weight: 700; }
+    .tab.active { background: var(--navy); color: var(--white); box-shadow: 0 6px 18px rgba(12,33,59,.15); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { --tilt-x: 0deg; --tilt-y: 0deg; position: relative; display: flex; min-height: 440px; overflow: hidden; flex-direction: column; border: 1px solid rgba(255,255,255,.9); border-radius: var(--radius); background: linear-gradient(145deg, #fff, #fbfaf8); box-shadow: inset 0 1px 0 #fff, 0 10px 30px rgba(20,44,69,.09); transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(0); transform-style: preserve-3d; transition: box-shadow .3s, border-color .3s; will-change: transform; }
+    .service-card::after { position: absolute; z-index: 3; top: -80%; left: -80%; width: 55%; height: 220%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); content: ""; pointer-events: none; transform: rotate(25deg); transition: left .75s ease; }
+    .service-card:hover { border-color: rgba(161,39,46,.28); box-shadow: 0 26px 60px rgba(20,44,69,.18), 0 8px 16px rgba(20,44,69,.08); transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-7px); }
+    .service-card:hover::after { left: 140%; }
+    .service-card.hidden { display: none; }
+    .service-image { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #e8eaed; transform: translateZ(18px); }
+    .service-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.16), transparent 40%, rgba(20,44,69,.44)); content: ""; }
+    .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .service-card:hover .service-image img { transform: scale(1.065); }
+    .service-icon { position: absolute; z-index: 4; left: 24px; bottom: 20px; display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid rgba(255,255,255,.9); border-radius: 14px; background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(245,231,232,.9)); box-shadow: inset 0 1px 0 #fff, 0 12px 30px rgba(20,44,69,.24); color: var(--teal); backdrop-filter: blur(9px); transform: translateZ(38px); }
+    .service-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .service-content { position: relative; z-index: 2; display: flex; flex: 1; padding: 25px 27px 28px; flex-direction: column; transform: translateZ(8px); }
+    .service-card h3 { margin-bottom: 9px; font-size: 1.18rem; }
+    .service-card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+    .service-link { position: relative; isolation: isolate; display: inline-flex; min-height: 44px; overflow: hidden; align-items: center; align-self: flex-start; gap: 9px; margin-top: auto; padding: 0 17px; border: 1px solid rgba(255,255,255,.85); border-radius: 10px; background: linear-gradient(145deg, #fff, var(--mint)); box-shadow: inset 0 1px 0 #fff, 0 8px 18px rgba(126,24,32,.1); color: var(--teal); font-size: .84rem; font-weight: 800; transition: color .2s, background .2s, border-color .2s, transform .2s, box-shadow .2s; }
+    .service-link::before { position: absolute; z-index: -1; top: -120%; left: -55%; width: 35%; height: 340%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent); content: ""; transform: rotate(24deg); transition: left .55s ease; }
+    .service-link:hover { border-color: rgba(255,255,255,.3); background: linear-gradient(145deg, #b6333c, var(--teal-dark)); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 12px 26px rgba(126,24,32,.27); color: var(--white); transform: translateY(-3px) translateZ(10px); }
+    .service-link:hover::before { left: 125%; }
+    .service-link svg { width: 16px; height: 16px; transition: transform .2s; }
+    .service-link:hover svg { transform: translateX(3px); }
+
+    /* Why */
+    .why { padding: 110px 0; overflow: hidden; background: var(--navy); color: var(--white); }
+    .why-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 90px; }
+    .why .eyebrow { color: #e8b1b5; }
+    .why h2 { color: var(--white); }
+    .why .section-copy { color: rgba(255,255,255,.64); }
+    .why-visual { position: relative; min-height: 480px; }
+    .why-shape { position: absolute; inset: 20px 55px 0 0; border: 1px solid rgba(255,255,255,.12); border-radius: 20px 180px 20px 20px; background: #153954; }
+    .why-shape svg { width: 100%; height: 100%; border-radius: inherit; }
+    .experience-badge { position: absolute; right: 8px; bottom: 38px; display: grid; width: 152px; height: 152px; place-content: center; border: 9px solid var(--navy); border-radius: 50%; background: var(--orange); color: var(--navy); text-align: center; }
+    .experience-badge strong { display: block; font-family: "Manrope", sans-serif; font-size: 1.25rem; line-height: 1; }
+    .experience-badge span { display: block; margin-top: 6px; font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+    .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; margin-top: 38px; }
+    .benefit { display: grid; grid-template-columns: 42px 1fr; gap: 13px; }
+    .benefit-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(124,221,208,.28); border-radius: 11px; color: #e8b1b5; }
+    .benefit-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .benefit strong { display: block; margin: 2px 0 6px; font-family: "Manrope", sans-serif; font-size: .95rem; }
+    .benefit p { margin: 0; color: rgba(255,255,255,.55); font-size: .78rem; line-height: 1.55; }
+
+    /* Process */
+    .process { padding: 110px 0; background: var(--cream); }
+    .process .section-heading { align-items: center; }
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .step { position: relative; padding: 32px; border-radius: 18px; background: var(--white); box-shadow: 0 8px 35px rgba(12,33,59,.06); }
+    .step-num { display: grid; width: 44px; height: 44px; margin-bottom: 40px; place-items: center; border-radius: 50%; background: var(--mint); color: var(--teal); font-family: "Manrope", sans-serif; font-weight: 800; }
+    .step:not(:last-child)::after { position: absolute; z-index: 2; top: 52px; right: -35px; width: 46px; border-top: 2px dashed rgba(8,127,122,.3); content: ""; }
+    .step h3 { margin-bottom: 10px; }
+    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    /* Testimonial + CTA */
+    .testimonial { padding: 100px 0; }
+    .testimonial-card { position: relative; display: grid; grid-template-columns: 1fr 1.2fr; align-items: stretch; overflow: hidden; border-radius: 26px; background: var(--mint); }
+    .testimonial-art { min-height: 410px; background: #b9757a; }
+    .testimonial-art svg { width: 100%; height: 100%; }
+    .testimonial-copy { display: flex; flex-direction: column; justify-content: center; padding: 60px; }
+    .testimonial-copy .quote-mark { color: var(--teal); font-family: Georgia, serif; font-size: 5rem; line-height: .6; }
+    blockquote { margin: 24px 0; color: var(--navy); font-family: "Manrope", sans-serif; font-size: clamp(1.25rem, 2.4vw, 2rem); font-weight: 700; line-height: 1.45; letter-spacing: -.025em; }
+    .customer strong { display: block; }
+    .customer span { color: var(--muted); font-size: .82rem; }
+    .cta { padding: 0 0 110px; }
+    .cta-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 35px; overflow: hidden; padding: 57px 65px; border-radius: 22px; background: var(--teal); color: var(--white); }
+    .cta-inner::after { position: absolute; top: -150px; right: 23%; width: 360px; height: 360px; border: 70px solid rgba(255,255,255,.06); border-radius: 50%; content: ""; }
+    .cta h2 { position: relative; z-index: 1; max-width: 650px; margin: 0; color: var(--white); font-size: clamp(1.8rem, 3.6vw, 3rem); }
+    .cta .btn { position: relative; z-index: 2; flex: 0 0 auto; background: var(--white); color: var(--navy); }
+
+    /* Footer */
+    footer { padding: 72px 0 25px; background: #07182c; color: rgba(255,255,255,.62); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr .75fr .85fr 1.1fr; gap: 55px; padding-bottom: 55px; }
+    footer .logo { color: var(--white); }
+    .footer-intro p { max-width: 300px; margin: 20px 0; font-size: .86rem; }
+    .footer-socials { display: flex; gap: 9px; }
+    .footer-socials a { display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; color: var(--white); font-size: .76rem; font-weight: 700; }
+    footer h3 { margin-bottom: 22px; color: var(--white); font-size: .92rem; }
+    .footer-links { display: grid; gap: 12px; font-size: .83rem; }
+    .footer-links a:hover { color: #e8b1b5; }
+    .contact-item { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin-bottom: 15px; font-size: .83rem; }
+    .contact-item svg { width: 16px; height: 16px; fill: none; stroke: #e8b1b5; stroke-width: 2; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 23px; border-top: 1px solid rgba(255,255,255,.1); font-size: .73rem; }
+
+    /* Modal */
+    .modal { position: fixed; z-index: 100; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(7,24,44,.72); backdrop-filter: blur(7px); }
+    .modal.open { display: flex; }
+    .modal-dialog { position: relative; width: min(620px, 100%); max-height: calc(100vh - 40px); padding: 42px; overflow-y: auto; border-radius: 20px; background: var(--white); box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+    .modal-close { position: absolute; top: 18px; right: 18px; display: grid; width: 36px; height: 36px; place-items: center; border: 0; border-radius: 50%; background: var(--cream); color: var(--navy); cursor: pointer; font-size: 1.25rem; }
+    .modal h2 { margin-bottom: 8px; font-size: 2rem; }
+    .modal-subtitle { margin: 0 0 26px; color: var(--muted); font-size: .9rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .field.full { grid-column: 1 / -1; }
+    label { display: block; margin-bottom: 7px; color: var(--navy); font-size: .78rem; font-weight: 700; }
+    input, select, textarea { width: 100%; min-height: 47px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8,127,122,.1); }
+    textarea { min-height: 90px; resize: vertical; }
+    .form-submit { width: 100%; margin-top: 20px; }
+    .form-submit:disabled { cursor: wait; opacity: .72; transform: none; }
+    .form-status { min-height: 22px; margin: 12px 0 0; color: #8d1f28; font-size: .82rem; font-weight: 700; text-align: center; }
+    .form-success { display: none; padding: 35px 10px 15px; text-align: center; }
+    .form-success.show { display: block; }
+    .success-icon { display: grid; width: 70px; height: 70px; margin: 0 auto 20px; place-items: center; border-radius: 50%; background: var(--mint); color: var(--teal); font-size: 2rem; }
+    .form-success h3 { font-size: 1.5rem; }
+
+    @media (max-width: 980px) {
+      .nav-links { position: fixed; top: 76px; right: 0; left: 0; display: none; align-items: stretch; padding: 20px; border-top: 1px solid var(--line); background: var(--white); box-shadow: var(--shadow); flex-direction: column; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links > a:not(.btn) { padding: 14px 5px; }
+      .nav-links > a:not(.btn)::after { display: none; }
+      .menu-btn { display: block; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 720px; }
+      .hero-visual { width: min(650px, 100%); margin-inline: auto; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 65px; }
+      .why-visual { max-width: 650px; width: 100%; margin-inline: auto; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+      .footer-intro { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 700px) {
+      .container { width: min(100% - 28px, 1160px); }
+      .topbar { display: none; }
+      .nav { min-height: 68px; }
+      .nav-links { top: 68px; }
+      .hero { padding: 65px 0 55px; }
+      h1 { font-size: clamp(2.55rem, 13vw, 4rem); }
+      .hero-visual { min-height: 420px; }
+      .image-frame { inset: 0 0 30px 10px; border-radius: 110px 12px 110px 12px; }
+      .rating-card { top: 25px; padding: 12px; }
+      .quote-card { right: 0; width: 195px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 24px 15px; }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .stat:first-child, .stat:nth-child(3) { padding-left: 0; }
+      .services, .why, .process, .testimonial { padding: 78px 0; }
+      .section-heading { align-items: flex-start; flex-direction: column; margin-bottom: 34px; }
+      .tabs { width: 100%; }
+      .tab { flex: 1; padding-inline: 8px; }
+      .services-grid, .process-grid, .benefits { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; }
+      .service-icon { margin-bottom: 25px; }
+      .why-visual { min-height: 385px; }
+      .why-shape { right: 20px; }
+      .experience-badge { width: 125px; height: 125px; right: 0; }
+      .benefits { gap: 24px; }
+      .step:not(:last-child)::after { display: none; }
+      .testimonial-card { grid-template-columns: 1fr; }
+      .testimonial-art { min-height: 310px; }
+      .testimonial-copy { padding: 42px 28px; }
+      .cta { padding-bottom: 78px; }
+      .cta-inner { align-items: flex-start; padding: 40px 28px; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 38px 25px; }
+      .footer-intro { grid-column: 1 / -1; }
+      .footer-contact { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+      .modal-dialog { padding: 38px 22px 25px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      .image-frame, .service-card { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <p>Local guidance. Coverage built around you.</p>
+      <div class="topbar-links"><a href="tel:+15515877468">(551) 5UP-SHOT</a><span>Mon–Fri, 9 AM–5 PM</span></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Upshot Insurance home">
+        <span class="logo-mark"><img src="upshot-logo.png" alt=""></span>
+        <span class="logo-text">Upshot<small>Insurance</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Insurance</a>
+        <a href="#why-us">Why us</a>
+        <a href="#process">How it works</a>
+        <a href="#contact">Contact</a>
+        <button class="btn btn-primary open-quote">Get a free quote</button>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Louisville's local insurance team</p>
+          <h1>Clear coverage.<br><span>Confident protection.</span></h1>
+          <p>Protect your home, family, vehicles, and business with straightforward guidance from a local team that puts your needs first.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary open-quote">Start your free quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button>
+            <a class="btn btn-outline" href="#services">Explore coverage</a>
+          </div>
+          <div class="trust-row">
+            <span><svg><use href="#icon-check-circle"></use></svg>Personal guidance</span>
+            <span><svg><use href="#icon-check-circle"></use></svg>Multiple carriers</span>
+            <span><svg><use href="#icon-check-circle"></use></svg>No-obligation quotes</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="A family protected by reliable insurance">
+          <div class="image-frame"><img src="upshot-home-hero.jpg" alt="Beautiful modern home protected by Upshot Insurance"></div>
+          <div class="rating-card"><div class="stars">LOCAL</div><small>Independent Louisville agency</small></div>
+          <div class="quote-card"><strong>Questions about coverage?</strong><p>Talk directly with the Upshot team.</p><a href="tel:+15515877468">Call (551) 5UP-SHOT →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Company highlights">
+      <div class="container stats-grid">
+        <div class="stat"><strong>Local</strong><span>Louisville-based service</span></div>
+        <div class="stat"><strong>Personal</strong><span>Coverage for every day</span></div>
+        <div class="stat"><strong>Business</strong><span>Protection built to scale</span></div>
+        <div class="stat"><strong>Farm</strong><span>Coverage for rural operations</span></div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Insurance solutions</p><h2>Coverage designed for real life.</h2><p class="section-copy">From your first car to a growing company, Upshot helps you understand your options and build protection around what you value.</p></div>
+          <div class="tabs" role="tablist" aria-label="Filter insurance services">
+            <button class="tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="tab" data-filter="personal" role="tab" aria-selected="false">Personal</button>
+            <button class="tab" data-filter="commercial" role="tab" aria-selected="false">Commercial</button>
+          </div>
+        </div>
+        <div class="services-grid" id="servicesGrid">
+          <article class="service-card" data-category="personal">
+            <div class="service-image"><img src="images/services/auto-insurance.jpg" alt="Modern car traveling on an open road" loading="lazy" width="1600" height="1200"><span class="service-icon"><svg><use href="#icon-car"></use></svg></span></div>
+            <div class="service-content"><h3>Auto Insurance</h3><p>Protection for your vehicle, your passengers, and the road ahead.</p><button class="service-link open-quote" data-service="Auto Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="personal">
+            <div class="service-image"><img src="images/services/home-insurance.jpg" alt="Welcoming family home with landscaped yard" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-home"></use></svg></span></div>
+            <div class="service-content"><h3>Home Insurance</h3><p>Coverage for your home, belongings, and the memories you make there.</p><button class="service-link open-quote" data-service="Home Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="personal">
+            <div class="service-image"><img src="images/services/life-insurance.jpg" alt="Family spending meaningful time together" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-heart"></use></svg></span></div>
+            <div class="service-content"><h3>Life Insurance</h3><p>Financial confidence for the people who depend on you most.</p><button class="service-link open-quote" data-service="Life Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/general-liability.jpg" alt="Business professionals confirming an agreement" loading="lazy" width="1600" height="1068"><span class="service-icon"><svg><use href="#icon-shield"></use></svg></span></div>
+            <div class="service-content"><h3>General Liability</h3><p>Essential protection from claims involving injury or property damage.</p><button class="service-link open-quote" data-service="General Liability Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/commercial-property.jpg" alt="Modern commercial office buildings" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-building"></use></svg></span></div>
+            <div class="service-content"><h3>Commercial Property</h3><p>Protect your building, equipment, inventory, and business assets.</p><button class="service-link open-quote" data-service="Commercial Property Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/umbrella-insurance.jpg" alt="Umbrella sheltering a person from heavy rain" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-umbrella"></use></svg></span></div>
+            <div class="service-content"><h3>Umbrella Insurance</h3><p>Additional liability limits when your primary coverage reaches its cap.</p><button class="service-link open-quote" data-service="Commercial Umbrella Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/workers-compensation.jpg" alt="Skilled workers collaborating at an industrial site" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-people"></use></svg></span></div>
+            <div class="service-content"><h3>Workers’ Compensation</h3><p>Support your team and your business when workplace injuries happen.</p><button class="service-link open-quote" data-service="Workers' Compensation">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/cyber-insurance.jpg" alt="Cybersecurity monitoring across digital systems" loading="lazy" width="1600" height="1068"><span class="service-icon"><svg><use href="#icon-cyber"></use></svg></span></div>
+            <div class="service-content"><h3>Cyber Insurance</h3><p>Respond confidently to data breaches, cyberattacks, and digital risks.</p><button class="service-link open-quote" data-service="Cyber Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/commercial-auto.jpg" alt="Commercial delivery vehicles ready for business" loading="lazy" width="1600" height="1068"><span class="service-icon"><svg><use href="#icon-truck"></use></svg></span></div>
+            <div class="service-content"><h3>Commercial Auto</h3><p>Keep company vehicles, drivers, and business operations moving.</p><button class="service-link open-quote" data-service="Commercial Auto Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+          <article class="service-card" data-category="commercial">
+            <div class="service-image"><img src="images/services/flood-insurance.jpg" alt="Floodwater surrounding homes and property" loading="lazy" width="1600" height="1067"><span class="service-icon"><svg><use href="#icon-water"></use></svg></span></div>
+            <div class="service-content"><h3>Flood Insurance</h3><p>Dedicated protection against flood damage to property and contents.</p><button class="service-link open-quote" data-service="Flood Insurance">Get a quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="why-us">
+      <div class="container why-grid">
+        <div class="why-visual">
+          <div class="why-shape">
+            <svg viewBox="0 0 530 540" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Insurance advisor helping a client">
+              <rect width="530" height="540" fill="#17435d"/><circle cx="418" cy="95" r="88" fill="#1e536b"/>
+              <path d="M0 425c92-62 193-53 278 0s165 56 252 13v102H0Z" fill="#a1272e" opacity=".75"/>
+              <rect x="70" y="285" width="390" height="15" rx="7" fill="#dbb17d"/><path d="m106 300-20 240M425 300l25 240" stroke="#b47a47" stroke-width="18"/>
+              <g transform="translate(125 110)"><circle cx="70" cy="60" r="48" fill="#b96f4c"/><path d="M23 56c4-68 97-69 98 4-27-30-61-25-98-4Z" fill="#1b252b"/><path d="M25 118c35-26 91-22 117 9l29 158H-9Z" fill="#f5e7e8"/><path d="M58 115v80M99 113v82" stroke="#a1272e" stroke-width="6"/><path d="m31 143 49 51 51-57" fill="#fff" opacity=".55"/></g>
+              <g transform="translate(311 175)"><circle cx="46" cy="37" r="34" fill="#76503d"/><path d="M13 35c4-46 68-47 68 3-17-20-40-17-68-3Z" fill="#ddd5c4"/><path d="M11 78c25-16 66-15 85 8l17 105H-6Z" fill="#f2a65a"/></g>
+              <rect x="230" y="230" width="80" height="55" rx="5" fill="#f8f3e8" transform="rotate(-7 230 230)"/><path d="m247 255 13 11 27-25" fill="none" stroke="#a1272e" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="experience-badge"><strong>Local</strong><span>Service in<br>Louisville</span></div>
+        </div>
+        <div>
+          <p class="eyebrow">Why Upshot</p><h2>More clarity. Better coverage decisions.</h2><p class="section-copy">The right policy starts with the right questions. Our team learns what matters to you, explains the tradeoffs, and helps you choose coverage with confidence.</p>
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-icon"><svg><use href="#icon-person"></use></svg></span><div><strong>One-to-one guidance</strong><p>A dedicated advisor who knows your goals.</p></div></div>
+            <div class="benefit"><span class="benefit-icon"><svg><use href="#icon-search"></use></svg></span><div><strong>Choice that fits</strong><p>We compare trusted carriers for you.</p></div></div>
+            <div class="benefit"><span class="benefit-icon"><svg><use href="#icon-chat"></use></svg></span><div><strong>Clear communication</strong><p>Straight answers, without the jargon.</p></div></div>
+            <div class="benefit"><span class="benefit-icon"><svg><use href="#icon-clock"></use></svg></span><div><strong>Here when needed</strong><p>Responsive support through every claim.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">Simple by design</p><h2>Covered in three easy steps.</h2></div><p class="section-copy">Less paperwork. More clarity. We handle the details so you can move forward with confidence.</p></div>
+        <div class="process-grid">
+          <div class="step"><span class="step-num">01</span><h3>Tell us what you need</h3><p>Share a few details online or speak directly with one of our advisors.</p></div>
+          <div class="step"><span class="step-num">02</span><h3>Compare your options</h3><p>We shop trusted carriers and explain the strongest coverage choices.</p></div>
+          <div class="step"><span class="step-num">03</span><h3>Choose with confidence</h3><p>Select the policy that fits. We take care of everything from there.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="container">
+        <div class="testimonial-card">
+          <div class="testimonial-art">
+            <svg viewBox="0 0 500 430" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Happy small business owner">
+              <rect width="500" height="430" fill="#c78d91"/><circle cx="90" cy="75" r="105" fill="#a8ded0"/><path d="M0 340c85-42 146-28 224 20 88 55 178 44 276-5v75H0Z" fill="#a1272e"/>
+              <rect x="285" y="92" width="165" height="210" rx="10" fill="#f7f5ef"/><rect x="304" y="115" width="126" height="18" rx="4" fill="#f5e7e8"/><rect x="304" y="150" width="75" height="8" rx="4" fill="#c78d91"/><rect x="304" y="170" width="102" height="8" rx="4" fill="#d8e3df"/>
+              <g transform="translate(80 90)"><circle cx="100" cy="72" r="57" fill="#6d4434"/><path d="M45 71c3-83 112-83 114 4-32-31-72-28-114-4Z" fill="#1d2529"/><path d="M38 145c48-35 120-31 153 12l37 183H0Z" fill="#173653"/><path d="M75 138v100M130 136v102" stroke="#fff" stroke-width="7"/><path d="m42 168 61 68 64-74" fill="#a1272e"/></g>
+              <path d="M259 245c38-23 65-31 99-25" fill="none" stroke="#6d4434" stroke-width="18" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="testimonial-copy"><span class="quote-mark">“</span><blockquote>Insurance works best when you understand exactly what you are protecting and why. That is the standard we bring to every conversation.</blockquote><div class="customer"><strong>The Upshot approach</strong><span>Local advice. Practical protection.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container"><div class="cta-inner"><h2>Let’s find coverage that feels right.</h2><button class="btn open-quote">Get your free quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-intro"><a class="logo" href="#home"><span class="logo-mark"><img src="upshot-logo.png" alt=""></span><span class="logo-text">Upshot<small>Insurance</small></span></a><p>Practical insurance guidance for Louisville families, individuals, farms, and businesses.</p><a class="btn btn-primary" href="https://upshotinsurance.com/" target="_blank" rel="noopener">Visit official website</a></div>
+        <div><h3>Personal</h3><div class="footer-links"><a href="#services">Auto insurance</a><a href="#services">Home insurance</a><a href="#services">Life insurance</a></div></div>
+        <div><h3>Commercial</h3><div class="footer-links"><a href="#services">General liability</a><a href="#services">Property insurance</a><a href="#services">Workers’ comp</a><a href="#services">Cyber insurance</a><a href="#services">View all coverage</a></div></div>
+        <div class="footer-contact"><h3>Get in touch</h3><div class="contact-item"><svg><use href="#icon-phone"></use></svg><a href="tel:+15515877468">(551) 5UP-SHOT</a></div><div class="contact-item"><svg><use href="#icon-clock"></use></svg><span>Monday–Friday<br>9:00 AM–5:00 PM</span></div><div class="contact-item"><svg><use href="#icon-pin"></use></svg><span>13261 O'Bannon Station Way<br>Louisville, KY</span></div></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Upshot Insurance. All rights reserved.</span><span>Louisville, Kentucky &nbsp; · &nbsp; <a href="https://upshotinsurance.com/" target="_blank" rel="noopener">upshotinsurance.com</a></span></div>
+    </div>
+  </footer>
+
+  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <div class="modal-dialog">
+      <button class="modal-close" id="modalClose" aria-label="Close quote form">×</button>
+      <div id="formContent"><h2 id="quoteTitle">Let’s build your quote.</h2><p class="modal-subtitle">Tell us a little about yourself. An advisor will follow up with personalized options.</p>
+        <form id="quoteForm">
+          <div class="form-grid">
+            <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required></div>
+            <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" autocomplete="family-name" required></div>
+            <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div class="field full"><label for="coverage">Coverage needed</label><select id="coverage" name="coverage" required><option value="">Select a coverage type</option><optgroup label="Personal"><option>Auto Insurance</option><option>Home Insurance</option><option>Life Insurance</option></optgroup><optgroup label="Commercial"><option>General Liability Insurance</option><option>Commercial Property Insurance</option><option>Commercial Umbrella Insurance</option><option>Workers' Compensation</option><option>Cyber Insurance</option><option>Commercial Auto Insurance</option><option>Flood Insurance</option></optgroup></select></div>
+            <div class="field full"><label for="message">Anything else we should know? <span style="font-weight:400;color:#627181">(optional)</span></label><textarea id="message" name="message"></textarea></div>
+          </div><button class="btn btn-primary form-submit" type="submit"><span>Request my free quote</span> <svg class="arrow"><use href="#icon-arrow"></use></svg></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h3>We’ve got it!</h3><p>Thanks for reaching out. An advisor will contact you shortly to discuss your coverage.</p><button class="btn btn-primary" id="successClose">Done</button></div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></symbol>
+      <symbol id="icon-car" viewBox="0 0 24 24"><path d="m4 15 2-7h12l2 7v4h-2v-2H6v2H4v-4Z"/><path d="M6 8 8 5h8l2 3M7 14h.01M17 14h.01"/></symbol>
+      <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9h-6v-6H9v6H3Z"/></symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.5a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2 20 5v6c0 5-3.2 8.7-8 11-4.8-2.3-8-6-8-11V5l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></symbol>
+      <symbol id="icon-building" viewBox="0 0 24 24"><path d="M4 21V3h11v18M15 9h5v12M2 21h20M8 7h3M8 11h3M8 15h3"/></symbol>
+      <symbol id="icon-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0H3ZM12 3v15c0 3 4 3 4 0"/></symbol>
+      <symbol id="icon-people" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1"/></symbol>
+      <symbol id="icon-cyber" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M9 10l2 2 4-4"/></symbol>
+      <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M3 6h11v11H3ZM14 10h4l3 3v4h-7Z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+      <symbol id="icon-water" viewBox="0 0 24 24"><path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z"/><path d="M8 16c1 2 3 3 5 2"/></symbol>
+      <symbol id="icon-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+      <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 10h8M8 14h5"/></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 17v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 17Z"/></symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    </defs>
+  </svg>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const modal = document.getElementById('quoteModal');
+    const modalClose = document.getElementById('modalClose');
+    const form = document.getElementById('quoteForm');
+    const formContent = document.getElementById('formContent');
+    const formSuccess = document.getElementById('formSuccess');
+    const coverage = document.getElementById('coverage');
+    const formStatus = document.getElementById('formStatus');
+    const submitButton = form.querySelector('[type="submit"]');
+    const submitLabel = submitButton.querySelector('span');
+    const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!reduceMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const createTilt = ({ element, surface = element, baseX = 0, baseY = 0, rangeX, rangeY, update }) => {
+        const motion = {
+          currentX: baseX,
+          currentY: baseY,
+          targetX: baseX,
+          targetY: baseY,
+          frame: 0
+        };
+
+        const render = () => {
+          motion.currentX += (motion.targetX - motion.currentX) * .12;
+          motion.currentY += (motion.targetY - motion.currentY) * .12;
+          update(motion.currentX, motion.currentY);
+
+          if (
+            Math.abs(motion.targetX - motion.currentX) > .01 ||
+            Math.abs(motion.targetY - motion.currentY) > .01
+          ) {
+            motion.frame = requestAnimationFrame(render);
+          } else {
+            motion.currentX = motion.targetX;
+            motion.currentY = motion.targetY;
+            update(motion.currentX, motion.currentY);
+            motion.frame = 0;
+          }
+        };
+
+        const start = () => {
+          if (!motion.frame) motion.frame = requestAnimationFrame(render);
+        };
+
+        surface.addEventListener('pointermove', event => {
+          const bounds = surface.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width - .5;
+          const y = (event.clientY - bounds.top) / bounds.height - .5;
+          motion.targetX = baseX - y * rangeX;
+          motion.targetY = baseY + x * rangeY;
+          start();
+        });
+
+        surface.addEventListener('pointerleave', () => {
+          motion.targetX = baseX;
+          motion.targetY = baseY;
+          start();
+        });
+      };
+
+      const heroVisual = document.querySelector('.hero-visual');
+      const heroFrame = heroVisual.querySelector('.image-frame');
+
+      createTilt({
+        element: heroFrame,
+        surface: heroVisual,
+        baseX: 1,
+        baseY: -3,
+        rangeX: 6,
+        rangeY: 7,
+        update: (x, y) => {
+          heroFrame.style.transform = `rotateY(${y.toFixed(3)}deg) rotateX(${x.toFixed(3)}deg)`;
+        }
+      });
+
+      document.querySelectorAll('.service-card').forEach(card => {
+        createTilt({
+          element: card,
+          rangeX: 5,
+          rangeY: 6,
+          update: (x, y) => {
+            card.style.setProperty('--tilt-x', `${x.toFixed(3)}deg`);
+            card.style.setProperty('--tilt-y', `${y.toFixed(3)}deg`);
+          }
+        });
+      });
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(button => {
+          button.classList.remove('active');
+          button.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const filter = tab.dataset.filter;
+        document.querySelectorAll('.service-card').forEach(card => {
+          card.classList.toggle('hidden', filter !== 'all' && card.dataset.category !== filter);
+        });
+      });
+    });
+
+    function openModal(service = '') {
+      formContent.style.display = 'block';
+      formSuccess.classList.remove('show');
+      form.reset();
+      formStatus.textContent = '';
+      submitButton.disabled = false;
+      submitLabel.textContent = 'Request my free quote';
+      if (service) coverage.value = service;
+      modal.classList.add('open');
+      document.body.classList.add('locked');
+      setTimeout(() => document.getElementById('firstName').focus(), 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.classList.remove('locked');
+    }
+
+    document.querySelectorAll('.open-quote').forEach(button => button.addEventListener('click', () => openModal(button.dataset.service || '')));
+    modalClose.addEventListener('click', closeModal);
+    document.getElementById('successClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    let isSubmitting = false;
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (isSubmitting) return;
+
+      if (GOOGLE_SCRIPT_URL.startsWith('PASTE_')) {
+        formStatus.textContent = 'Quote form setup is not complete yet. Please call (551) 5UP-SHOT.';
+        return;
+      }
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitLabel.textContent = 'Sending…';
+      formStatus.textContent = 'Securely sending your request…';
+
+      const formData = new FormData(form);
+      formData.append('submittedAt', new Date().toISOString());
+      formData.append('source', window.location.href);
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+        formContent.style.display = 'none';
+        formSuccess.classList.add('show');
+      } catch (error) {
+        formStatus.textContent = 'We could not send your request. Please try again or call (551) 5UP-SHOT.';
+        submitButton.disabled = false;
+        submitLabel.textContent = 'Request my free quote';
+      } finally {
+        isSubmitting = false;
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
