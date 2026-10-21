@@ -152,6 +152,202 @@
     .stat strong { display: block; font-family: "Manrope", sans-serif; color: var(--navy); font-size: 1.65rem; letter-spacing: -.04em; }
     .stat span { color: var(--muted); font-size: .84rem; }
 
+    /* Insurance Partners Carousel */
+    .partners-section {
+      position: relative;
+      overflow: hidden;
+      padding: 64px 0 76px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .partners-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 36px;
+    }
+    .partners-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .partners-header .eyebrow::before {
+      display: none;
+    }
+    .partners-header h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+      letter-spacing: -.03em;
+    }
+    .partners-header .section-copy {
+      margin-inline: auto;
+      font-size: 1.05rem;
+    }
+    .partners-carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+    .partners-nav-btn {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+      flex-shrink: 0;
+    }
+    .partners-nav-btn:hover {
+      background: var(--mint);
+      border-color: var(--teal);
+      color: var(--teal-dark);
+      transform: scale(1.08);
+      box-shadow: 0 8px 22px rgba(255, 166, 0, 0.28);
+    }
+    .partners-nav-btn:active {
+      transform: scale(0.96);
+    }
+    .partners-nav-btn:focus-visible {
+      outline: 3px solid rgba(255, 166, 0, 0.6);
+      outline-offset: 3px;
+    }
+    .partners-nav-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform .2s ease;
+    }
+    .partners-nav-btn.partner-prev:hover svg {
+      transform: translateX(-2px);
+    }
+    .partners-nav-btn.partner-next:hover svg {
+      transform: translateX(2px);
+    }
+    .partners-viewport {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      border-radius: 16px;
+      mask-image: linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+    }
+    .partners-track {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 12px 6px;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+    .partners-track:active {
+      cursor: grabbing;
+    }
+    .partners-track::-webkit-scrollbar {
+      display: none;
+    }
+    .partner-item {
+      flex: 0 0 200px;
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      user-select: none;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .partner-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 166, 0, 0.45);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+    .partner-item:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+    .partner-logo {
+      max-width: 145px;
+      max-height: 48px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform .25s ease;
+    }
+    .partner-item:hover .partner-logo {
+      transform: scale(1.05);
+    }
+    .partner-badge-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+    .partner-badge-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--mint), #ffe7b3);
+      border: 1px solid rgba(255, 166, 0, 0.35);
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: -0.02em;
+    }
+    .partner-badge-name {
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .partner-with-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .partner-with-text img {
+      max-width: 36px;
+      max-height: 36px;
+      object-fit: contain;
+    }
+    .partner-with-text span {
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
     /* Services */
     .services { padding: 110px 0; }
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
@@ -308,6 +504,8 @@
       .why-visual { max-width: 650px; width: 100%; margin-inline: auto; }
       .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
       .footer-intro { grid-column: 1 / -1; }
+      .partner-item { flex: 0 0 180px; height: 78px; padding: 10px 16px; }
+      .partner-logo { max-width: 130px; max-height: 44px; }
     }
 
     @media (max-width: 700px) {
@@ -362,11 +560,28 @@
       .modal-dialog { padding: 38px 22px 25px; }
       .form-grid { grid-template-columns: 1fr; }
       .field.full { grid-column: auto; }
+      .partners-section { padding: 44px 0 54px; }
+      .partners-header { margin-bottom: 24px; }
+      .partners-header h2 { font-size: clamp(1.6rem, 6vw, 2.1rem); }
+      .partners-carousel-wrapper { gap: 8px; }
+      .partners-nav-btn { width: 38px; height: 38px; min-width: 38px; }
+      .partners-nav-btn svg { width: 16px; height: 16px; }
+      .partners-viewport {
+        mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%);
+      }
+      .partners-track { gap: 14px; padding: 10px 2px; }
+      .partner-item { flex: 0 0 155px; height: 70px; padding: 8px 14px; border-radius: 12px; }
+      .partner-logo { max-width: 110px; max-height: 38px; }
+      .partner-badge-icon { width: 32px; height: 32px; min-width: 32px; font-size: 0.74rem; }
+      .partner-badge-name, .partner-with-text span { font-size: 0.84rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
       .image-frame, .service-card { transform: none !important; }
+      .partners-track { scroll-behavior: auto !important; }
+      .partner-item, .partners-nav-btn { transition: none !important; transform: none !important; }
     }
   </style>
 </head>
@@ -425,6 +640,36 @@
       <div class="container stats-grid">
         <div class="stat"><strong>Personal</strong><span>Home, auto, life &amp; more</span></div>
         <div class="stat"><strong>Business</strong><span>Protection built to scale</span></div>
+      </div>
+    </section>
+
+    <section class="partners-section" id="partners" aria-label="Insurance Tie-Up Companies">
+      <div class="container">
+        <div class="partners-header">
+          <p class="eyebrow">Carrier Network</p>
+          <h2>Insurance Tie-Up Companies</h2>
+          <p class="section-copy">We partner with premier regional and national insurance carriers to secure comprehensive coverage and competitive rates tailored to you.</p>
+        </div>
+
+        <div class="partners-carousel-wrapper">
+          <button class="partners-nav-btn partner-prev" id="partnerPrevBtn" aria-label="Scroll left to previous insurance partners" type="button">
+            <svg class="partner-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+
+          <div class="partners-viewport" id="partnersViewport">
+            <div class="partners-track" id="partnersTrack" role="region" aria-label="Insurance partners list" tabindex="0">
+              <!-- Dynamically populated from JavaScript array -->
+            </div>
+          </div>
+
+          <button class="partners-nav-btn partner-next" id="partnerNextBtn" aria-label="Scroll right to next insurance partners" type="button">
+            <svg class="partner-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -883,6 +1128,242 @@
         isSubmitting = false;
       }
     });
+
+    // --- Insurance Partner Carousel ---
+    const insurancePartners = [
+      { name: 'Acuity', logo: 'images/partners/acuity.svg', alt: 'Acuity Insurance' },
+      { name: 'Erie', logo: 'images/partners/erie.svg', alt: 'Erie Insurance Group' },
+      { name: 'UFG', logo: 'images/partners/ufg.png', alt: 'UFG Insurance' },
+      { name: 'Guard', logo: null, alt: 'Berkshire Hathaway GUARD Insurance' },
+      { name: 'Hanover', logo: 'images/partners/hanover.svg', alt: 'The Hanover Insurance Group' },
+      { name: 'Hartford', logo: 'images/partners/hartford.svg', alt: 'The Hartford' },
+      { name: 'UmbrellaPro', logo: 'images/partners/umbrellapro.png', alt: 'UmbrellaPro Insurance', showNameWithLogo: true },
+      { name: 'Novum', logo: null, alt: 'Novum Underwriting Partners' },
+      { name: 'Covenant', logo: 'images/partners/covenant.png', alt: 'Covenant Underwriters' },
+      { name: 'Next', logo: 'images/partners/next.svg', alt: 'Next Insurance' },
+      { name: 'FirstConnect', logo: 'images/partners/firstconnect.svg', alt: 'FirstConnect Insurance' },
+      { name: 'Burns & Wilcox', logo: null, alt: 'Burns & Wilcox' },
+      { name: 'Liberty Mutual', logo: 'images/partners/liberty-mutual.svg', alt: 'Liberty Mutual Insurance' },
+      { name: 'CRC Group', logo: 'images/partners/crc-group.svg', alt: 'CRC Group' },
+      { name: 'XSBroker', logo: 'images/partners/xsbroker.png', alt: 'XS Brokers' },
+      { name: 'Progressive', logo: 'images/partners/progressive.svg', alt: 'Progressive Insurance' },
+      { name: 'Geico', logo: 'images/partners/geico.svg', alt: 'GEICO Insurance' },
+      { name: 'Grange', logo: 'images/partners/grange.svg', alt: 'Grange Insurance' },
+      { name: 'Nexsure', logo: null, alt: 'Nexsure' },
+      { name: 'Ezlynx', logo: 'images/partners/ezlynx.webp', alt: 'EZLynx' },
+      { name: 'Amtrust', logo: 'images/partners/amtrust.png', alt: 'AmTrust Financial' }
+    ];
+
+    function initPartnersCarousel() {
+      const track = document.getElementById('partnersTrack');
+      const viewport = document.getElementById('partnersViewport');
+      const prevBtn = document.getElementById('partnerPrevBtn');
+      const nextBtn = document.getElementById('partnerNextBtn');
+      const container = document.querySelector('.partners-carousel-wrapper');
+      if (!track || !viewport || !prevBtn || !nextBtn || !container) return;
+
+      function createFallbackBadge(name) {
+        const wrap = document.createElement('div');
+        wrap.className = 'partner-badge-wrapper';
+        const icon = document.createElement('span');
+        icon.className = 'partner-badge-icon';
+        const initials = name
+          .replace(/[^a-zA-Z\s]/g, '')
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map(w => w[0].toUpperCase())
+          .join('') || name.slice(0, 2).toUpperCase();
+        icon.textContent = initials;
+        const text = document.createElement('span');
+        text.className = 'partner-badge-name';
+        text.textContent = name;
+        wrap.appendChild(icon);
+        wrap.appendChild(text);
+        return wrap;
+      }
+
+      function buildCard(partner, isClone = false) {
+        const card = document.createElement('div');
+        card.className = 'partner-item';
+        card.setAttribute('role', 'group');
+        card.setAttribute('aria-label', partner.name);
+        if (isClone) {
+          card.setAttribute('aria-hidden', 'true');
+        } else {
+          card.setAttribute('tabindex', '0');
+        }
+
+        if (partner.logo && partner.showNameWithLogo) {
+          const wrap = document.createElement('div');
+          wrap.className = 'partner-with-text';
+          const img = document.createElement('img');
+          img.src = partner.logo;
+          img.alt = partner.alt || partner.name;
+          img.className = 'partner-logo';
+          img.loading = 'lazy';
+          img.onerror = () => {
+            card.innerHTML = '';
+            card.appendChild(createFallbackBadge(partner.name));
+          };
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = partner.name;
+          wrap.appendChild(img);
+          wrap.appendChild(nameSpan);
+          card.appendChild(wrap);
+        } else if (partner.logo) {
+          const img = document.createElement('img');
+          img.src = partner.logo;
+          img.alt = partner.alt || partner.name;
+          img.className = 'partner-logo';
+          img.loading = 'lazy';
+          img.onerror = () => {
+            card.innerHTML = '';
+            card.appendChild(createFallbackBadge(partner.name));
+          };
+          card.appendChild(img);
+        } else {
+          card.appendChild(createFallbackBadge(partner.name));
+        }
+
+        return card;
+      }
+
+      // Populate track: initial set + visual cloned set for seamless infinite looping
+      track.innerHTML = '';
+      insurancePartners.forEach(p => track.appendChild(buildCard(p, false)));
+      insurancePartners.forEach(p => track.appendChild(buildCard(p, true)));
+
+      let singleSetWidth = track.scrollWidth / 2;
+      function updateSingleSetWidth() {
+        singleSetWidth = track.scrollWidth / 2;
+      }
+
+      let scrollPos = track.scrollLeft || 0;
+      let isPaused = false;
+      let pauseTimeout = null;
+      let isDragging = false;
+      let startX = 0;
+      let dragStartScroll = 0;
+      const speed = 0.65; // pixels per frame for continuous smooth auto-scroll
+
+      function loop() {
+        if (!isPaused && !reduceMotion.matches) {
+          scrollPos += speed;
+          if (singleSetWidth > 0 && scrollPos >= singleSetWidth) {
+            scrollPos -= singleSetWidth;
+          }
+          track.scrollLeft = scrollPos;
+        }
+        requestAnimationFrame(loop);
+      }
+
+      function pauseTemporarily(ms = 2500) {
+        isPaused = true;
+        clearTimeout(pauseTimeout);
+        pauseTimeout = setTimeout(() => {
+          scrollPos = track.scrollLeft;
+          isPaused = false;
+        }, ms);
+      }
+
+      // Hover controls
+      container.addEventListener('mouseenter', () => { isPaused = true; });
+      container.addEventListener('mouseleave', () => {
+        if (!isDragging) {
+          scrollPos = track.scrollLeft;
+          isPaused = false;
+        }
+      });
+
+      // Focus controls for accessibility
+      container.addEventListener('focusin', () => { isPaused = true; });
+      container.addEventListener('focusout', (e) => {
+        if (!container.contains(e.relatedTarget)) {
+          scrollPos = track.scrollLeft;
+          isPaused = false;
+        }
+      });
+
+      // Pointer / Drag interactions
+      track.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        isPaused = true;
+        startX = e.clientX;
+        dragStartScroll = track.scrollLeft;
+        track.setPointerCapture(e.pointerId);
+      });
+
+      track.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const delta = e.clientX - startX;
+        track.scrollLeft = dragStartScroll - delta;
+        scrollPos = track.scrollLeft;
+      });
+
+      function stopDragging(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        if (e && e.pointerId) {
+          try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+        normalizeWrap();
+        pauseTemporarily(1800);
+      }
+
+      track.addEventListener('pointerup', stopDragging);
+      track.addEventListener('pointercancel', stopDragging);
+
+      function normalizeWrap() {
+        if (singleSetWidth <= 0) return;
+        if (track.scrollLeft >= singleSetWidth) {
+          track.scrollLeft -= singleSetWidth;
+          scrollPos = track.scrollLeft;
+        } else if (track.scrollLeft <= 0) {
+          track.scrollLeft += singleSetWidth;
+          scrollPos = track.scrollLeft;
+        }
+      }
+
+      let scrollDebounce = null;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollDebounce);
+        scrollDebounce = setTimeout(normalizeWrap, 120);
+      }, { passive: true });
+
+      function getScrollStep() {
+        return Math.max(220, Math.floor(viewport.clientWidth * 0.72));
+      }
+
+      prevBtn.addEventListener('click', () => {
+        pauseTemporarily(2800);
+        const step = getScrollStep();
+        if (track.scrollLeft < step && singleSetWidth > 0) {
+          track.scrollLeft += singleSetWidth;
+          scrollPos = track.scrollLeft;
+        }
+        track.scrollBy({ left: -step, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        pauseTemporarily(2800);
+        const step = getScrollStep();
+        track.scrollBy({ left: step, behavior: 'smooth' });
+      });
+
+      let resizeTimer = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          updateSingleSetWidth();
+          normalizeWrap();
+        }, 150);
+      });
+
+      requestAnimationFrame(loop);
+    }
+
+    initPartnersCarousel();
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
