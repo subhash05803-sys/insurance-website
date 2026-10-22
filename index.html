@@ -53,7 +53,7 @@
       letter-spacing: .14em;
       text-transform: uppercase;
     }
-    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    .eyebrow::before { display: none !important; content: none !important; }
     h1, h2, h3 { margin-top: 0; font-family: "Manrope", sans-serif; color: var(--navy); }
     h1 { max-width: 720px; margin-bottom: 24px; font-size: clamp(2.75rem, 5.1vw, 5rem); line-height: 1.03; letter-spacing: -.045em; }
     h2 { margin-bottom: 18px; font-size: clamp(2rem, 4vw, 3.45rem); line-height: 1.08; letter-spacing: -.04em; }
@@ -175,9 +175,7 @@
       font-weight: 800;
       color: var(--teal);
     }
-    .partners-header .eyebrow::before {
-      display: none;
-    }
+    .partners-header .eyebrow::before { display: none !important; content: none !important; }
         .partners-header .section-copy {
       margin-inline: auto;
       font-size: 1.15rem;
@@ -426,17 +424,145 @@
     .benefit strong { display: block; margin: 2px 0 6px; font-family: "Manrope", sans-serif; font-size: .95rem; }
     .benefit p { margin: 0; color: rgba(255,255,255,.55); font-size: .78rem; line-height: 1.55; }
 
-    /* Process */
-    .process { padding: 110px 0; background: var(--cream); }
-    .process .section-heading { align-items: center; }
-    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .step { position: relative; padding: 32px; border-radius: 18px; background: var(--white); box-shadow: 0 8px 35px rgba(12,33,59,.06); }
-    .step-num { display: grid; width: 44px; height: 44px; margin-bottom: 40px; place-items: center; border-radius: 50%; background: var(--mint); color: var(--teal); font-family: "Manrope", sans-serif; font-weight: 800; }
-    .step:not(:last-child)::after { position: absolute; z-index: 2; top: 52px; right: -35px; width: 46px; border-top: 2px dashed rgba(8,127,122,.3); content: ""; }
-    .step h3 { margin-bottom: 10px; }
-    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
-
-    /* Testimonial + CTA */
+    /* Process - Step-by-Step Connected Journey */
+    .process {
+      padding: 110px 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .process .section-heading {
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .process-step-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .process-step-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 38px 32px 34px;
+      background: var(--white);
+      border: 1px solid rgba(214, 170, 89, 0.22);
+      border-radius: 22px;
+      box-shadow: 0 10px 32px rgba(17, 17, 17, 0.05);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
+    .process-step-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), #ffc34d);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .process-step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(17, 17, 17, 0.1);
+      border-color: rgba(255, 166, 0, 0.5);
+    }
+    .process-step-card:hover::before {
+      opacity: 1;
+    }
+    .process-step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .process-icon-wrap {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--mint), #ffe7b3);
+      color: var(--teal-dark);
+      border: 1px solid rgba(255, 166, 0, 0.35);
+    }
+    .process-icon-wrap svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+    }
+    .process-step-badge {
+      font-family: "Manrope", sans-serif;
+      font-size: .85rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: var(--mint);
+      color: var(--teal-dark);
+      border: 1px solid rgba(255, 166, 0, 0.3);
+    }
+    .process-connector-arrow {
+      position: absolute;
+      top: 50%;
+      right: -22px;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      z-index: 10;
+      box-shadow: 0 4px 14px rgba(255, 166, 0, 0.35);
+      border: 2px solid var(--white);
+      pointer-events: none;
+    }
+    .process-connector-arrow svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+    .process-step-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      color: var(--navy);
+    }
+    .process-step-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+    .process-step-card strong.step-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .process-step-card strong.step-time svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+/* Testimonial + CTA */
     .testimonial { padding: 100px 0; }
     .testimonial-card { position: relative; display: grid; grid-template-columns: 1fr 1.2fr; align-items: stretch; overflow: hidden; border-radius: 26px; background: var(--mint); }
     .testimonial-art { min-height: 410px; background: #272727; }
@@ -451,69 +577,335 @@
     .cta-inner::after { position: absolute; top: -150px; right: 23%; width: 360px; height: 360px; border: 70px solid rgba(255,255,255,.06); border-radius: 50%; content: ""; }
     .cta h2 { position: relative; z-index: 1; max-width: 650px; margin: 0; color: var(--white); font-size: clamp(1.8rem, 3.6vw, 3rem); }
     .cta .btn { position: relative; z-index: 2; flex: 0 0 auto; background: var(--white); color: var(--navy); }
-    /* Why are we different */
+    /* Why Are We Different? - Visual Feature Grid */
     .different {
       padding: 100px 0;
-      background: var(--cream);
+      background: linear-gradient(180deg, #fffaf2 0%, #fff 100%);
+      position: relative;
     }
     .different-header {
       text-align: center;
-      margin-bottom: 56px;
+      max-width: 760px;
+      margin: 0 auto 52px;
+    }
+    .different-header .eyebrow {
+      color: var(--teal);
+      margin-bottom: 12px;
     }
     .different-header h2 {
-      margin-bottom: 0;
-      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      margin-bottom: 14px;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      letter-spacing: -.035em;
+    }
+    .different-header .section-copy {
+      margin-inline: auto;
+      font-size: 1.05rem;
     }
     .different-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
-    .different-item {
+    .different-card {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      padding: 36px 32px;
+      padding: 38px 32px 34px;
       background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 35px rgba(12, 33, 59, 0.06);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      border: 1px solid rgba(214, 170, 89, 0.22);
+      border-radius: 22px;
+      box-shadow: 0 10px 32px rgba(17, 17, 17, 0.05);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      overflow: hidden;
     }
-    .different-item:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 166, 0, 0.45);
-      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.1);
+    .different-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), #ffc34d);
+      opacity: 0;
+      transition: opacity .3s ease;
     }
-    .different-icon {
+    .different-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(17, 17, 17, 0.1);
+      border-color: rgba(255, 166, 0, 0.5);
+    }
+    .different-card:hover::before {
+      opacity: 1;
+    }
+    .different-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .different-icon-badge {
       display: grid;
-      width: 52px;
-      height: 52px;
+      width: 58px;
+      height: 58px;
       place-items: center;
-      border-radius: 14px;
-      background: var(--mint);
-      border: 1px solid rgba(255, 166, 0, 0.35);
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--mint), #ffe7b3);
       color: var(--teal-dark);
+      border: 1px solid rgba(255, 166, 0, 0.35);
+    }
+    .different-icon-badge svg {
+      width: 26px;
+      height: 26px;
+    }
+    .different-tag {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--mint);
+      color: var(--teal-dark);
+    }
+    .different-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      color: var(--navy);
+    }
+    .different-card p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+    .different-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .different-feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--navy-soft);
+    }
+    .different-feature-list svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--teal);
       flex-shrink: 0;
     }
-    .different-icon svg {
-      width: 24px;
-      height: 24px;
+/* Dynamic Form Fields & File Attachment */
+
+    /* Multi-Select Coverage Component */
+    .coverage-multiselect {
+      position: relative;
+      width: 100%;
     }
-    .different-item strong {
-      display: block;
-      margin-bottom: 8px;
-      font-family: "Manrope", sans-serif;
+    .coverage-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      cursor: pointer;
+      user-select: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .coverage-trigger:hover, .coverage-trigger:focus-visible {
+      border-color: var(--teal);
+    }
+    .coverage-trigger.open {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.15);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .coverage-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      max-width: calc(100% - 24px);
+    }
+    .coverage-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--mint);
       color: var(--navy);
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-size: .8rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 166, 0, 0.4);
+      animation: fadeIn .2s ease;
     }
-    .different-item p {
-      margin: 0;
+    .coverage-tag-remove {
+      display: inline-grid;
+      place-items: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: .75rem;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--navy);
+      transition: background .15s ease, color .15s ease;
+    }
+    .coverage-tag-remove:hover {
+      background: #e05252;
+      color: #fff;
+    }
+    .coverage-placeholder {
       color: var(--muted);
-      font-size: .96rem;
-      line-height: 1.7;
-    }    /* Dynamic Form Fields & File Attachment */
+      font-size: .9rem;
+    }
+    .coverage-trigger-arrow {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--muted);
+      stroke-width: 2.2;
+      transition: transform .2s ease;
+      flex-shrink: 0;
+    }
+    .coverage-trigger.open .coverage-trigger-arrow {
+      transform: rotate(180deg);
+    }
+    .coverage-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 280px;
+      overflow-y: auto;
+      background: var(--white);
+      border: 1px solid var(--teal);
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      z-index: 50;
+      display: none;
+      padding: 8px 0;
+    }
+    .coverage-dropdown.open {
+      display: block;
+    }
+    .coverage-group-title {
+      padding: 8px 14px 4px;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: rgba(255, 243, 217, 0.4);
+      margin: 4px 0 2px;
+    }
+    .coverage-group-title:first-child {
+      margin-top: 0;
+    }
+    .coverage-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      cursor: pointer;
+      font-size: .88rem;
+      color: var(--ink);
+      font-weight: 600;
+      transition: background .15s ease;
+    }
+    .coverage-option:hover {
+      background: var(--mint);
+    }
+    .coverage-option.selected {
+      background: rgba(255, 166, 0, 0.18);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .coverage-option-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(0, 0, 0, 0.25);
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all .15s ease;
+    }
+    .coverage-option.selected .coverage-option-check {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--navy);
+    }
+    .coverage-option-check svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      display: none;
+    }
+    .coverage-option.selected .coverage-option-check svg {
+      display: block;
+    }
+    .coverage-required-error {
+      display: none;
+      color: #e05252;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+    .coverage-required-error.show {
+      display: block;
+    }
+
+    /* Date Pickers styling */
+    input[type="date"] {
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .92rem;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      filter: invert(0.3) sepia(1) saturate(5) hue-rotate(5deg);
+      opacity: 0.85;
+      padding: 4px;
+      transition: transform .2s ease;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+
+    @media (max-width: 980px) {
+      .process-timeline { grid-template-columns: 1fr; gap: 24px; }
+      .process-connector-arrow { display: none; }
+    }
+
     .service-custom-fields {
       grid-column: 1 / -1;
       display: grid;
@@ -662,6 +1054,206 @@
     .form-success.show { display: block; }
     .success-icon { display: grid; width: 70px; height: 70px; margin: 0 auto 20px; place-items: center; border-radius: 50%; background: var(--mint); color: var(--teal); font-size: 2rem; }
     .form-success h3 { font-size: 1.5rem; }    /* Dynamic Form Fields & File Attachment */
+
+    /* Multi-Select Coverage Component */
+    .coverage-multiselect {
+      position: relative;
+      width: 100%;
+    }
+    .coverage-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      cursor: pointer;
+      user-select: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .coverage-trigger:hover, .coverage-trigger:focus-visible {
+      border-color: var(--teal);
+    }
+    .coverage-trigger.open {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.15);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .coverage-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      max-width: calc(100% - 24px);
+    }
+    .coverage-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--mint);
+      color: var(--navy);
+      font-size: .8rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 166, 0, 0.4);
+      animation: fadeIn .2s ease;
+    }
+    .coverage-tag-remove {
+      display: inline-grid;
+      place-items: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-size: .75rem;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--navy);
+      transition: background .15s ease, color .15s ease;
+    }
+    .coverage-tag-remove:hover {
+      background: #e05252;
+      color: #fff;
+    }
+    .coverage-placeholder {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .coverage-trigger-arrow {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--muted);
+      stroke-width: 2.2;
+      transition: transform .2s ease;
+      flex-shrink: 0;
+    }
+    .coverage-trigger.open .coverage-trigger-arrow {
+      transform: rotate(180deg);
+    }
+    .coverage-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 280px;
+      overflow-y: auto;
+      background: var(--white);
+      border: 1px solid var(--teal);
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      z-index: 50;
+      display: none;
+      padding: 8px 0;
+    }
+    .coverage-dropdown.open {
+      display: block;
+    }
+    .coverage-group-title {
+      padding: 8px 14px 4px;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: rgba(255, 243, 217, 0.4);
+      margin: 4px 0 2px;
+    }
+    .coverage-group-title:first-child {
+      margin-top: 0;
+    }
+    .coverage-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      cursor: pointer;
+      font-size: .88rem;
+      color: var(--ink);
+      font-weight: 600;
+      transition: background .15s ease;
+    }
+    .coverage-option:hover {
+      background: var(--mint);
+    }
+    .coverage-option.selected {
+      background: rgba(255, 166, 0, 0.18);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .coverage-option-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(0, 0, 0, 0.25);
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all .15s ease;
+    }
+    .coverage-option.selected .coverage-option-check {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--navy);
+    }
+    .coverage-option-check svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      display: none;
+    }
+    .coverage-option.selected .coverage-option-check svg {
+      display: block;
+    }
+    .coverage-required-error {
+      display: none;
+      color: #e05252;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+    .coverage-required-error.show {
+      display: block;
+    }
+
+    /* Date Pickers styling */
+    input[type="date"] {
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .92rem;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      filter: invert(0.3) sepia(1) saturate(5) hue-rotate(5deg);
+      opacity: 0.85;
+      padding: 4px;
+      transition: transform .2s ease;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+
+    @media (max-width: 980px) {
+      .process-timeline { grid-template-columns: 1fr; gap: 24px; }
+      .process-connector-arrow { display: none; }
+    }
+
     .service-custom-fields {
       grid-column: 1 / -1;
       display: grid;
@@ -917,10 +1509,10 @@
       </div>
     </section>
 
-    <section class="partners-section" id="partners" aria-label="Carrier Network">
+    <section class="partners-section" id="partners" aria-label="Our Carrier Networks">
       <div class="container">
         <div class="partners-header">
-          <p class="eyebrow">Carrier Network</p>
+          <p class="eyebrow">Our Carrier Networks</p>
           <p class="section-copy">We partner with premier regional and national insurance carriers to secure comprehensive coverage and competitive rates tailored to you.</p>
         </div>
 
@@ -1023,11 +1615,66 @@
 
     <section class="process" id="process">
       <div class="container">
-        <div class="section-heading"><div><p class="eyebrow">Simple by design</p><h2>Covered in three easy steps.</h2></div><p class="section-copy">Less paperwork. More clarity. We handle the details so you can move forward with confidence.</p></div>
-        <div class="process-grid">
-          <div class="step"><span class="step-num">01</span><h3>Tell us what you need</h3><p>Share a few details online or speak directly with one of our advisors.</p></div>
-          <div class="step"><span class="step-num">02</span><h3>Compare your options</h3><p>We shop trusted carriers and explain the strongest coverage choices.</p></div>
-          <div class="step"><span class="step-num">03</span><h3>Choose with confidence</h3><p>Select the policy that fits. We take care of everything from there.</p></div>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Simple by design</p>
+            <h2>Covered in three easy steps.</h2>
+          </div>
+          <p class="section-copy">Less paperwork. Zero guesswork. We compare top carriers and guide you straight to the right policy.</p>
+        </div>
+        <div class="process-timeline">
+          <!-- Step 1 -->
+          <div class="process-step-item">
+            <div class="process-step-card">
+              <div class="process-step-top">
+                <span class="process-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </span>
+                <span class="process-step-badge">Step 01</span>
+              </div>
+              <h3>Tell us what you need</h3>
+              <p>Select your coverage types and share a few basics online, or text/call directly with our dedicated advisors.</p>
+              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Takes 2 Minutes</strong>
+            </div>
+            <!-- Arrow outside the hovered card -->
+            <div class="process-connector-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-step-item">
+            <div class="process-step-card">
+              <div class="process-step-top">
+                <span class="process-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="m11 8 3 3-3 3"/></svg>
+                </span>
+                <span class="process-step-badge">Step 02</span>
+              </div>
+              <h3>Compare your options</h3>
+              <p>We shop our network of 20+ premier national and regional carriers, presenting clear tradeoffs and competitive quotes.</p>
+              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Side-by-Side Clarity</strong>
+            </div>
+            <!-- Arrow outside the hovered card -->
+            <div class="process-connector-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-step-item">
+            <div class="process-step-card">
+              <div class="process-step-top">
+                <span class="process-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </span>
+                <span class="process-step-badge">Step 03</span>
+              </div>
+              <h3>Choose with confidence</h3>
+              <p>Pick the coverage that fits your budget. We handle the carrier paperwork, certificates, and ongoing servicing.</p>
+              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Continuous Protection</strong>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1047,34 +1694,55 @@
         <div class="different-header">
           <p class="eyebrow">Our Advantage</p>
           <h2>Why are we different?</h2>
+          <p class="section-copy">Unlike standard brokers who just sell policies, we partner with you year-round with hands-on service, niche commercial programs, and ongoing protection audits.</p>
         </div>
         <div class="different-grid">
-          <div class="different-item">
-            <span class="different-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 17v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 17Z"/></svg>
-            </span>
-            <div>
-              <strong>Always Just a Text or Call Away</strong>
-              <p>We have a dedicated service team for your Insurance who are just a text or call away to help you.</p>
+          <div class="different-card">
+            <div class="different-card-top">
+              <span class="different-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span class="different-tag">Dedicated Team</span>
             </div>
+            <h3>Always a Call or Text Away</h3>
+            <p>We have a dedicated service team for your insurance who are just a text or call away to help you promptly whenever questions or claims arise.</p>
+            <ul class="different-feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direct text & call access to your advisor</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero call-center queues or robot delays</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fast certificates & policy endorsements</li>
+            </ul>
           </div>
-          <div class="different-item">
-            <span class="different-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h11v18M15 9h5v12M2 21h20M8 7h3M8 11h3M8 15h3"/></svg>
-            </span>
-            <div>
-              <strong>Specialized Industry Programs</strong>
-              <p>Specialized programs for Hotels, motels, restaurants, and retail businesses.</p>
+
+          <div class="different-card">
+            <div class="different-card-top">
+              <span class="different-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+              </span>
+              <span class="different-tag">Industry Niche</span>
             </div>
+            <h3>Specialized Commercial Programs</h3>
+            <p>Specialized insurance packages tailored specifically for Hotels, motels, restaurants, liquor stores, and retail businesses.</p>
+            <ul class="different-feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Tailored hospitality & retail protections</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direct carrier rate programs for franchises</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Liquor liability, equipment breakdown & spoilage</li>
+            </ul>
           </div>
-          <div class="different-item">
-            <span class="different-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><path d="M10.5 7v7M7 10.5h7"/></svg>
-            </span>
-            <div>
-              <strong>Free Insurance Gap Review</strong>
-              <p>We do a free insurance gap review and suggest what can be added to better protect you.</p>
+
+          <div class="different-card">
+            <div class="different-card-top">
+              <span class="different-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </span>
+              <span class="different-tag">Complimentary</span>
             </div>
+            <h3>Free Insurance Gap Review</h3>
+            <p>We do a comprehensive, free insurance gap review of your existing coverage and suggest exact endorsements or adjustments that can be added.</p>
+            <ul class="different-feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Uncover hidden exclusions before claims happen</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Benchmark rates across 20+ top carriers</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Completely free with zero purchase obligation</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1126,7 +1794,82 @@
             <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" autocomplete="family-name" required></div>
             <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required></div>
             <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
-            <div class="field full"><label for="coverage">Coverage needed</label><select id="coverage" name="coverage" required><option value="">Select a coverage type</option><optgroup label="Personal"><option>Auto Insurance</option><option>Home Insurance</option><option>Life Insurance</option></optgroup><optgroup label="Business"><option>General Liability</option><option>Commercial Property</option><option>Umbrella Insurance</option><option>Workers’ Compensation</option><option>Cyber Insurance</option><option>Commercial Auto</option><option>Flood Insurance</option></optgroup></select></div>
+            <div class="field full">
+              <label for="coverageTrigger">Coverage needed <span style="color:#e05252">* (Select all that apply)</span></label>
+              <div class="coverage-multiselect" id="coverageMultiselect">
+                <div class="coverage-trigger" id="coverageTrigger" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Select one or more coverage types">
+                  <div class="coverage-tags" id="coverageTags">
+                    <span class="coverage-placeholder">Select one or more coverage types…</span>
+                  </div>
+                  <svg class="coverage-trigger-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="coverage-dropdown" id="coverageDropdown" role="listbox" aria-multiselectable="true">
+                  <div class="coverage-group-title">Personal Insurance</div>
+                  <div class="coverage-option" data-value="Auto Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Auto Insurance</span>
+                  </div>
+                  <div class="coverage-option" data-value="Home Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Home Insurance</span>
+                  </div>
+                  <div class="coverage-option" data-value="Life Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Life Insurance</span>
+                  </div>
+
+                  <div class="coverage-group-title">Specialized Industry Packages</div>
+                  <div class="coverage-option" data-value="Hotel Specialized Package" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Hotel Specialized Package</span>
+                  </div>
+                  <div class="coverage-option" data-value="Restaurant Special Package" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Restaurant Special Package</span>
+                  </div>
+                  <div class="coverage-option" data-value="Liquor Store Package" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Liquor Store Package</span>
+                  </div>
+                  <div class="coverage-option" data-value="Gas Station Package" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Gas Station Package</span>
+                  </div>
+
+                  <div class="coverage-group-title">Business & Commercial Coverage</div>
+                  <div class="coverage-option" data-value="General Liability" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>General Liability</span>
+                  </div>
+                  <div class="coverage-option" data-value="Commercial Property" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Commercial Property</span>
+                  </div>
+                  <div class="coverage-option" data-value="Umbrella Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Umbrella Insurance</span>
+                  </div>
+                  <div class="coverage-option" data-value="Workers’ Compensation" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Workers’ Compensation</span>
+                  </div>
+                  <div class="coverage-option" data-value="Cyber Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Cyber Insurance</span>
+                  </div>
+                  <div class="coverage-option" data-value="Commercial Auto" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Commercial Auto</span>
+                  </div>
+                  <div class="coverage-option" data-value="Flood Insurance" role="option" aria-selected="false">
+                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span>Flood Insurance</span>
+                  </div>
+                </div>
+              </div>
+              <p class="coverage-required-error" id="coverageError">Please select at least one coverage type.</p>
+              <input type="hidden" id="coverage" name="coverage" value="">
+            </div>
             <!-- Dynamic customized questions container based on selected service -->
             <div id="serviceCustomFields" class="service-custom-fields hidden"></div>
 
@@ -1412,11 +2155,47 @@
         ]
       },
       'Life Insurance': {
-        title: 'Coverage Preferences & Applicant Details',
+        title: 'Applicant & Health Profile',
         fields: [
-          { id: 'applicantDob', label: 'Date of Birth & Gender', placeholder: 'MM/DD/YYYY - Male / Female', required: true, half: true },
+          { id: 'applicantDob', label: 'Date of Birth (Calendar Picker)', type: 'date', required: true, half: true },
+          { id: 'applicantGender', label: 'Gender', type: 'select', options: ['Male', 'Female', 'Prefer not to say'], required: true, half: true },
           { id: 'tobaccoUse', label: 'Tobacco / Nicotine Use in past 5 yrs?', type: 'select', options: ['No', 'Yes - Cigarettes', 'Yes - Cigars/Vape/Other'], required: true, half: true },
-          { id: 'termOrAmount', label: 'Desired Term or Coverage Amount', placeholder: 'e.g. 20-Year Term, $500,000', required: false, half: false }
+          { id: 'termOrAmount', label: 'Desired Term or Coverage Amount', placeholder: 'e.g. 20-Year Term, $500,000', required: false, half: true }
+        ]
+      },
+      'Hotel Specialized Package': {
+        title: 'Hotel / Motel Property & Hospitality Profile',
+        fields: [
+          { id: 'hotelName', label: 'Hotel / Motel Name & Brand/Franchise', placeholder: 'e.g. Best Western / Independent Inn', required: true, half: true },
+          { id: 'roomCount', label: 'Total Number of Guest Rooms', placeholder: 'e.g. 64 Rooms', required: true, half: true },
+          { id: 'hotelAmenities', label: 'Key Amenities (Pool, Bar/Restaurant, Conference)', placeholder: 'e.g. Outdoor Pool, Continental Breakfast', required: false, half: false },
+          { id: 'targetPolicyDate', label: 'Target Effective Date', type: 'date', required: false, half: true }
+        ]
+      },
+      'Restaurant Special Package': {
+        title: 'Restaurant Operations & Liquor Exposure',
+        fields: [
+          { id: 'restaurantName', label: 'Restaurant / Eatery Name', placeholder: 'e.g. Main Street Bistro', required: true, half: true },
+          { id: 'serviceType', label: 'Service Concept', type: 'select', options: ['Full Service Dining & Bar', 'Fast Casual / Quick Serve', 'Fine Dining', 'Bar / Pub / Tavern', 'Cafe / Bakery / Food Truck'], required: true, half: true },
+          { id: 'liquorSalesPct', label: 'Approximate Alcohol / Liquor Sales %', placeholder: 'e.g. 25% Liquor, 75% Food', required: false, half: true },
+          { id: 'annualFoodRevenue', label: 'Estimated Annual Revenue', placeholder: 'e.g. $650,000', required: false, half: true }
+        ]
+      },
+      'Liquor Store Package': {
+        title: 'Retail Liquor Store Protection',
+        fields: [
+          { id: 'liquorStoreName', label: 'Store Name & Location', placeholder: 'e.g. City Spirits & Fine Wine', required: true, half: false },
+          { id: 'inventoryValue', label: 'Estimated Average Inventory Value', placeholder: 'e.g. $250,000 stock', required: true, half: true },
+          { id: 'hasSecuritySystem', label: 'Burglar Alarm & Video Monitoring?', type: 'select', options: ['Central Station Monitored Alarm', 'Local Alarm with Cameras', 'Video Cameras Only', 'None / Updating'], required: true, half: true }
+        ]
+      },
+      'Gas Station Package': {
+        title: 'Gas Station & Convenience Store Details',
+        fields: [
+          { id: 'stationBrand', label: 'Fuel Brand & Store Name', placeholder: 'e.g. Shell / Independent C-Store', required: true, half: true },
+          { id: 'pumpCount', label: 'Number of Fueling Dispensers/Pumps', placeholder: 'e.g. 8 Pumps (16 Fueling Positions)', required: true, half: true },
+          { id: 'tankAge', label: 'Underground Storage Tanks (UST) Type/Age', placeholder: 'e.g. Double-walled fiberglass, 2012', required: false, half: true },
+          { id: 'hasCarWash', label: 'Car Wash or Repair Service on site?', type: 'select', options: ['No (C-store & Gas only)', 'Yes - Automated Car Wash', 'Yes - Auto Repair Bays', 'Yes - Commercial Kitchen/Deli'], required: true, half: true }
         ]
       },
       'General Liability': {
@@ -1425,7 +2204,7 @@
           { id: 'businessName', label: 'Legal Business Name & DBA', placeholder: 'e.g. ABC Hospitality LLC', required: true, half: true },
           { id: 'industryType', label: 'Industry / Primary Operations', placeholder: 'e.g. Restaurant / Retail Store / Contractor', required: true, half: true },
           { id: 'annualRevenue', label: 'Estimated Annual Gross Revenue', placeholder: 'e.g. $450,000', required: false, half: true },
-          { id: 'employeeCount', label: 'Number of Full & Part-Time Staff', placeholder: 'e.g. 6 Full-time, 4 Part-time', required: false, half: true }
+          { id: 'employeeCount', label: 'Number of Staff', placeholder: 'e.g. 6 Full-time, 4 Part-time', required: false, half: true }
         ]
       },
       'Commercial Property': {
@@ -1482,64 +2261,168 @@
     const attachmentsInput = document.getElementById('attachments');
     const fileListPreview = document.getElementById('fileListPreview');
 
-    function renderCustomFields(serviceName) {
+    // Multi-Select Coverage Management
+    let selectedCoverages = [];
+    const coverageTrigger = document.getElementById('coverageTrigger');
+    const coverageDropdown = document.getElementById('coverageDropdown');
+    const coverageTags = document.getElementById('coverageTags');
+    const coverageHidden = document.getElementById('coverage');
+    const coverageError = document.getElementById('coverageError');
+
+    function updateCoverageUI() {
+      if (!coverageTags || !coverageHidden) return;
+      coverageTags.innerHTML = '';
+
+      if (selectedCoverages.length === 0) {
+        coverageTags.innerHTML = '<span class="coverage-placeholder">Select one or more coverage types…</span>';
+        coverageHidden.value = '';
+      } else {
+        selectedCoverages.forEach(cov => {
+          const tag = document.createElement('span');
+          tag.className = 'coverage-tag';
+          tag.innerHTML = `${cov} <span class="coverage-tag-remove" data-val="${cov}" title="Remove ${cov}" aria-label="Remove ${cov}">×</span>`;
+          coverageTags.appendChild(tag);
+        });
+        coverageHidden.value = selectedCoverages.join(', ');
+      }
+
+      if (coverageError && selectedCoverages.length > 0) {
+        coverageError.classList.remove('show');
+      }
+
+      // Update options selected state
+      document.querySelectorAll('.coverage-option').forEach(opt => {
+        const val = opt.dataset.value;
+        const isSelected = selectedCoverages.includes(val);
+        opt.classList.toggle('selected', isSelected);
+        opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      });
+
+      renderCustomFieldsForSelection(selectedCoverages);
+    }
+
+    function toggleCoverageOption(value) {
+      const idx = selectedCoverages.indexOf(value);
+      if (idx > -1) {
+        selectedCoverages.splice(idx, 1);
+      } else {
+        selectedCoverages.push(value);
+      }
+      updateCoverageUI();
+    }
+
+    if (coverageTrigger && coverageDropdown) {
+      coverageTrigger.addEventListener('click', (e) => {
+        if (e.target.closest('.coverage-tag-remove')) return;
+        const isOpen = coverageDropdown.classList.toggle('open');
+        coverageTrigger.classList.toggle('open', isOpen);
+        coverageTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      coverageTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const isOpen = coverageDropdown.classList.toggle('open');
+          coverageTrigger.classList.toggle('open', isOpen);
+        }
+      });
+
+      document.querySelectorAll('.coverage-option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleCoverageOption(opt.dataset.value);
+        });
+      });
+
+      coverageTags.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.coverage-tag-remove');
+        if (removeBtn) {
+          e.stopPropagation();
+          const valToRemove = removeBtn.dataset.val;
+          toggleCoverageOption(valToRemove);
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#coverageMultiselect')) {
+          coverageDropdown.classList.remove('open');
+          coverageTrigger.classList.remove('open');
+          coverageTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function renderCustomFieldsForSelection(servicesList) {
       if (!customFieldsContainer) return;
       customFieldsContainer.innerHTML = '';
-      const config = serviceQuestions[serviceName];
-      if (!config) {
+
+      if (!servicesList || servicesList.length === 0) {
+        customFieldsContainer.classList.add('hidden');
+        return;
+      }
+
+      const relevantServices = servicesList.filter(s => serviceQuestions[s]);
+      if (relevantServices.length === 0) {
         customFieldsContainer.classList.add('hidden');
         return;
       }
 
       customFieldsContainer.classList.remove('hidden');
 
-      const titleEl = document.createElement('p');
-      titleEl.className = 'service-custom-title';
-      titleEl.innerHTML = `<svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ${config.title}`;
-      customFieldsContainer.appendChild(titleEl);
+      relevantServices.forEach(serviceName => {
+        const config = serviceQuestions[serviceName];
+        if (!config) return;
 
-      config.fields.forEach(field => {
-        const fieldWrap = document.createElement('div');
-        fieldWrap.className = field.half ? 'field' : 'field full';
+        const titleEl = document.createElement('p');
+        titleEl.className = 'service-custom-title';
+        titleEl.innerHTML = `<svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ${serviceName} — ${config.title}`;
+        customFieldsContainer.appendChild(titleEl);
 
-        const label = document.createElement('label');
-        label.htmlFor = field.id;
-        label.innerHTML = `${field.label} ${field.required ? '<span style="color:#e05252">*</span>' : '<span style="font-weight:400;color:#627181">(optional)</span>'}`;
-        fieldWrap.appendChild(label);
+        config.fields.forEach(field => {
+          const fieldWrap = document.createElement('div');
+          fieldWrap.className = field.half ? 'field' : 'field full';
 
-        if (field.type === 'select') {
-          const select = document.createElement('select');
-          select.id = field.id;
-          select.name = field.id;
-          select.required = !!field.required;
-          const defaultOpt = document.createElement('option');
-          defaultOpt.value = '';
-          defaultOpt.textContent = 'Please select…';
-          select.appendChild(defaultOpt);
-          field.options.forEach(opt => {
-            const optEl = document.createElement('option');
-            optEl.value = opt;
-            optEl.textContent = opt;
-            select.appendChild(optEl);
-          });
-          fieldWrap.appendChild(select);
-        } else {
-          const input = document.createElement('input');
-          input.type = 'text';
-          input.id = field.id;
-          input.name = field.id;
-          input.placeholder = field.placeholder || '';
-          input.required = !!field.required;
-          fieldWrap.appendChild(input);
-        }
+          const label = document.createElement('label');
+          label.htmlFor = field.id;
+          label.innerHTML = `${field.label} ${field.required ? '<span style="color:#e05252">*</span>' : '<span style="font-weight:400;color:#627181">(optional)</span>'}`;
+          fieldWrap.appendChild(label);
 
-        customFieldsContainer.appendChild(fieldWrap);
-      });
-    }
+          if (field.type === 'select') {
+            const select = document.createElement('select');
+            select.id = field.id;
+            select.name = field.id;
+            select.required = !!field.required;
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.textContent = 'Please select…';
+            select.appendChild(defaultOpt);
+            field.options.forEach(opt => {
+              const optEl = document.createElement('option');
+              optEl.value = opt;
+              optEl.textContent = opt;
+              select.appendChild(optEl);
+            });
+            fieldWrap.appendChild(select);
+          } else if (field.type === 'date') {
+            const dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateInput.id = field.id;
+            dateInput.name = field.id;
+            dateInput.required = !!field.required;
+            fieldWrap.appendChild(dateInput);
+          } else {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = field.id;
+            input.name = field.id;
+            input.placeholder = field.placeholder || '';
+            input.required = !!field.required;
+            fieldWrap.appendChild(input);
+          }
 
-    if (coverage) {
-      coverage.addEventListener('change', () => {
-        renderCustomFields(coverage.value);
+          customFieldsContainer.appendChild(fieldWrap);
+        });
       });
     }
 
@@ -1565,20 +2448,18 @@
       formSuccess.classList.remove('show');
       form.reset();
       if (fileListPreview) fileListPreview.innerHTML = '';
+      if (coverageError) coverageError.classList.remove('show');
       formStatus.textContent = '';
       submitButton.disabled = false;
       submitLabel.textContent = 'Request my free quote';
-      if (service) {
-        coverage.value = service;
-        renderCustomFields(service);
-      } else {
-        renderCustomFields('');
-      }
+
+      selectedCoverages = service ? [service] : [];
+      updateCoverageUI();
+
       modal.classList.add('open');
       document.body.classList.add('locked');
       setTimeout(() => document.getElementById('firstName').focus(), 50);
     }
-
 
     function closeModal() {
       modal.classList.remove('open');
@@ -1601,6 +2482,13 @@
       event.preventDefault();
       if (isSubmitting) return;
 
+      // Validate at least one coverage is chosen
+      if (selectedCoverages.length === 0) {
+        if (coverageError) coverageError.classList.add('show');
+        formStatus.textContent = 'Please select at least one coverage type above.';
+        return;
+      }
+
       if (GOOGLE_SCRIPT_URL.startsWith('PASTE_')) {
         formStatus.textContent = 'Quote form setup is not complete yet. Please call 270 467 1353.';
         return;
@@ -1611,34 +2499,41 @@
       submitLabel.textContent = 'Sending…';
       formStatus.textContent = 'Securely sending your request…';
 
-      // Aggregate custom service fields and attachment notes into message
-      const selectedCoverage = coverage.value;
-      const config = serviceQuestions[selectedCoverage];
+      // Aggregate custom service fields for all selected coverage types
       let customAnswersSummary = '';
-      if (config && config.fields) {
-        const answers = [];
-        config.fields.forEach(f => {
-          const el = document.getElementById(f.id);
-          if (el && el.value && el.value.trim()) {
-            answers.push(`${f.label}: ${el.value.trim()}`);
+      const answers = [];
+      selectedCoverages.forEach(covName => {
+        const config = serviceQuestions[covName];
+        if (config && config.fields) {
+          const subAnswers = [];
+          config.fields.forEach(f => {
+            const el = document.getElementById(f.id);
+            if (el && el.value && el.value.trim()) {
+              subAnswers.push(`  • ${f.label}: ${el.value.trim()}`);
+            }
+          });
+          if (subAnswers.length > 0) {
+            answers.push("[" + covName + " Details]\n" + subAnswers.join("\n"));
           }
-        });
-        if (answers.length > 0) {
-          customAnswersSummary = `\n\n--- [${selectedCoverage} Details] ---\n` + answers.join('\n');
         }
+      });
+
+      if (answers.length > 0) {
+        customAnswersSummary = "\n\n--- [Service Specifications] ---\n" + answers.join("\n\n");
       }
 
       // Check attachments
       const uploadedFiles = attachmentsInput && attachmentsInput.files ? Array.from(attachmentsInput.files) : [];
       let attachmentSummary = '';
       if (uploadedFiles.length > 0) {
-        attachmentSummary = `\n\n--- [Attached Files (${uploadedFiles.length})] ---\n` + uploadedFiles.map(f => `• ${f.name} (${Math.round(f.size/1024)} KB)`).join('\n');
+        attachmentSummary = "\n\n--- [Attached Files (" + uploadedFiles.length + ")] ---\n" + uploadedFiles.map(function(f){ return "\xe2\x80\xa2 " + f.name + " (" + Math.round(f.size/1024) + " KB)"; }).join("\n");
       }
 
       const originalMessage = document.getElementById('message').value || '';
       const combinedMessage = (originalMessage + customAnswersSummary + attachmentSummary).trim();
 
       const formData = new FormData(form);
+      formData.set('coverage', selectedCoverages.join(', '));
       formData.set('message', combinedMessage);
       formData.append('submittedAt', new Date().toISOString());
       formData.append('source', window.location.href);
@@ -1680,8 +2575,6 @@
       { name: 'Progressive', logo: 'images/partners/progressive.svg', alt: 'Progressive Insurance' },
       { name: 'Geico', logo: 'images/partners/geico.svg', alt: 'GEICO Insurance' },
       { name: 'Grange', logo: 'images/partners/grange.svg', alt: 'Grange Insurance' },
-      { name: 'Nexsure', logo: 'images/partners/nexsure.png', alt: 'Nexsure' },
-      { name: 'Ezlynx', logo: 'images/partners/ezlynx.webp', alt: 'EZLynx' },
       { name: 'Amtrust', logo: 'images/partners/amtrust.png', alt: 'AmTrust Financial' }
     ];
 
