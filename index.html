@@ -480,8 +480,8 @@
     .process-step-top {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
+      justify-content: flex-start;
+      margin-bottom: 20px;
     }
     .process-icon-wrap {
       display: grid;
@@ -547,11 +547,9 @@
       flex-grow: 1;
     }
     .process-step-card strong.step-time {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
       margin-top: auto;
-      font-size: .78rem;
+      font-size: .8rem;
       font-weight: 700;
       color: var(--teal-dark);
       text-transform: uppercase;
@@ -640,8 +638,8 @@
     .different-card-top {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
+      justify-content: flex-start;
+      margin-bottom: 20px;
     }
     .different-icon-badge {
       display: grid;
@@ -658,14 +656,16 @@
       height: 26px;
     }
     .different-tag {
-      font-size: .68rem;
+      font-family: "Manrope", sans-serif;
+      font-size: .82rem;
       font-weight: 800;
-      letter-spacing: .12em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 5px 14px;
       border-radius: 20px;
       background: var(--mint);
       color: var(--teal-dark);
+      border: 1px solid rgba(255, 166, 0, 0.3);
     }
     .different-card h3 {
       font-size: 1.25rem;
@@ -692,12 +692,20 @@
       gap: 9px;
     }
     .different-feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: .83rem;
+      position: relative;
+      padding-left: 16px;
+      font-size: .85rem;
       font-weight: 600;
       color: var(--navy-soft);
+      line-height: 1.45;
+    }
+    .different-feature-list li::before {
+      content: "•";
+      color: var(--teal);
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
     }
     .different-feature-list svg {
       width: 15px;
@@ -1649,14 +1657,11 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-icon-wrap">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                </span>
                 <span class="process-step-badge">Step 01</span>
               </div>
               <h3>Tell us what you need</h3>
               <p>Select your coverage types and share a few basics online, or text/call directly with our dedicated advisors.</p>
-              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Takes 2 Minutes</strong>
+              <strong class="step-time">Takes 2 Minutes</strong>
             </div>
             <!-- Arrow outside the hovered card -->
             <div class="process-connector-arrow" aria-hidden="true">
@@ -1668,14 +1673,11 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-icon-wrap">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="m11 8 3 3-3 3"/></svg>
-                </span>
                 <span class="process-step-badge">Step 02</span>
               </div>
               <h3>Compare your options</h3>
               <p>We shop our network of 20+ premier national and regional carriers, presenting clear tradeoffs and competitive quotes.</p>
-              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Side-by-Side Clarity</strong>
+              <strong class="step-time">Side-by-Side Clarity</strong>
             </div>
             <!-- Arrow outside the hovered card -->
             <div class="process-connector-arrow" aria-hidden="true">
@@ -1687,14 +1689,11 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-icon-wrap">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-                </span>
                 <span class="process-step-badge">Step 03</span>
               </div>
               <h3>Choose with confidence</h3>
               <p>Pick the coverage that fits your budget. We handle the carrier paperwork, certificates, and ongoing servicing.</p>
-              <strong class="step-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Continuous Protection</strong>
+              <strong class="step-time">Continuous Protection</strong>
             </div>
           </div>
         </div>
@@ -1721,49 +1720,40 @@
         <div class="different-grid">
           <div class="different-card">
             <div class="different-card-top">
-              <span class="different-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </span>
               <span class="different-tag">Dedicated Team</span>
             </div>
             <h3>Always a Call or Text Away</h3>
             <p>We have a dedicated service team for your insurance who are just a text or call away to help you promptly whenever questions or claims arise.</p>
             <ul class="different-feature-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direct text & call access to your advisor</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero call-center queues or robot delays</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Fast certificates & policy endorsements</li>
+              <li>Direct text & call access to your advisor</li>
+              <li>Zero call-center queues or robot delays</li>
+              <li>Fast certificates & policy endorsements</li>
             </ul>
           </div>
 
           <div class="different-card">
             <div class="different-card-top">
-              <span class="different-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-              </span>
               <span class="different-tag">Industry Niche</span>
             </div>
             <h3>Specialized Commercial Programs</h3>
             <p>Specialized insurance packages tailored specifically for Hotels, motels, restaurants, liquor stores, and retail businesses.</p>
             <ul class="different-feature-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Tailored hospitality & retail protections</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Direct carrier rate programs for franchises</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Liquor liability, equipment breakdown & spoilage</li>
+              <li>Tailored hospitality & retail protections</li>
+              <li>Direct carrier rate programs for franchises</li>
+              <li>Liquor liability, equipment breakdown & spoilage</li>
             </ul>
           </div>
 
           <div class="different-card">
             <div class="different-card-top">
-              <span class="different-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              </span>
               <span class="different-tag">Complimentary</span>
             </div>
             <h3>Free Insurance Gap Review</h3>
             <p>We do a comprehensive, free insurance gap review of your existing coverage and suggest exact endorsements or adjustments that can be added.</p>
             <ul class="different-feature-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Uncover hidden exclusions before claims happen</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Benchmark rates across 20+ top carriers</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Completely free with zero purchase obligation</li>
+              <li>Uncover hidden exclusions before claims happen</li>
+              <li>Benchmark rates across 20+ top carriers</li>
+              <li>Completely free with zero purchase obligation</li>
             </ul>
           </div>
         </div>
