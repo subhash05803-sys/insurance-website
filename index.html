@@ -1480,13 +1480,282 @@
       .partners-track { scroll-behavior: auto !important; }
       .partner-item, .partners-nav-btn { transition: none !important; transform: none !important; }
     }
+
+    /* Localized Links & Header Additions */
+    .topbar-sep { opacity: 0.4; margin: 0 4px; }
+    .topbar-sms { color: var(--teal) !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-map-link { color: inherit; text-decoration: none; display: block; transition: color .2s ease; }
+    .footer-map-link:hover { color: var(--teal); text-decoration: underline; }
+
+    /* Partner Logo Dimension Guard */
+    .partner-logo {
+      max-width: 150px;
+      max-height: 52px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform .25s ease;
+    }
+
+    /* TCPA Consent */
+    .tcpa-consent {
+      grid-column: 1 / -1;
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 4px 0 12px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 90px 0;
+      background: #fafaf8;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .faq-accordion {
+      max-width: 860px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .faq-card[open] {
+      border-color: rgba(255, 166, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 26px;
+      font-family: "Manrope", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-icon {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--teal);
+      transition: transform .25s ease;
+      line-height: 1;
+    }
+    .faq-card[open] .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      padding: 0 26px 24px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+    .faq-answer p { margin: 0; }
+
+    /* Footer Legal Bar & License */
+    .footer-legal-bar {
+      margin-top: 50px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      text-align: center;
+    }
+    .footer-legal-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .legal-btn {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: .84rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      font-family: inherit;
+      transition: color .2s ease;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .legal-btn:hover {
+      color: var(--teal);
+    }
+    .legal-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: .8rem;
+    }
+    .license-notice {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: .78rem;
+      line-height: 1.6;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Legal Modals */
+    .legal-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 26, 43, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .legal-modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .legal-modal-card {
+      background: var(--white);
+      color: var(--navy);
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      overflow-y: auto;
+    }
+    .legal-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: var(--mint);
+      color: var(--navy);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background .2s ease;
+    }
+    .legal-modal-close:hover {
+      background: #ffe3a3;
+    }
+    .legal-modal-body h2 {
+      font-size: 1.6rem;
+      margin: 0 0 6px;
+      color: var(--navy);
+    }
+    .legal-effective {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .legal-modal-body h3 {
+      font-size: 1.1rem;
+      margin: 22px 0 8px;
+      color: var(--navy);
+    }
+    .legal-modal-body p {
+      font-size: .92rem;
+      color: #4a5568;
+      line-height: 1.65;
+      margin: 0 0 12px;
+    }
+    .legal-modal-body a {
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+
+    /* Mobile Sticky Bar */
+    .mobile-sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+      justify-content: space-around;
+      align-items: center;
+      gap: 12px;
+    }
+    .mobile-action-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 44px;
+      border-radius: 12px;
+      font-family: "Manrope", sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .mobile-action-btn:active {
+      transform: scale(0.97);
+    }
+    .mobile-action-btn svg {
+      width: 17px;
+      height: 17px;
+    }
+    .mobile-call {
+      background: var(--mint);
+      color: var(--teal-dark);
+      border: 1px solid rgba(255, 166, 0, 0.4);
+    }
+    .mobile-text {
+      background: #f1f4f8;
+      color: var(--navy);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .mobile-quote {
+      background: var(--teal);
+      color: var(--navy);
+      box-shadow: 0 3px 10px rgba(255, 166, 0, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-bar {
+        display: flex;
+      }
+      body {
+        padding-bottom: 64px; /* Space for sticky bar */
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
       <p>Personal and business insurance made clear.</p>
-      <div class="topbar-links"><a href="tel:+12704671353">270 467 1353</a><span>Mon–Fri, 9 AM–5 PM</span></div>
+      <div class="topbar-links"><a href="tel:+12704671353">(270) 467-1353</a><span class="topbar-sep">•</span><a href="sms:+12704671353" class="topbar-sms">Text Us</a><span>Mon–Fri, 9 AM–5 PM</span></div>
     </div>
   </div>
 
@@ -1527,7 +1796,7 @@
         </div>
         <div class="hero-visual" aria-label="A family protected by reliable insurance">
           <div class="image-frame"><img src="upshot-home-hero.jpeg" alt="Beautiful modern home protected by Upshot Insurance"></div>
-          <div class="quote-card"><strong>Questions about coverage?</strong><p>Talk directly with the Upshot team.</p><a href="tel:+12704671353">Call 270 467 1353 →</a></div>
+          <div class="quote-card"><strong>Questions about coverage?</strong><p>Talk directly with the Upshot team.</p><a href="tel:+12704671353">Call (270) 467-1353 →</a></div>
         </div>
       </div>
     </section>
@@ -1736,7 +2005,7 @@
               <span class="different-tag">Industry Niche</span>
             </div>
             <h3>Specialized Commercial Programs</h3>
-            <p>Specialized insurance packages tailored specifically for Hotels, motels, restaurants, liquor stores, and retail businesses.</p>
+            <p>Specialized insurance packages tailored specifically for hotels, motels, restaurants, liquor stores, and retail businesses.</p>
             <ul class="different-feature-list">
               <li>Tailored hospitality & retail protections</li>
               <li>Direct carrier rate programs for franchises</li>
@@ -1761,6 +2030,70 @@
     </section>
 
 
+        <!-- Interactive FAQ Section -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Clear Answers</p>
+            <h2>Frequently asked questions.</h2>
+          </div>
+          <p class="section-copy">Straightforward answers to the questions commercial and personal insurance shoppers ask most.</p>
+        </div>
+        <div class="faq-accordion">
+          <details class="faq-card">
+            <summary class="faq-question">
+              <span>Why work with an independent broker like Upshot rather than one carrier directly?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Direct agents only sell their own company’s single product line. As an independent agency, Upshot represents <em>you</em>, shopping our network of 20+ premier national and regional carriers (including The Hartford, Erie, Travelers, Progressive, and Acuity) to deliver the optimal combination of coverage, price, and claim advocacy.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-question">
+              <span>Are there any extra fees for getting quotes through Upshot Insurance?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>No. Our consultation, policy comparisons, and rate shopping are 100% free with zero added broker fees or markups. Insurance carriers compensate us directly when a policy is bound.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-question">
+              <span>How fast can I get a Certificate of Insurance (COI) or proof of coverage?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Most standard COIs and proofs of coverage can be issued same-day, often within minutes once your policy is in place. Our dedicated team prioritizes urgent certificate requests for commercial leases, contracts, and job sites.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-question">
+              <span>What should I do if I have an emergency claim after business hours?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>You can file claims directly with your carrier’s 24/7 emergency dispatch line (listed on your policy card and in our Client Claims Guide), or text/email our office. We step in immediately to review the adjuster’s assessment and advocate for a fair resolution.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-question">
+              <span>What regions and industries do you specialize in?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>We serve individuals, homeowners, and businesses across Louisville, Jefferson County, and Kentucky. Our commercial team has specialized programs for hotels, restaurants, liquor stores, retail establishments, contractors, and commercial vehicle fleets.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="cta" id="contact">
       <div class="container"><div class="cta-inner"><h2>Let’s find coverage that feels right.</h2><button class="btn open-quote">Get your free quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button></div></div>
     </section>
@@ -1771,10 +2104,20 @@
       <div class="footer-grid">
         <div class="footer-intro"><a class="logo" href="#home"><span class="logo-mark"><img src="upshot-mark.png" alt="Upshot Insurance Logo"></span><span class="logo-text">Upshot<small>Insurance</small></span></a><p>Practical insurance guidance for individuals, families, and businesses.</p></div>
         <div><h3>Personal</h3><div class="footer-links"><a href="#services">Auto insurance</a><a href="#services">Home insurance</a><a href="#services">Life insurance</a></div></div>
-        <div><h3>Commercial</h3><div class="footer-links"><a href="#services">General liability</a><a href="#services">Property insurance</a><a href="#services">Workers’ comp</a><a href="#services">Cyber insurance</a><a href="#services">View all coverage</a></div></div>
-        <div class="footer-contact"><h3>Get in touch</h3><div class="contact-item"><svg><use href="#icon-phone"></use></svg><a href="tel:+12704671353">270 467 1353</a></div><div class="contact-item"><svg><use href="#icon-mail"></use></svg><a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a></div><div class="contact-item"><svg><use href="#icon-clock"></use></svg><span>Monday–Friday<br>9:00 AM–5:00 PM</span></div><div class="contact-item"><svg><use href="#icon-pin"></use></svg><span>13261 O'Bannon Station Way<br>Louisville, KY</span></div></div>
+        <div><h3>Commercial</h3><div class="footer-links"><a href="#services">General liability</a><a href="#services">Property insurance</a><a href="#services">Workers’ Compensation</a><a href="#services">Cyber insurance</a><a href="#services">View all coverage</a></div></div>
+        <div class="footer-contact"><h3>Get in touch</h3><div class="contact-item"><svg><use href="#icon-phone"></use></svg><a href="tel:+12704671353">(270) 467-1353</a></div><div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="sms:+12704671353">Text (270) 467-1353</a></div><div class="contact-item"><svg><use href="#icon-mail"></use></svg><a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a></div><div class="contact-item"><svg><use href="#icon-clock"></use></svg><span>Monday–Friday<br>9:00 AM–5:00 PM</span></div><div class="contact-item"><svg><use href="#icon-pin"></use></svg><a href="https://maps.google.com/?q=13261+O'Bannon+Station+Way,+Louisville,+KY+40223" target="_blank" rel="noopener noreferrer" class="footer-map-link">13261 O'Bannon Station Way<br>Louisville, KY 40223 ↗</a></div></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> Upshot Insurance. All rights reserved.</span><span>Louisville, Kentucky &nbsp; · &nbsp; <a href="https://upshotinsurance.com/" target="_blank" rel="noopener">upshotinsurance.com</a></span></div>
+      <div class="footer-legal-bar">
+        <div class="footer-legal-links">
+          <button type="button" class="legal-btn" id="openPrivacyBtn">Privacy Policy</button>
+          <span class="legal-sep">•</span>
+          <button type="button" class="legal-btn" id="openTermsBtn">Terms of Service</button>
+          <span class="legal-sep">•</span>
+          <button type="button" class="legal-btn" id="openClaimsBtn">24/7 Claims Guide</button>
+        </div>
+        <p class="license-notice">Upshot Insurance Agency is an independent insurance brokerage proudly serving Louisville, Jefferson County, and clients throughout Kentucky. Licensed Independent Agency (NPN &amp; state license information available upon request). Insurance coverage cannot be bound, altered, or cancelled via unconfirmed email, text, or voicemail message.</p>
+      </div>
     </div>
   </footer>
 
@@ -1790,7 +2133,7 @@
         <ul class="service-points" id="serviceDetailPoints"></ul>
         <div class="service-detail-actions">
           <button class="btn btn-primary" id="serviceDetailQuote">Get a free quote <svg class="arrow"><use href="#icon-arrow"></use></svg></button>
-          <a class="service-detail-call" href="tel:+12704671353">Call 270 467 1353</a>
+          <a class="service-detail-call" href="tel:+12704671353">Call (270) 467-1353</a>
         </div>
       </div>
     </article>
@@ -2647,7 +2990,7 @@
       }
 
       if (GOOGLE_SCRIPT_URL.startsWith('PASTE_')) {
-        formStatus.textContent = 'Quote form setup is not complete yet. Please call 270 467 1353.';
+        formStatus.textContent = 'Quote form setup is not complete yet. Please call (270) 467-1353.';
         return;
       }
 
@@ -2747,7 +3090,7 @@
         console.error('Submission error:', error);
         formStatus.textContent = error.message && !error.message.includes('fetch')
           ? error.message
-          : 'We could not send your request. Please try again or call 270 467 1353.';
+          : 'We could not send your request. Please try again or call (270) 467-1353.';
         submitButton.disabled = false;
         submitLabel.textContent = 'Request my free quote';
       } finally {
@@ -2990,6 +3333,108 @@
     initPartnersCarousel();
 
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Legal & Claims Modals Handler
+    function setupModal(modalId, openBtnId, closeBtnId) {
+      const modal = document.getElementById(modalId);
+      const openBtn = document.getElementById(openBtnId);
+      const closeBtn = document.getElementById(closeBtnId);
+      if (!modal || !openBtn || !closeBtn) return;
+
+      const open = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
+    }
+
+    setupModal('privacyModal', 'openPrivacyBtn', 'closePrivacyBtn');
+    setupModal('termsModal', 'openTermsBtn', 'closeTermsBtn');
+    setupModal('claimsModal', 'openClaimsBtn', 'closeClaimsBtn');
+
   </script>
+
+  <!-- Info & Legal Modals -->
+  <div class="legal-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closePrivacyBtn" aria-label="Close Privacy Policy">×</button>
+      <div class="legal-modal-body">
+        <h2 id="privacyTitle">Privacy Policy</h2>
+        <p class="legal-effective">Effective Date: November 2026</p>
+        <p>Upshot Insurance ("we", "our", or "us") respects your privacy. This policy outlines how we collect, use, and protect your personal and commercial information.</p>
+        <h3>Information We Collect</h3>
+        <p>We collect information you provide directly to us when requesting an insurance quote, including your name, contact details, property/business particulars, vehicle information, and policy documents.</p>
+        <h3>How We Use Your Information</h3>
+        <p>We use this information solely to obtain underwriting proposals, calculate premium quotes, issue policies, and provide ongoing servicing. We do not sell your personal information to third-party data brokers or marketing lists.</p>
+        <h3>Information Sharing</h3>
+        <p>We share relevant data only with authorized insurance carriers, wholesale brokers, and underwriting partners required to produce your quote and policy.</p>
+        <h3>Contact</h3>
+        <p>For questions regarding your data, contact us at <a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a> or (270) 467-1353.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-modal-backdrop" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closeTermsBtn" aria-label="Close Terms of Service">×</button>
+      <div class="legal-modal-body">
+        <h2 id="termsTitle">Terms of Service</h2>
+        <p class="legal-effective">Effective Date: November 2026</p>
+        <p>By using this website, you agree to these Terms of Service.</p>
+        <h3>Quotes and Coverage Binding</h3>
+        <p>Quotes provided through this website are estimates based on the preliminary information supplied and are subject to carrier underwriting verification. Submitting a quote request or contact form does not bind, alter, or cancel insurance coverage. Coverage is only effective upon written confirmation from an authorized carrier or licensed Upshot Insurance agent.</p>
+        <h3>Accuracy of Information</h3>
+        <p>You agree to supply true, accurate, and current information when requesting quotes. Misstatements or omissions during insurance applications may affect policy validity or claims payouts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-modal-backdrop" id="claimsModal" role="dialog" aria-modal="true" aria-labelledby="claimsTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closeClaimsBtn" aria-label="Close Claims Guide">×</button>
+      <div class="legal-modal-body">
+        <h2 id="claimsTitle">24/7 Client Claims Guide</h2>
+        <p class="legal-effective">Upshot Insurance Client Support</p>
+        <p>When an accident, property loss, or liability claim occurs, prompt reporting is critical to protecting your rights.</p>
+        <h3>Step 1: Ensure Safety &amp; Prevent Further Damage</h3>
+        <p>Call 911 immediately if there are injuries or serious emergencies. Take reasonable measures to protect property from further harm (e.g. tarping a leak or shutting off water mains).</p>
+        <h3>Step 2: File with Your Carrier</h3>
+        <p>Most commercial and auto carriers provide 24/7 toll-free claims dispatch. Check your policy ID card or policy documents for the direct reporting number.</p>
+        <h3>Step 3: Contact Your Upshot Advisor</h3>
+        <p>Call or text us at <strong>(270) 467-1353</strong> or email <a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a> with your claim number. We will monitor progress, review documentation, and assist with any adjuster questions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Mobile Quick-Action Bar -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick contact actions">
+    <a href="tel:+12704671353" class="mobile-action-btn mobile-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="sms:+12704671353" class="mobile-action-btn mobile-text">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Text</span>
+    </a>
+    <button type="button" class="mobile-action-btn mobile-quote open-quote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>Quote</span>
+    </button>
+  </div>
+
 </body>
 </html>
