@@ -477,38 +477,64 @@
     .process-step-card:hover::before {
       opacity: 1;
     }
+        .process-step-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 34px 28px 32px;
+      background: var(--white);
+      border: 1px solid rgba(214, 170, 89, 0.22);
+      border-radius: 22px;
+      box-shadow: 0 10px 32px rgba(17, 17, 17, 0.05);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
     .process-step-top {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       margin-bottom: 20px;
+      width: 100%;
     }
-    .process-icon-wrap {
-      display: grid;
-      width: 58px;
-      height: 58px;
-      place-items: center;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--mint), #ffe7b3);
-      color: var(--teal-dark);
-      border: 1px solid rgba(255, 166, 0, 0.35);
+    .step-badge-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 86px;
+      width: 100%;
     }
-    .process-icon-wrap svg {
-      width: 26px;
-      height: 26px;
-      stroke: currentColor;
+    .step-number-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Manrope", sans-serif;
+      font-size: 5.6rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(255, 175, 45, 0.32);
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -0.04em;
     }
     .process-step-badge {
+      position: relative;
+      z-index: 2;
       font-family: "Manrope", sans-serif;
-      font-size: .85rem;
+      font-size: .86rem;
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 20px;
-      background: var(--mint);
-      color: var(--teal-dark);
-      border: 1px solid rgba(255, 166, 0, 0.3);
+      padding: 7px 24px;
+      border-radius: 999px;
+      background: #fffcf5;
+      color: #5a400e;
+      border: 1.5px solid rgba(214, 170, 89, 0.65);
+      box-shadow: 0 4px 12px rgba(214, 170, 89, 0.12);
     }
     .process-connector-arrow {
       position: absolute;
@@ -548,12 +574,13 @@
     }
     .process-step-card strong.step-time {
       display: inline-block;
-      margin-top: auto;
+      margin: auto auto 0;
       font-size: .8rem;
       font-weight: 700;
       color: var(--teal-dark);
       text-transform: uppercase;
       letter-spacing: .08em;
+      text-align: center;
     }
     .process-step-card strong.step-time svg {
       width: 14px;
@@ -1134,12 +1161,21 @@
     .modal-dialog { position: relative; width: min(620px, 100%); max-height: calc(100vh - 40px); padding: 42px; overflow-y: auto; border-radius: 20px; background: var(--white); box-shadow: 0 25px 80px rgba(0,0,0,.25); }
     .modal-close { position: absolute; top: 18px; right: 18px; display: grid; width: 36px; height: 36px; place-items: center; border: 0; border-radius: 50%; background: var(--cream); color: var(--navy); cursor: pointer; font-size: 1.25rem; }
     .modal h2 { margin-bottom: 8px; font-size: 2rem; }
+    #quoteTitle {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -.03em;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
     .modal-subtitle { margin: 0 0 26px; color: var(--muted); font-size: .9rem; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
     .field.full { grid-column: 1 / -1; }
     label { display: block; margin-bottom: 7px; color: var(--navy); font-size: .78rem; font-weight: 700; }
-    input, select, textarea { width: 100%; min-height: 47px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); outline: none; }
-    input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8,127,122,.1); }
+    input:not([type="checkbox"]):not([type="radio"]), select, textarea { width: 100%; min-height: 47px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); outline: none; }
+    input:not([type="checkbox"]):not([type="radio"]):focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8,127,122,.1); }
     textarea { min-height: 90px; resize: vertical; }
     .form-submit { width: 100%; margin-top: 20px; }
     .form-submit:disabled { cursor: wait; opacity: .72; transform: none; }
@@ -1806,6 +1842,109 @@
       color: var(--teal-dark);
     }
 
+    /* Get In Touch Custom Form Styles */
+    .contact-method-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin: 8px 0 10px;
+    }
+        /* Checkboxes & Binding Notice - Clean No Rectangular Outline */
+    input[type="checkbox"] {
+      width: 18px !important;
+      height: 18px !important;
+      min-height: 18px !important;
+      min-width: 18px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      accent-color: var(--teal);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    input[type="checkbox"]:focus,
+    input[type="checkbox"]:focus-visible,
+    input[type="checkbox"]:active,
+    input[type="checkbox"]:focus-within {
+      outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+    .checkbox-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      user-select: none;
+      outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .checkbox-inline:focus,
+    .checkbox-inline:focus-within,
+    .checkbox-inline:active {
+      outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+    .sms-optin-notice {
+      font-size: .76rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 4px 0 0;
+      font-style: italic;
+    }
+    .binding-notice-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .8rem;
+      color: #475569;
+      line-height: 1.45;
+      cursor: pointer;
+      margin: 10px 0 2px;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .binding-notice-label:focus,
+    .binding-notice-label:focus-within,
+    .binding-notice-label:active {
+      outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+    .binding-notice-label input {
+      margin-top: 2px !important;
+    }
+    select#findUs {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: var(--white);
+      font-family: inherit;
+      font-size: .95rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color .2s ease;
+      cursor: pointer;
+    }
+    select#findUs:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(255, 166, 0, 0.15);
+    }
+
     /* Mobile Sticky Bar */
     .mobile-sticky-bar {
       display: none;
@@ -1893,7 +2032,7 @@
         <a href="#why-us">Why us</a>
         <a href="#process">How it works</a>
         <a href="#contact">Contact</a>
-        <button class="btn btn-primary open-quote">Get a free quote</button>
+        <button class="btn btn-primary open-quote">Get in touch</button>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -2048,7 +2187,10 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-step-badge">Step 01</span>
+                <div class="step-badge-wrapper">
+                  <span class="step-number-bg">01</span>
+                  <span class="process-step-badge">STEP 01</span>
+                </div>
               </div>
               <h3>Tell us what you need</h3>
               <p>Select your coverage types and share a few basics online, or text/call directly with our dedicated advisors.</p>
@@ -2064,7 +2206,10 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-step-badge">Step 02</span>
+                <div class="step-badge-wrapper">
+                  <span class="step-number-bg">02</span>
+                  <span class="process-step-badge">STEP 02</span>
+                </div>
               </div>
               <h3>Compare your options</h3>
               <p>We shop our network of 20+ premier national and regional carriers, presenting clear tradeoffs and competitive quotes.</p>
@@ -2080,7 +2225,10 @@
           <div class="process-step-item">
             <div class="process-step-card">
               <div class="process-step-top">
-                <span class="process-step-badge">Step 03</span>
+                <div class="step-badge-wrapper">
+                  <span class="step-number-bg">03</span>
+                  <span class="process-step-badge">STEP 03</span>
+                </div>
               </div>
               <h3>Choose with confidence</h3>
               <p>Pick the coverage that fits your budget. We handle the carrier paperwork, certificates, and ongoing servicing.</p>
@@ -2201,15 +2349,7 @@
             </div>
           </details>
 
-          <details class="faq-card">
-            <summary class="faq-question">
-              <span>What regions and industries do you specialize in?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </summary>
-            <div class="faq-answer">
-              <p>We serve individuals, homeowners, and businesses across Louisville, Jefferson County, and Kentucky. Our commercial team has specialized programs for hotels, restaurants, liquor stores, retail establishments, contractors, and commercial vehicle fleets.</p>
-            </div>
-          </details>
+
         </div>
       </div>
     </section>
@@ -2236,7 +2376,7 @@
           <span class="legal-sep">•</span>
           <button type="button" class="legal-btn" id="openClaimsBtn">24/7 Claims Guide</button>
         </div>
-        <p class="license-notice">Upshot Insurance Agency is an independent insurance brokerage proudly serving Louisville, Jefferson County, and clients throughout Kentucky. Licensed Independent Agency (NPN &amp; state license information available upon request). Insurance coverage cannot be bound, altered, or cancelled via unconfirmed email, text, or voicemail message.</p>
+        <p class="license-notice">Upshot Insurance Agency is an independent insurance brokerage covered in all states in the USA.</p>
       </div>
     </div>
   </footer>
@@ -2262,16 +2402,21 @@
   <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
     <div class="modal-dialog">
       <button class="modal-close" id="modalClose" aria-label="Close quote form">×</button>
-      <div id="formContent"><h2 id="quoteTitle">Let’s build your quote.</h2><p class="modal-subtitle">Tell us a little about yourself. An advisor will follow up with personalized options.</p>
+      <div id="formContent">
+        <p class="eyebrow" style="margin-bottom: 8px;">Direct Advisory</p>
+        <h2 id="quoteTitle">Get in touch.</h2>
+        <p class="modal-subtitle">Please fill out the form below and one of our team members will be in touch to provide the assistance you need.</p>
         <form id="quoteForm">
           <div class="form-grid">
             <div class="hp-check" style="display:none!important;" aria-hidden="true"><label for="company_fax_hp">Leave empty</label><input type="text" id="company_fax_hp" name="_hp_fax" tabindex="-1" autocomplete="off"></div>
-            <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required></div>
-            <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" autocomplete="family-name" required></div>
-            <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div class="field"><label for="firstName">First name *</label><input id="firstName" name="firstName" autocomplete="given-name" placeholder="First name" required></div>
+            <div class="field"><label for="lastName">Last name *</label><input id="lastName" name="lastName" autocomplete="family-name" placeholder="Last name" required></div>
+            <div class="field"><label for="email">Email Address *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
+            <div class="field"><label for="phone">Contact Number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(270) 467-1353" required></div>
+            <div class="field full"><label for="address">Address *</label><input id="address" name="address" placeholder="Enter a location (Street, City, State, ZIP)" required></div>
+
             <div class="field full">
-              <label for="coverageTrigger">Coverage needed <span style="color:#e05252">* (Select all that apply)</span></label>
+              <label for="coverageTrigger">Coverage Needed <span style="color:#e05252">* (Select all that apply)</span></label>
               <div class="coverage-multiselect" id="coverageMultiselect">
                 <div class="coverage-trigger" id="coverageTrigger" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Select one or more coverage types">
                   <div class="coverage-tags" id="coverageTags">
@@ -2312,7 +2457,7 @@
                     <span>Gas Station Package</span>
                   </div>
 
-                  <div class="coverage-group-title">Business & Commercial Coverage</div>
+                  <div class="coverage-group-title">Business &amp; Commercial Coverage</div>
                   <div class="coverage-option" data-value="General Liability" role="option" aria-selected="false">
                     <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
                     <span>General Liability</span>
@@ -2346,17 +2491,42 @@
               <p class="coverage-required-error" id="coverageError">Please select at least one coverage type.</p>
               <input type="hidden" id="coverage" name="coverage" value="">
             </div>
-            <!-- Dynamic customized questions container based on selected service -->
-            <div id="serviceCustomFields" class="service-custom-fields hidden"></div>
+
+            <!-- How did you find us? -->
+            <div class="field full">
+              <label for="findUs">How did you find us?</label>
+              <select id="findUs" name="findUs">
+                <option value="">Select an option…</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Referral / Friend">Referral / Friend</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Local Advertisement">Local Advertisement</option>
+                <option value="Existing Client">Existing Client</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Preferred Contact Method -->
+            <div class="field full">
+              <label>Preferred Contact Method *</label>
+              <div class="contact-method-group">
+                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Phone"> <span>Phone</span></label>
+                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Text" checked> <span>Text</span></label>
+                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Email" checked> <span>Email</span></label>
+              </div>
+              <p class="sms-optin-notice">
+                By checking the SMS/Text box, I acknowledge that I may receive informational/conversational text messages from Upshot Insurance. I understand I can opt out at any time by replying STOP to the number. Message and data rates may apply. Message frequency may vary. Text HELP for help; call (270) 467-1353 or visit our <button type="button" class="form-legal-link open-privacy-trigger">privacy policy</button> and <button type="button" class="form-legal-link open-terms-trigger">terms of service</button>.
+              </p>
+            </div>
 
             <!-- Attachments Field -->
             <div class="field full">
-              <label for="attachments">Attachments / Supporting Documents <span style="font-weight:400;color:#627181">(e.g., driver license, current policy, declaration page - optional)</span></label>
+              <label for="attachments">Attachments / Supporting Documents <span style="font-weight:400;color:#627181">(e.g., driver license, declaration page - optional)</span></label>
               <div class="file-upload-box" id="fileUploadBox">
                 <input type="file" id="attachments" name="attachments" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.txt,.rtf" aria-label="Upload supporting document">
                 <div class="file-upload-label" id="fileUploadLabel">
                   <svg viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                  <strong>Click to browse or drag & drop a file</strong>
+                  <strong>Click to browse or drag &amp; drop a file</strong>
                   <span>PDF, Images (PNG, JPG), or Documents (Word, TXT) up to 10MB</span>
                 </div>
                 <div class="file-preview-card hidden" id="filePreviewCard">
@@ -2371,12 +2541,24 @@
                     <button type="button" class="file-action-btn file-replace-btn" id="fileReplaceBtn" title="Change file">Change</button>
                     <button type="button" class="file-action-btn file-remove-btn" id="fileRemoveBtn" title="Remove file" aria-label="Remove file">✕</button>
                   </div>
+                </div>
+                <p class="file-error-msg hidden" id="fileErrorMsg" role="alert"></p>
               </div>
-              <p class="file-error-msg hidden" id="fileErrorMsg" role="alert"></p>
-            </div>
             </div>
 
-            <div class="field full"><label for="message">Anything else we should know? <span style="font-weight:400;color:#627181">(optional)</span></label><textarea id="message" name="message"></textarea></div>
+            <!-- Message Field -->
+            <div class="field full">
+              <label for="message">Please let us know how we can assist you. Thank you!</label>
+              <textarea id="message" name="message" placeholder="Tell us about your coverage needs, current policy details, or specific questions…"></textarea>
+            </div>
+
+            <!-- Binding Notice Checkbox -->
+            <div class="field full">
+              <label class="binding-notice-label">
+                <input type="checkbox" id="acknowledgeBinding" name="acknowledgeBinding" required checked>
+                <span>By checking this box, I acknowledge and understand that insurance coverage cannot be bound, changed, or cancelled via voicemail, email, text messaging, or messaging from this website, and that, in order to bind, change, or cancel insurance coverage, I must speak directly with a licensed insurance agent from Upshot Insurance.</span>
+              </label>
+            </div>
           </div>
             <!-- Trust & Security Reassurance Card (Share Your Information) -->
             <div class="form-trust-container">
@@ -2724,129 +2906,7 @@
       });
     });
 
-    // Dynamic service-specific questions configuration
-    const serviceQuestions = {
-      'Auto Insurance': {
-        title: 'Vehicle & Driver Details',
-        fields: [
-          { id: 'vehiclePlate', label: 'License Plate / Car Number', placeholder: 'e.g. 7XYZ890', required: true, half: true },
-          { id: 'driverLicense', label: 'Driver License Number & State', placeholder: 'e.g. D1234567 (KY)', required: true, half: true },
-          { id: 'vehicleMakeModel', label: 'Vehicle Year, Make & Model', placeholder: 'e.g. 2022 Toyota RAV4', required: false, half: true },
-          { id: 'vinNumber', label: 'VIN (Vehicle Identification Number)', placeholder: '17-digit VIN (optional)', required: false, half: true }
-        ]
-      },
-      'Home Insurance': {
-        title: 'Property Details',
-        fields: [
-          { id: 'propertyAddress', label: 'Property Street Address', placeholder: 'e.g. 123 Main St, Louisville, KY', required: true, half: false },
-          { id: 'propertyType', label: 'Property Type', type: 'select', options: ['Single Family Home', 'Townhouse', 'Condominium', 'Multi-Family (2-4 Units)'], required: true, half: true },
-          { id: 'yearBuilt', label: 'Approximate Year Built', placeholder: 'e.g. 2005', required: false, half: true }
-        ]
-      },
-      'Life Insurance': {
-        title: 'Applicant & Health Profile',
-        fields: [
-          { id: 'applicantDob', label: 'Date of Birth (Calendar Picker)', type: 'date', required: true, half: true },
-          { id: 'applicantGender', label: 'Gender', type: 'select', options: ['Male', 'Female', 'Prefer not to say'], required: true, half: true },
-          { id: 'tobaccoUse', label: 'Tobacco / Nicotine Use in past 5 yrs?', type: 'select', options: ['No', 'Yes - Cigarettes', 'Yes - Cigars/Vape/Other'], required: true, half: true },
-          { id: 'termOrAmount', label: 'Desired Term or Coverage Amount', placeholder: 'e.g. 20-Year Term, $500,000', required: false, half: true }
-        ]
-      },
-      'Hotel Specialized Package': {
-        title: 'Hotel / Motel Property & Hospitality Profile',
-        fields: [
-          { id: 'hotelName', label: 'Hotel / Motel Name & Brand/Franchise', placeholder: 'e.g. Best Western / Independent Inn', required: true, half: true },
-          { id: 'roomCount', label: 'Total Number of Guest Rooms', placeholder: 'e.g. 64 Rooms', required: true, half: true },
-          { id: 'hotelAmenities', label: 'Key Amenities (Pool, Bar/Restaurant, Conference)', placeholder: 'e.g. Outdoor Pool, Continental Breakfast', required: false, half: false },
-          { id: 'targetPolicyDate', label: 'Target Effective Date', type: 'date', required: false, half: true }
-        ]
-      },
-      'Restaurant Special Package': {
-        title: 'Restaurant Operations & Liquor Exposure',
-        fields: [
-          { id: 'restaurantName', label: 'Restaurant / Eatery Name', placeholder: 'e.g. Main Street Bistro', required: true, half: true },
-          { id: 'serviceType', label: 'Service Concept', type: 'select', options: ['Full Service Dining & Bar', 'Fast Casual / Quick Serve', 'Fine Dining', 'Bar / Pub / Tavern', 'Cafe / Bakery / Food Truck'], required: true, half: true },
-          { id: 'liquorSalesPct', label: 'Approximate Alcohol / Liquor Sales %', placeholder: 'e.g. 25% Liquor, 75% Food', required: false, half: true },
-          { id: 'annualFoodRevenue', label: 'Estimated Annual Revenue', placeholder: 'e.g. $650,000', required: false, half: true }
-        ]
-      },
-      'Liquor Store Package': {
-        title: 'Retail Liquor Store Protection',
-        fields: [
-          { id: 'liquorStoreName', label: 'Store Name & Location', placeholder: 'e.g. City Spirits & Fine Wine', required: true, half: false },
-          { id: 'inventoryValue', label: 'Estimated Average Inventory Value', placeholder: 'e.g. $250,000 stock', required: true, half: true },
-          { id: 'hasSecuritySystem', label: 'Burglar Alarm & Video Monitoring?', type: 'select', options: ['Central Station Monitored Alarm', 'Local Alarm with Cameras', 'Video Cameras Only', 'None / Updating'], required: true, half: true }
-        ]
-      },
-      'Gas Station Package': {
-        title: 'Gas Station & Convenience Store Details',
-        fields: [
-          { id: 'stationBrand', label: 'Fuel Brand & Store Name', placeholder: 'e.g. Shell / Independent C-Store', required: true, half: true },
-          { id: 'pumpCount', label: 'Number of Fueling Dispensers/Pumps', placeholder: 'e.g. 8 Pumps (16 Fueling Positions)', required: true, half: true },
-          { id: 'tankAge', label: 'Underground Storage Tanks (UST) Type/Age', placeholder: 'e.g. Double-walled fiberglass, 2012', required: false, half: true },
-          { id: 'hasCarWash', label: 'Car Wash or Repair Service on site?', type: 'select', options: ['No (C-store & Gas only)', 'Yes - Automated Car Wash', 'Yes - Auto Repair Bays', 'Yes - Commercial Kitchen/Deli'], required: true, half: true }
-        ]
-      },
-      'General Liability': {
-        title: 'Business & Liability Details',
-        fields: [
-          { id: 'businessName', label: 'Legal Business Name & DBA', placeholder: 'e.g. ABC Hospitality LLC', required: true, half: true },
-          { id: 'industryType', label: 'Industry / Primary Operations', placeholder: 'e.g. Restaurant / Retail Store / Contractor', required: true, half: true },
-          { id: 'annualRevenue', label: 'Estimated Annual Gross Revenue', placeholder: 'e.g. $450,000', required: false, half: true },
-          { id: 'employeeCount', label: 'Number of Staff', placeholder: 'e.g. 6 Full-time, 4 Part-time', required: false, half: true }
-        ]
-      },
-      'Commercial Property': {
-        title: 'Commercial Property Specifications',
-        fields: [
-          { id: 'buildingAddress', label: 'Building / Facility Address', placeholder: 'Street address, City, State, ZIP', required: true, half: false },
-          { id: 'occupancyStatus', label: 'Ownership & Occupancy', type: 'select', options: ['Own the building', 'Lease / Tenant', 'Landlord (leasing to others)'], required: true, half: true },
-          { id: 'buildingSqFt', label: 'Square Footage & Content Value', placeholder: 'e.g. 4,500 sq ft / $150k inventory', required: false, half: true }
-        ]
-      },
-      'Umbrella Insurance': {
-        title: 'Underlying Policy Information',
-        fields: [
-          { id: 'underlyingPolicies', label: 'Existing Underlying Policies to Excess', placeholder: 'e.g. General Liability ($1M), Commercial Auto ($1M)', required: true, half: false },
-          { id: 'targetLimit', label: 'Desired Excess Umbrella Limit', type: 'select', options: ['$1,000,000', '$2,000,000', '$5,000,000', '$10,000,000+'], required: true, half: true },
-          { id: 'priorLosses', label: 'Any severe liability losses in past 5 yrs?', type: 'select', options: ['None', 'Yes (provide details below)'], required: false, half: true }
-        ]
-      },
-      'Workers’ Compensation': {
-        title: 'Payroll & Workforce Information',
-        fields: [
-          { id: 'fein', label: 'Federal Employer ID (FEIN)', placeholder: 'XX-XXXXXXX', required: true, half: true },
-          { id: 'annualPayroll', label: 'Total Estimated Annual Payroll', placeholder: 'e.g. $280,000', required: true, half: true },
-          { id: 'jobRoles', label: 'Key Job Descriptions / Roles', placeholder: 'e.g. 5 Kitchen/Waitstaff, 2 Office/Admin', required: false, half: false }
-        ]
-      },
-      'Cyber Insurance': {
-        title: 'Technology & Data Security Profile',
-        fields: [
-          { id: 'recordCount', label: 'Customer / PII Records Stored', type: 'select', options: ['Under 5,000', '5,000 - 50,000', '50,000 - 500,000', '500,000+'], required: true, half: true },
-          { id: 'hasMFA', label: 'Do you enforce MFA (Multi-Factor Auth)?', type: 'select', options: ['Yes - Everywhere', 'Yes - Remote only', 'No / Implementing'], required: true, half: true },
-          { id: 'websiteDomain', label: 'Primary Business Website / Domain', placeholder: 'e.g. companywebsite.com', required: false, half: false }
-        ]
-      },
-      'Commercial Auto': {
-        title: 'Commercial Fleet & Driver Info',
-        fields: [
-          { id: 'fleetCount', label: 'Number of Commercial Vehicles', placeholder: 'e.g. 3 Cargo Vans, 1 Flatbed', required: true, half: true },
-          { id: 'commercialPlates', label: 'License Plate(s) or DOT Number', placeholder: 'e.g. Plates / USDOT# if applicable', required: true, half: true },
-          { id: 'primaryDriverLicense', label: 'Key Driver License Number(s)', placeholder: 'License # & State of primary drivers', required: false, half: false }
-        ]
-      },
-      'Flood Insurance': {
-        title: 'Flood Exposure & Location',
-        fields: [
-          { id: 'floodLocation', label: 'Property Address in Flood Zone', placeholder: 'Street address, City, State, ZIP', required: true, half: false },
-          { id: 'floodZoneDesignation', label: 'Known Flood Zone or Elevation Certificate?', type: 'select', options: ['Zone X (Minimal)', 'Zone A / AE (High Risk)', 'Zone V / VE (Coastal)', 'Not sure / Need assessment'], required: true, half: true },
-          { id: 'priorFloodClaims', label: 'Any prior flood history / water claims?', type: 'select', options: ['No prior flood history', 'Yes - 1 claim', 'Yes - Multiple claims'], required: false, half: true }
-        ]
-      }
-    };
-
-    const customFieldsContainer = document.getElementById('serviceCustomFields');
+    // Service specific custom questions removed per request
     const fileUploadBox = document.getElementById('fileUploadBox');
     const attachmentsInput = document.getElementById('attachments');
     const fileUploadLabel = document.getElementById('fileUploadLabel');
@@ -2894,7 +2954,6 @@
         opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
       });
 
-      renderCustomFieldsForSelection(selectedCoverages);
     }
 
     function toggleCoverageOption(value) {
@@ -2949,78 +3008,7 @@
       });
     }
 
-    function renderCustomFieldsForSelection(servicesList) {
-      if (!customFieldsContainer) return;
-      customFieldsContainer.innerHTML = '';
-
-      if (!servicesList || servicesList.length === 0) {
-        customFieldsContainer.classList.add('hidden');
-        return;
-      }
-
-      const relevantServices = servicesList.filter(s => serviceQuestions[s]);
-      if (relevantServices.length === 0) {
-        customFieldsContainer.classList.add('hidden');
-        return;
-      }
-
-      customFieldsContainer.classList.remove('hidden');
-
-      relevantServices.forEach(serviceName => {
-        const config = serviceQuestions[serviceName];
-        if (!config) return;
-
-        const titleEl = document.createElement('p');
-        titleEl.className = 'service-custom-title';
-        titleEl.innerHTML = `<svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ${serviceName} — ${config.title}`;
-        customFieldsContainer.appendChild(titleEl);
-
-        config.fields.forEach(field => {
-          const fieldWrap = document.createElement('div');
-          fieldWrap.className = field.half ? 'field' : 'field full';
-
-          const label = document.createElement('label');
-          label.htmlFor = field.id;
-          label.innerHTML = `${field.label} ${field.required ? '<span style="color:#e05252">*</span>' : '<span style="font-weight:400;color:#627181">(optional)</span>'}`;
-          fieldWrap.appendChild(label);
-
-          if (field.type === 'select') {
-            const select = document.createElement('select');
-            select.id = field.id;
-            select.name = field.id;
-            select.required = !!field.required;
-            const defaultOpt = document.createElement('option');
-            defaultOpt.value = '';
-            defaultOpt.textContent = 'Please select…';
-            select.appendChild(defaultOpt);
-            field.options.forEach(opt => {
-              const optEl = document.createElement('option');
-              optEl.value = opt;
-              optEl.textContent = opt;
-              select.appendChild(optEl);
-            });
-            fieldWrap.appendChild(select);
-          } else if (field.type === 'date') {
-            const dateInput = document.createElement('input');
-            dateInput.type = 'date';
-            dateInput.id = field.id;
-            dateInput.name = field.id;
-            dateInput.required = !!field.required;
-            fieldWrap.appendChild(dateInput);
-          } else {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.id = field.id;
-            input.name = field.id;
-            input.placeholder = field.placeholder || '';
-            input.required = !!field.required;
-            fieldWrap.appendChild(input);
-          }
-
-          customFieldsContainer.appendChild(fieldWrap);
-        });
-      });
-    }
+    // renderCustomFieldsForSelection removed
 
     // File Upload handling, validation, and preview
     const ALLOWED_EXTENSIONS = ['pdf', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'doc', 'docx', 'txt', 'rtf', 'odt'];
@@ -3217,86 +3205,80 @@
       isSubmitting = true;
       submitButton.disabled = true;
 
-      let base64Data = null;
-      let fileName = null;
-      let fileType = null;
-
-      if (currentSelectedFile) {
-        submitLabel.textContent = 'Uploading file…';
-        formStatus.textContent = 'Uploading attachment and securely saving your quote request…';
-        try {
-          base64Data = await readFileAsBase64(currentSelectedFile);
-          fileName = currentSelectedFile.name;
-          fileType = currentSelectedFile.type || 'application/octet-stream';
-        } catch (err) {
-          formStatus.textContent = 'Could not read the selected file. Please reselect or remove it.';
-          submitButton.disabled = false;
-          submitLabel.textContent = 'Continue';
-          isSubmitting = false;
-          return;
-        }
-      } else {
-        submitLabel.textContent = 'Sending…';
-        formStatus.textContent = 'Securely sending your request…';
-      }
-
-      // Aggregate custom service fields for all selected coverage types
-      let customAnswersSummary = '';
-      const answers = [];
-      selectedCoverages.forEach(covName => {
-        const config = serviceQuestions[covName];
-        if (config && config.fields) {
-          const subAnswers = [];
-          config.fields.forEach(f => {
-            const el = document.getElementById(f.id);
-            if (el && el.value && el.value.trim()) {
-              subAnswers.push(`  • ${f.label}: ${el.value.trim()}`);
-            }
-          });
-          if (subAnswers.length > 0) {
-            answers.push("[" + covName + " Details]\n" + subAnswers.join("\n"));
-          }
-        }
-      });
-
-      if (answers.length > 0) {
-        customAnswersSummary = "\n\n--- [Service Specifications] ---\n" + answers.join("\n\n");
-      }
-
-      // Attachment text summary for message
-      let attachmentSummary = '';
-      if (currentSelectedFile) {
-        const sizeFormatted = currentSelectedFile.size < 1024 * 1024
-          ? `${Math.round(currentSelectedFile.size / 1024)} KB`
-          : `${(currentSelectedFile.size / (1024 * 1024)).toFixed(2)} MB`;
-        attachmentSummary = `\n\n--- [Attached Document] ---\n• ${currentSelectedFile.name} (${sizeFormatted})`;
-      }
-
-      const originalMessage = document.getElementById('message').value || '';
-      const combinedMessage = (originalMessage + customAnswersSummary + attachmentSummary).trim();
-
-      const payload = {
-        submittedAt: new Date().toISOString(),
-        firstName: (document.getElementById('firstName').value || '').trim(),
-        lastName: (document.getElementById('lastName').value || '').trim(),
-        email: (document.getElementById('email').value || '').trim(),
-        phone: (document.getElementById('phone').value || '').trim(),
-        coverage: selectedCoverages.join(', '),
-        message: combinedMessage,
-        source: window.location.href,
-        fileName: fileName,
-        fileType: fileType,
-        fileData: base64Data
-      };
-
       try {
+        let base64Data = null;
+        let fileName = null;
+        let fileType = null;
+
+        if (currentSelectedFile) {
+          submitLabel.textContent = 'Uploading file…';
+          formStatus.textContent = 'Uploading attachment and securely saving your quote request…';
+          try {
+            base64Data = await readFileAsBase64(currentSelectedFile);
+            fileName = currentSelectedFile.name;
+            fileType = currentSelectedFile.type || 'application/octet-stream';
+          } catch (err) {
+            formStatus.textContent = 'Could not read the selected file. Please reselect or remove it.';
+            submitButton.disabled = false;
+            submitLabel.textContent = 'Continue';
+            isSubmitting = false;
+            return;
+          }
+        } else {
+          submitLabel.textContent = 'Sending…';
+          formStatus.textContent = 'Securely sending your request…';
+        }
+
+        // Attachment text summary for message
+        let attachmentSummary = '';
+        if (currentSelectedFile) {
+          const sizeFormatted = currentSelectedFile.size < 1024 * 1024
+            ? Math.round(currentSelectedFile.size / 1024) + ' KB'
+            : (currentSelectedFile.size / (1024 * 1024)).toFixed(2) + ' MB';
+          attachmentSummary = '\n\n--- [Attached Document] ---\n• ' + currentSelectedFile.name + ' (' + sizeFormatted + ')';
+        }
+
+        const firstNameVal = (document.getElementById('firstName')?.value || '').trim();
+        const lastNameVal = (document.getElementById('lastName')?.value || '').trim();
+        const emailVal = (document.getElementById('email')?.value || '').trim();
+        const phoneVal = (document.getElementById('phone')?.value || '').trim();
+        const addressVal = (document.getElementById('address')?.value || '').trim();
+        const findUsVal = (document.getElementById('findUs')?.value || '').trim();
+        const selectedMethods = Array.from(document.querySelectorAll('input[name="contactMethod"]:checked')).map(cb => cb.value);
+        const originalMessage = (document.getElementById('message')?.value || '').trim();
+
+        // Clean user message notes (Address & Contact preferences now have dedicated columns)
+        const combinedMessage = originalMessage.trim();
+
+        const payload = {
+          submittedAt: new Date().toISOString(),
+          firstName: firstNameVal,
+          lastName: lastNameVal,
+          email: emailVal,
+          phone: phoneVal,
+          address: addressVal,
+          howDidYouFindUs: findUsVal,
+          preferredContactMethod: selectedMethods.join(', '),
+          coverage: selectedCoverages.join(', '),
+          message: combinedMessage,
+          source: window.location.href,
+          fileName: fileName,
+          fileType: fileType,
+          fileData: base64Data
+        };
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
+
         const response = await fetch(SECURE_ENDPOINT, {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
             'Content-Type': 'text/plain;charset=utf-8'
-          }
+          },
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
 
         const result = await response.json().catch(() => null);
 
@@ -3308,9 +3290,11 @@
         formSuccess.classList.add('show');
       } catch (error) {
         console.error('Submission error:', error);
-        formStatus.textContent = error.message && !error.message.includes('fetch')
-          ? error.message
-          : 'We could not send your request. Please try again or call (270) 467-1353.';
+        formStatus.textContent = error.name === 'AbortError'
+          ? 'Request timed out. Please check your connection and try again.'
+          : (error.message && !error.message.includes('fetch')
+            ? error.message
+            : 'We could not send your request. Please try again or call (270) 467-1353.');
         submitButton.disabled = false;
         submitLabel.textContent = 'Continue';
       } finally {

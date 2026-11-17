@@ -9,16 +9,16 @@ const SETTINGS = {
 const DRIVE_FOLDER_ID = '';
 
 const HEADERS = [
-  'Submitted At',
-  'First Name',
-  'Last Name',
+  'Date',
+  'Full Name',
   'Email',
   'Phone',
-  'Coverage',
+  'Address',
+  'Coverage Needed',
+  'How Did You Find Us',
+  'Preferred Contact Method',
   'Message',
-  'Source',
-  'Attachment Name',
-  'Attachment URL'
+  'Attachment Link'
 ];
 
 const ALLOWED_EXTENSIONS = [
@@ -30,9 +30,18 @@ const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10MB limit
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Quote Form')
+    .addItem('Update Sheet Columns', 'updateSheetHeaders')
     .addItem('Open settings', 'openSettings')
     .addItem('Send test email', 'sendTestEmail')
     .addToUi();
+}
+
+function updateSheetHeaders() {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = getOrCreateQuoteSheet(spreadsheet);
+  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
+  sheet.autoResizeColumns(1, HEADERS.length);
+  SpreadsheetApp.getUi().alert('Header columns updated successfully to match form fields!');
 }
 
 function openSettings() {
@@ -52,7 +61,13 @@ function sendTestEmail() {
   sendExcelEmail(spreadsheet, settings.recipientEmail, {
     firstName: 'Test',
     lastName: 'Submission',
-    coverage: 'Integration test'
+    email: 'test@example.com',
+    phone: '(555) 123-4567',
+    address: '123 Test Street, Louisville, KY',
+    coverage: 'Auto Insurance, Home Insurance',
+    howDidYouFindUs: 'Google Search',
+    preferredContactMethod: 'Text, Email',
+    message: 'Integration test message'
   }, null);
 
   SpreadsheetApp.getUi().alert(`Test Excel file sent to ${settings.recipientEmail}.`);
@@ -80,17 +95,18 @@ function doPost(event) {
     }
 
     const fileInfo = uploadedFile || { name: '', url: '' };
+    const fullName = [safeCell(data.firstName), safeCell(data.lastName)].filter(Boolean).join(' ') || safeCell(data.fullName);
 
     sheet.appendRow([
       data.submittedAt ? new Date(data.submittedAt) : new Date(),
-      safeCell(data.firstName),
-      safeCell(data.lastName),
+      fullName,
       safeCell(data.email),
       safeCell(data.phone),
+      safeCell(data.address),
       safeCell(data.coverage),
+      safeCell(data.howDidYouFindUs),
+      safeCell(data.preferredContactMethod),
       safeCell(data.message),
-      safeCell(data.source),
-      safeCell(fileInfo.name),
       safeCell(fileInfo.url)
     ]);
     SpreadsheetApp.flush();
@@ -218,14 +234,8 @@ function getOrCreateQuoteSheet(spreadsheet) {
     sheet.setFrozenRows(1);
     sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
   } else {
-    // Preserve existing rows and ensure header row has the new attachment columns
-    const lastCol = sheet.getLastColumn();
-    const existingHeaderValues = sheet.getRange(1, 1, 1, Math.max(lastCol, HEADERS.length)).getValues()[0];
-    for (let i = 0; i < HEADERS.length; i++) {
-      if (!existingHeaderValues[i] || existingHeaderValues[i].toString().trim() === '') {
-        sheet.getRange(1, i + 1).setValue(HEADERS[i]).setFontWeight('bold');
-      }
-    }
+    // Ensure header row matches current HEADERS
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
   }
 
   return sheet;
@@ -269,9 +279,8 @@ function getSettings(spreadsheet) {
 }
 
 function sendExcelEmail(spreadsheet, recipientEmail, submission, uploadedFile) {
-  const firstName = safeCell(submission.firstName) || 'New';
-  const lastName = safeCell(submission.lastName) || 'customer';
-  const coverage = safeCell(submission.coverage) || 'insurance';
+  const fullName = [safeCell(submission.firstName), safeCell(submission.lastName)].filter(Boolean).join(' ') || safeCell(submission.fullName) || 'New Customer';
+  const coverage = safeCell(submission.coverage) || 'Insurance';
   const exportUrl = `https://docs.google.com/spreadsheets/d/${spreadsheet.getId()}/export?format=xlsx`;
   const excelFile = UrlFetchApp.fetch(exportUrl, {
     headers: { Authorization: `Bearer ${ScriptApp.getOAuthToken()}` }
@@ -282,14 +291,25 @@ function sendExcelEmail(spreadsheet, recipientEmail, submission, uploadedFile) {
     attachmentDetails = `\n\nUploaded Attachment:\n• File Name: ${uploadedFile.name}\n• Google Drive Link: ${uploadedFile.url}`;
   }
 
-  const body = `A new ${coverage} quote request was saved to Google Drive. The latest Excel file is attached.\n\nGoogle Sheet: ${spreadsheet.getUrl()}${attachmentDetails}`;
+  const details = [
+    `• Name: ${fullName}`,
+    `• Email: ${submission.email || 'N/A'}`,
+    `• Phone: ${submission.phone || 'N/A'}`,
+    `• Address: ${submission.address || 'N/A'}`,
+    `• Coverage Needed: ${coverage}`,
+    `• How Did You Find Us: ${submission.howDidYouFindUs || 'N/A'}`,
+    `• Preferred Contact Method: ${submission.preferredContactMethod || 'N/A'}`,
+    `• Message / Notes: ${submission.message || 'None'}`
+  ].join('\n');
+
+  const body = `A new ${coverage} quote request was received and saved to Google Drive. The latest Excel file is attached.\n\nSummary:\n${details}\n\nGoogle Sheet: ${spreadsheet.getUrl()}${attachmentDetails}`;
 
   MailApp.sendEmail({
     to: recipientEmail,
-    subject: `New quote request: ${firstName} ${lastName}`,
+    subject: `New quote request: ${fullName} (${coverage})`,
     body: body,
     attachments: [excelFile],
-    name: 'Upshot Insurance Website'
+    name: 'Upshot Insurance Agency'
   });
 }
 

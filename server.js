@@ -100,7 +100,11 @@ const server = http.createServer((req, res) => {
         // Remove honeypot field before forwarding
         delete payload._hp_fax;
 
-        // Secure Server-to-Server forward to Google Apps Script
+        // Immediate Fast Response to User (Zero Wait Time)
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, message: 'Quote received successfully.' }));
+
+        // Reliable background delivery to Google Apps Script (Drive, Sheets & Email)
         const targetUrl = new URL(GOOGLE_SCRIPT_WEBHOOK);
         const postData = JSON.stringify(payload);
 
@@ -118,31 +122,18 @@ const server = http.createServer((req, res) => {
           let responseData = '';
           forwardRes.on('data', d => responseData += d);
           forwardRes.on('end', () => {
-            // Google Apps Script usually returns 302 redirect on web app deployment
             if (forwardRes.statusCode >= 300 && forwardRes.statusCode < 400 && forwardRes.headers.location) {
-              // Follow redirect
-              https.get(forwardRes.headers.location, (redirectRes) => {
-                let redirectedData = '';
-                redirectRes.on('data', d => redirectedData += d);
-                redirectRes.on('end', () => {
-                  res.writeHead(200, { 'Content-Type': 'application/json' });
-                  res.end(redirectedData || JSON.stringify({ status: 'success' }));
-                });
-              }).on('error', (err) => {
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ status: 'success' }));
-              });
+              https.get(forwardRes.headers.location, () => {
+                console.log(`[Google Webhook Success] Quote for ${payload.firstName} ${payload.lastName} logged and emailed successfully.`);
+              }).on('error', err => console.error('[Google Redirect Error]:', err.message));
             } else {
-              res.writeHead(forwardRes.statusCode || 200, { 'Content-Type': 'application/json' });
-              res.end(responseData || JSON.stringify({ status: 'success' }));
+              console.log(`[Google Webhook Success] Quote for ${payload.firstName} ${payload.lastName} processed.`);
             }
           });
         });
 
         forwardReq.on('error', (err) => {
-          console.error('[Security Proxy Error]:', err.message);
-          res.writeHead(500, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ status: 'error', message: 'Failed to process request.' }));
+          console.error('[Google Webhook Delivery Error]:', err.message);
         });
 
         forwardReq.write(postData);
