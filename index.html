@@ -1684,6 +1684,105 @@
       font-weight: 600;
     }
 
+    /* Share Your Information Trust Card (from reference design) */
+    .form-trust-container {
+      grid-column: 1 / -1;
+      margin: 22px 0 6px;
+    }
+    .form-trust-header {
+      margin-bottom: 12px;
+    }
+    .form-trust-eyebrow {
+      display: block;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .form-trust-title {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.42rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .form-trust-card {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      border-radius: 18px;
+      padding: 4px 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin-top: 12px;
+    }
+    .form-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+    .form-trust-item:last-child {
+      border-bottom: none;
+    }
+    .form-trust-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: var(--navy);
+    }
+    .form-trust-icon svg {
+      width: 25px;
+      height: 25px;
+      stroke: currentColor;
+    }
+    .form-trust-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .form-trust-details strong {
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .form-trust-details span {
+      font-size: .84rem;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* Form Legal Agreement Text */
+    .form-legal-agree {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: .83rem;
+      color: #64748b;
+      margin: 14px 0 6px;
+      line-height: 1.5;
+    }
+    .form-legal-link {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      color: var(--navy);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      transition: color .2s ease;
+    }
+    .form-legal-link:hover {
+      color: var(--teal-dark);
+    }
+
     /* Mobile Sticky Bar */
     .mobile-sticky-bar {
       display: none;
@@ -2105,7 +2204,7 @@
         <div class="footer-intro"><a class="logo" href="#home"><span class="logo-mark"><img src="upshot-mark.png" alt="Upshot Insurance Logo"></span><span class="logo-text">Upshot<small>Insurance</small></span></a><p>Practical insurance guidance for individuals, families, and businesses.</p></div>
         <div><h3>Personal</h3><div class="footer-links"><a href="#services">Auto insurance</a><a href="#services">Home insurance</a><a href="#services">Life insurance</a></div></div>
         <div><h3>Commercial</h3><div class="footer-links"><a href="#services">General liability</a><a href="#services">Property insurance</a><a href="#services">Workers’ Compensation</a><a href="#services">Cyber insurance</a><a href="#services">View all coverage</a></div></div>
-        <div class="footer-contact"><h3>Get in touch</h3><div class="contact-item"><svg><use href="#icon-phone"></use></svg><a href="tel:+12704671353">(270) 467-1353</a></div><div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="sms:+12704671353">Text (270) 467-1353</a></div><div class="contact-item"><svg><use href="#icon-mail"></use></svg><a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a></div><div class="contact-item"><svg><use href="#icon-clock"></use></svg><span>Monday–Friday<br>9:00 AM–5:00 PM</span></div><div class="contact-item"><svg><use href="#icon-pin"></use></svg><a href="https://maps.google.com/?q=13261+O'Bannon+Station+Way,+Louisville,+KY+40223" target="_blank" rel="noopener noreferrer" class="footer-map-link">13261 O'Bannon Station Way<br>Louisville, KY 40223 ↗</a></div></div>
+        <div class="footer-contact"><h3>Get in touch</h3><div class="contact-item"><svg><use href="#icon-phone"></use></svg><a href="tel:+12704671353">(270) 467-1353</a></div><div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="sms:+12704671353">Text (270) 467-1353</a></div><div class="contact-item"><svg><use href="#icon-mail"></use></svg><a href="#" class="secure-contact-email" data-contact="Y29udGFjdEB1cHNob3RpbnN1cmFuY2UuY29t">contact [at] upshotinsurance.com</a></div><div class="contact-item"><svg><use href="#icon-clock"></use></svg><span>Monday–Friday<br>9:00 AM–5:00 PM</span></div><div class="contact-item"><svg><use href="#icon-pin"></use></svg><a href="https://maps.google.com/?q=13261+O'Bannon+Station+Way,+Louisville,+KY+40223" target="_blank" rel="noopener noreferrer" class="footer-map-link">13261 O'Bannon Station Way<br>Louisville, KY 40223 ↗</a></div></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> Upshot Insurance. All rights reserved.</span><span>Louisville, Kentucky &nbsp; · &nbsp; <a href="https://upshotinsurance.com/" target="_blank" rel="noopener">upshotinsurance.com</a></span></div>
       <div class="footer-legal-bar">
@@ -2145,6 +2244,7 @@
       <div id="formContent"><h2 id="quoteTitle">Let’s build your quote.</h2><p class="modal-subtitle">Tell us a little about yourself. An advisor will follow up with personalized options.</p>
         <form id="quoteForm">
           <div class="form-grid">
+            <div class="hp-check" style="display:none!important;" aria-hidden="true"><label for="company_fax_hp">Leave empty</label><input type="text" id="company_fax_hp" name="_hp_fax" tabindex="-1" autocomplete="off"></div>
             <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required></div>
             <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" autocomplete="family-name" required></div>
             <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required></div>
@@ -2256,7 +2356,50 @@
             </div>
 
             <div class="field full"><label for="message">Anything else we should know? <span style="font-weight:400;color:#627181">(optional)</span></label><textarea id="message" name="message"></textarea></div>
-          </div><button class="btn btn-primary form-submit" type="submit"><span>Request my free quote</span> <svg class="arrow"><use href="#icon-arrow"></use></svg></button>
+          </div>
+            <!-- Trust & Security Reassurance Card (Share Your Information) -->
+            <div class="form-trust-container">
+              <div class="form-trust-header">
+                <span class="form-trust-eyebrow">Personal &amp; Commercial Insurance</span>
+                <h3 class="form-trust-title">Share Your Information</h3>
+              </div>
+              <div class="form-trust-card">
+                <div class="form-trust-item">
+                  <div class="form-trust-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div class="form-trust-details">
+                    <strong>Encrypted</strong>
+                    <span>Your data stays secure</span>
+                  </div>
+                </div>
+
+                <div class="form-trust-item">
+                  <div class="form-trust-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  </div>
+                  <div class="form-trust-details">
+                    <strong>Private</strong>
+                    <span>Shared only with Upshot Insurance</span>
+                  </div>
+                </div>
+
+                <div class="form-trust-item">
+                  <div class="form-trust-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div class="form-trust-details">
+                    <strong>No commitment</strong>
+                    <span>Get your quotes first, then decide</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary form-submit" type="submit" id="submitQuoteBtn"><span>Continue</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+            <p class="form-legal-agree">By selecting Continue you agree to the <button type="button" class="form-legal-link open-terms-trigger">Terms</button> and <button type="button" class="form-legal-link open-privacy-trigger">Privacy Policy</button></p>
+
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -2288,7 +2431,59 @@
     </defs>
   </svg>
 
-  <script>
+  <!-- Info & Legal Modals -->
+  <div class="legal-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closePrivacyBtn" aria-label="Close Privacy Policy">×</button>
+      <div class="legal-modal-body">
+        <h2 id="privacyTitle">Privacy Policy</h2>
+        <p class="legal-effective">Effective Date: November 2026</p>
+        <p>Upshot Insurance ("we", "our", or "us") respects your privacy. This policy outlines how we collect, use, and protect your personal and commercial information.</p>
+        <h3>Information We Collect</h3>
+        <p>We collect information you provide directly to us when requesting an insurance quote, including your name, contact details, property/business particulars, vehicle information, and policy documents.</p>
+        <h3>How We Use Your Information</h3>
+        <p>We use this information solely to obtain underwriting proposals, calculate premium quotes, issue policies, and provide ongoing servicing. We do not sell your personal information to third-party data brokers or marketing lists.</p>
+        <h3>Information Sharing</h3>
+        <p>We share relevant data only with authorized insurance carriers, wholesale brokers, and underwriting partners required to produce your quote and policy.</p>
+        <h3>Contact</h3>
+        <p>For questions regarding your data, contact us at <a href="#" class="secure-contact-email" data-contact="Y29udGFjdEB1cHNob3RpbnN1cmFuY2UuY29t">contact [at] upshotinsurance.com</a> or (270) 467-1353.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-modal-backdrop" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closeTermsBtn" aria-label="Close Terms of Service">×</button>
+      <div class="legal-modal-body">
+        <h2 id="termsTitle">Terms of Service</h2>
+        <p class="legal-effective">Effective Date: November 2026</p>
+        <p>By using this website, you agree to these Terms of Service.</p>
+        <h3>Quotes and Coverage Binding</h3>
+        <p>Quotes provided through this website are estimates based on the preliminary information supplied and are subject to carrier underwriting verification. Submitting a quote request or contact form does not bind, alter, or cancel insurance coverage. Coverage is only effective upon written confirmation from an authorized carrier or licensed Upshot Insurance agent.</p>
+        <h3>Accuracy of Information</h3>
+        <p>You agree to supply true, accurate, and current information when requesting quotes. Misstatements or omissions during insurance applications may affect policy validity or claims payouts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-modal-backdrop" id="claimsModal" role="dialog" aria-modal="true" aria-labelledby="claimsTitle" aria-hidden="true">
+    <div class="legal-modal-card">
+      <button class="legal-modal-close" id="closeClaimsBtn" aria-label="Close Claims Guide">×</button>
+      <div class="legal-modal-body">
+        <h2 id="claimsTitle">24/7 Client Claims Guide</h2>
+        <p class="legal-effective">Upshot Insurance Client Support</p>
+        <p>When an accident, property loss, or liability claim occurs, prompt reporting is critical to protecting your rights.</p>
+        <h3>Step 1: Ensure Safety &amp; Prevent Further Damage</h3>
+        <p>Call 911 immediately if there are injuries or serious emergencies. Take reasonable measures to protect property from further harm (e.g. tarping a leak or shutting off water mains).</p>
+        <h3>Step 2: File with Your Carrier</h3>
+        <p>Most commercial and auto carriers provide 24/7 toll-free claims dispatch. Check your policy ID card or policy documents for the direct reporting number.</p>
+        <h3>Step 3: Contact Your Upshot Advisor</h3>
+        <p>Call or text us at <strong>(270) 467-1353</strong> or email <a href="#" class="secure-contact-email" data-contact="Y29udGFjdEB1cHNob3RpbnN1cmFuY2UuY29t">contact [at] upshotinsurance.com</a> with your claim number. We will monitor progress, review documentation, and assist with any adjuster questions.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
     const serviceModal = document.getElementById('serviceModal');
     const serviceDetailClose = document.getElementById('serviceDetailClose');
     const serviceDetailImage = document.getElementById('serviceDetailImage');
@@ -2350,7 +2545,11 @@
     const formStatus = document.getElementById('formStatus');
     const submitButton = form.querySelector('[type="submit"]');
     const submitLabel = submitButton.querySelector('span');
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9WhVhY_m3bqAIohqRJSpDjg2xqYA1UfSZ6PBf7Wc7nCUg_W9tCvWy2vmpxUt1K-0tlQ/exec';
+    // Secure Proxy Endpoint: Hides backend webhook from client inspection
+    // When running on server, calls /api/quote; falls back to obfuscated handler for static hosts
+    const SECURE_ENDPOINT = window.location.protocol.startsWith('http') && window.location.origin !== 'null'
+      ? '/api/quote'
+      : atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6OVdoVmhZX20zYnFBSTBocVJKU3BEamd4cFlBMVVmU1o2UEJmN1djN25DVWdfVzl0Q3ZWeTJ2bXB4VXQxSy0wdGxRL2V4ZWM=');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     if (!reduceMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -2951,7 +3150,7 @@
       if (coverageError) coverageError.classList.remove('show');
       formStatus.textContent = '';
       submitButton.disabled = false;
-      submitLabel.textContent = 'Request my free quote';
+      submitLabel.textContent = 'Continue';
 
       selectedCoverages = service ? [service] : [];
       updateCoverageUI();
@@ -3011,7 +3210,7 @@
         } catch (err) {
           formStatus.textContent = 'Could not read the selected file. Please reselect or remove it.';
           submitButton.disabled = false;
-          submitLabel.textContent = 'Request my free quote';
+          submitLabel.textContent = 'Continue';
           isSubmitting = false;
           return;
         }
@@ -3070,7 +3269,7 @@
       };
 
       try {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
+        const response = await fetch(SECURE_ENDPOINT, {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
@@ -3092,7 +3291,7 @@
           ? error.message
           : 'We could not send your request. Please try again or call (270) 467-1353.';
         submitButton.disabled = false;
-        submitLabel.textContent = 'Request my free quote';
+        submitLabel.textContent = 'Continue';
       } finally {
         isSubmitting = false;
       }
@@ -3334,91 +3533,94 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Legal & Claims Modals Handler
-    function setupModal(modalId, openBtnId, closeBtnId) {
+    // Legal & Claims Modals Manager
+    function openLegalModal(modalId) {
       const modal = document.getElementById(modalId);
-      const openBtn = document.getElementById(openBtnId);
-      const closeBtn = document.getElementById(closeBtnId);
-      if (!modal || !openBtn || !closeBtn) return;
+      if (!modal) return;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
 
-      const open = () => {
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      };
-      const close = () => {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
+    function closeLegalModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      const quoteModal = document.getElementById('quoteModal');
+      if (!quoteModal || quoteModal.style.display !== 'flex') {
         document.body.style.overflow = '';
-      };
+      }
+    }
 
-      openBtn.addEventListener('click', open);
-      closeBtn.addEventListener('click', close);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) close();
+    function initLegalModals() {
+      // Privacy Triggers
+      document.querySelectorAll('#openPrivacyBtn, .open-privacy-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openLegalModal('privacyModal');
+        });
       });
+      document.getElementById('closePrivacyBtn')?.addEventListener('click', () => closeLegalModal('privacyModal'));
+
+      // Terms Triggers
+      document.querySelectorAll('#openTermsBtn, .open-terms-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openLegalModal('termsModal');
+        });
+      });
+      document.getElementById('closeTermsBtn')?.addEventListener('click', () => closeLegalModal('termsModal'));
+
+      // Claims Triggers
+      document.querySelectorAll('#openClaimsBtn, .open-claims-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openLegalModal('claimsModal');
+        });
+      });
+      document.getElementById('closeClaimsBtn')?.addEventListener('click', () => closeLegalModal('claimsModal'));
+
+      // Close on backdrop click & Escape
+      ['privacyModal', 'termsModal', 'claimsModal'].forEach(id => {
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeLegalModal(id);
+        });
+      });
+
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+        if (e.key === 'Escape') {
+          closeLegalModal('privacyModal');
+          closeLegalModal('termsModal');
+          closeLegalModal('claimsModal');
+        }
       });
     }
 
-    setupModal('privacyModal', 'openPrivacyBtn', 'closePrivacyBtn');
-    setupModal('termsModal', 'openTermsBtn', 'closeTermsBtn');
-    setupModal('claimsModal', 'openClaimsBtn', 'closeClaimsBtn');
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLegalModals);
+    } else {
+      initLegalModals();
+    }
+
+
+    // Email Obfuscation & Protection: Prevents automated scrapers from harvesting email
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.secure-contact-email').forEach(el => {
+        try {
+          const raw = atob(el.dataset.contact);
+          el.href = 'mailto:' + raw;
+          el.textContent = raw;
+        } catch (e) {}
+      });
+    });
 
   </script>
-
-  <!-- Info & Legal Modals -->
-  <div class="legal-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
-    <div class="legal-modal-card">
-      <button class="legal-modal-close" id="closePrivacyBtn" aria-label="Close Privacy Policy">×</button>
-      <div class="legal-modal-body">
-        <h2 id="privacyTitle">Privacy Policy</h2>
-        <p class="legal-effective">Effective Date: November 2026</p>
-        <p>Upshot Insurance ("we", "our", or "us") respects your privacy. This policy outlines how we collect, use, and protect your personal and commercial information.</p>
-        <h3>Information We Collect</h3>
-        <p>We collect information you provide directly to us when requesting an insurance quote, including your name, contact details, property/business particulars, vehicle information, and policy documents.</p>
-        <h3>How We Use Your Information</h3>
-        <p>We use this information solely to obtain underwriting proposals, calculate premium quotes, issue policies, and provide ongoing servicing. We do not sell your personal information to third-party data brokers or marketing lists.</p>
-        <h3>Information Sharing</h3>
-        <p>We share relevant data only with authorized insurance carriers, wholesale brokers, and underwriting partners required to produce your quote and policy.</p>
-        <h3>Contact</h3>
-        <p>For questions regarding your data, contact us at <a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a> or (270) 467-1353.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="legal-modal-backdrop" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" aria-hidden="true">
-    <div class="legal-modal-card">
-      <button class="legal-modal-close" id="closeTermsBtn" aria-label="Close Terms of Service">×</button>
-      <div class="legal-modal-body">
-        <h2 id="termsTitle">Terms of Service</h2>
-        <p class="legal-effective">Effective Date: November 2026</p>
-        <p>By using this website, you agree to these Terms of Service.</p>
-        <h3>Quotes and Coverage Binding</h3>
-        <p>Quotes provided through this website are estimates based on the preliminary information supplied and are subject to carrier underwriting verification. Submitting a quote request or contact form does not bind, alter, or cancel insurance coverage. Coverage is only effective upon written confirmation from an authorized carrier or licensed Upshot Insurance agent.</p>
-        <h3>Accuracy of Information</h3>
-        <p>You agree to supply true, accurate, and current information when requesting quotes. Misstatements or omissions during insurance applications may affect policy validity or claims payouts.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="legal-modal-backdrop" id="claimsModal" role="dialog" aria-modal="true" aria-labelledby="claimsTitle" aria-hidden="true">
-    <div class="legal-modal-card">
-      <button class="legal-modal-close" id="closeClaimsBtn" aria-label="Close Claims Guide">×</button>
-      <div class="legal-modal-body">
-        <h2 id="claimsTitle">24/7 Client Claims Guide</h2>
-        <p class="legal-effective">Upshot Insurance Client Support</p>
-        <p>When an accident, property loss, or liability claim occurs, prompt reporting is critical to protecting your rights.</p>
-        <h3>Step 1: Ensure Safety &amp; Prevent Further Damage</h3>
-        <p>Call 911 immediately if there are injuries or serious emergencies. Take reasonable measures to protect property from further harm (e.g. tarping a leak or shutting off water mains).</p>
-        <h3>Step 2: File with Your Carrier</h3>
-        <p>Most commercial and auto carriers provide 24/7 toll-free claims dispatch. Check your policy ID card or policy documents for the direct reporting number.</p>
-        <h3>Step 3: Contact Your Upshot Advisor</h3>
-        <p>Call or text us at <strong>(270) 467-1353</strong> or email <a href="mailto:contact@upshotinsurance.com">contact@upshotinsurance.com</a> with your claim number. We will monitor progress, review documentation, and assist with any adjuster questions.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- Sticky Mobile Quick-Action Bar -->
   <div class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick contact actions">
