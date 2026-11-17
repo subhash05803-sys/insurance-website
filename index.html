@@ -3209,7 +3209,7 @@
         return;
       }
 
-      if (GOOGLE_SCRIPT_URL.startsWith('PASTE_')) {
+      if (typeof SECURE_ENDPOINT === 'undefined' || !SECURE_ENDPOINT) {
         formStatus.textContent = 'Quote form setup is not complete yet. Please call (270) 467-1353.';
         return;
       }
