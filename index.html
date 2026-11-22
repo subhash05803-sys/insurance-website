@@ -2977,7 +2977,8 @@
 
     document.querySelectorAll('.open-quote').forEach(button => button.addEventListener('click', () => openModal(button.dataset.service || '')));
     modalClose.addEventListener('click', closeModal);
-    document.getElementById('successClose').addEventListener('click', closeModal);
+    const successClose = document.getElementById('successClose');
+    if (successClose) successClose.addEventListener('click', closeModal);
     modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
     document.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
