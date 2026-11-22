@@ -1159,6 +1159,9 @@
     .modal { position: fixed; z-index: 100; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(7,24,44,.72); backdrop-filter: blur(7px); }
     .modal.open { display: flex; }
     .modal-dialog { position: relative; width: min(620px, 100%); max-height: calc(100vh - 40px); padding: 42px; overflow-y: auto; border-radius: 20px; background: var(--white); box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+    .modal-dialog.modal-dialog-jotform { width: min(780px, 100%); max-height: calc(100vh - 40px); padding: 42px 18px 20px; overflow-y: auto; border-radius: 20px; background: var(--white); box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+    .modal-dialog-jotform iframe { display: block; width: 100% !important; min-width: 100% !important; border: none; }
+    @media (max-width: 600px) { .modal-dialog.modal-dialog-jotform { padding: 40px 8px 14px; } }
     .modal-close { position: absolute; top: 18px; right: 18px; display: grid; width: 36px; height: 36px; place-items: center; border: 0; border-radius: 50%; background: var(--cream); color: var(--navy); cursor: pointer; font-size: 1.25rem; }
     .modal h2 { margin-bottom: 8px; font-size: 2rem; }
     #quoteTitle {
@@ -2399,214 +2402,25 @@
     </article>
   </div>
 
-  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
-    <div class="modal-dialog">
+    <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <div class="modal-dialog modal-dialog-jotform">
       <button class="modal-close" id="modalClose" aria-label="Close quote form">×</button>
       <div id="formContent">
-        <p class="eyebrow" style="margin-bottom: 8px;">Direct Advisory</p>
-        <h2 id="quoteTitle">Get in touch.</h2>
-        <p class="modal-subtitle">Please fill out the form below and one of our team members will be in touch to provide the assistance you need.</p>
-        <form id="quoteForm">
-          <div class="form-grid">
-            <div class="hp-check" style="display:none!important;" aria-hidden="true"><label for="company_fax_hp">Leave empty</label><input type="text" id="company_fax_hp" name="_hp_fax" tabindex="-1" autocomplete="off"></div>
-            <div class="field"><label for="firstName">First name *</label><input id="firstName" name="firstName" autocomplete="given-name" placeholder="First name" required></div>
-            <div class="field"><label for="lastName">Last name *</label><input id="lastName" name="lastName" autocomplete="family-name" placeholder="Last name" required></div>
-            <div class="field"><label for="email">Email Address *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
-            <div class="field"><label for="phone">Contact Number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(270) 467-1353" required></div>
-            <div class="field full"><label for="address">Address *</label><input id="address" name="address" placeholder="Enter a location (Street, City, State, ZIP)" required></div>
-
-            <div class="field full">
-              <label for="coverageTrigger">Coverage Needed <span style="color:#e05252">* (Select all that apply)</span></label>
-              <div class="coverage-multiselect" id="coverageMultiselect">
-                <div class="coverage-trigger" id="coverageTrigger" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Select one or more coverage types">
-                  <div class="coverage-tags" id="coverageTags">
-                    <span class="coverage-placeholder">Select one or more coverage types…</span>
-                  </div>
-                  <svg class="coverage-trigger-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-                <div class="coverage-dropdown" id="coverageDropdown" role="listbox" aria-multiselectable="true">
-                  <div class="coverage-group-title">Personal Insurance</div>
-                  <div class="coverage-option" data-value="Auto Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Auto Insurance</span>
-                  </div>
-                  <div class="coverage-option" data-value="Home Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Home Insurance</span>
-                  </div>
-                  <div class="coverage-option" data-value="Life Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Life Insurance</span>
-                  </div>
-
-                  <div class="coverage-group-title">Specialized Industry Packages</div>
-                  <div class="coverage-option" data-value="Hotel Specialized Package" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Hotel Specialized Package</span>
-                  </div>
-                  <div class="coverage-option" data-value="Restaurant Special Package" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Restaurant Special Package</span>
-                  </div>
-                  <div class="coverage-option" data-value="Liquor Store Package" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Liquor Store Package</span>
-                  </div>
-                  <div class="coverage-option" data-value="Gas Station Package" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Gas Station Package</span>
-                  </div>
-
-                  <div class="coverage-group-title">Business &amp; Commercial Coverage</div>
-                  <div class="coverage-option" data-value="General Liability" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>General Liability</span>
-                  </div>
-                  <div class="coverage-option" data-value="Commercial Property" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Commercial Property</span>
-                  </div>
-                  <div class="coverage-option" data-value="Umbrella Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Umbrella Insurance</span>
-                  </div>
-                  <div class="coverage-option" data-value="Workers’ Compensation" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Workers’ Compensation</span>
-                  </div>
-                  <div class="coverage-option" data-value="Cyber Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Cyber Insurance</span>
-                  </div>
-                  <div class="coverage-option" data-value="Commercial Auto" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Commercial Auto</span>
-                  </div>
-                  <div class="coverage-option" data-value="Flood Insurance" role="option" aria-selected="false">
-                    <span class="coverage-option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                    <span>Flood Insurance</span>
-                  </div>
-                </div>
-              </div>
-              <p class="coverage-required-error" id="coverageError">Please select at least one coverage type.</p>
-              <input type="hidden" id="coverage" name="coverage" value="">
-            </div>
-
-            <!-- How did you find us? -->
-            <div class="field full">
-              <label for="findUs">How did you find us?</label>
-              <select id="findUs" name="findUs">
-                <option value="">Select an option…</option>
-                <option value="Google Search">Google Search</option>
-                <option value="Referral / Friend">Referral / Friend</option>
-                <option value="Social Media">Social Media</option>
-                <option value="Local Advertisement">Local Advertisement</option>
-                <option value="Existing Client">Existing Client</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <!-- Preferred Contact Method -->
-            <div class="field full">
-              <label>Preferred Contact Method *</label>
-              <div class="contact-method-group">
-                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Phone"> <span>Phone</span></label>
-                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Text" checked> <span>Text</span></label>
-                <label class="checkbox-inline"><input type="checkbox" name="contactMethod" value="Email" checked> <span>Email</span></label>
-              </div>
-              <p class="sms-optin-notice">
-                By checking the SMS/Text box, I acknowledge that I may receive informational/conversational text messages from Upshot Insurance. I understand I can opt out at any time by replying STOP to the number. Message and data rates may apply. Message frequency may vary. Text HELP for help; call (270) 467-1353 or visit our <button type="button" class="form-legal-link open-privacy-trigger">privacy policy</button> and <button type="button" class="form-legal-link open-terms-trigger">terms of service</button>.
-              </p>
-            </div>
-
-            <!-- Attachments Field -->
-            <div class="field full">
-              <label for="attachments">Attachments / Supporting Documents <span style="font-weight:400;color:#627181">(e.g., driver license, declaration page - optional)</span></label>
-              <div class="file-upload-box" id="fileUploadBox">
-                <input type="file" id="attachments" name="attachments" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.txt,.rtf" aria-label="Upload supporting document">
-                <div class="file-upload-label" id="fileUploadLabel">
-                  <svg viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                  <strong>Click to browse or drag &amp; drop a file</strong>
-                  <span>PDF, Images (PNG, JPG), or Documents (Word, TXT) up to 10MB</span>
-                </div>
-                <div class="file-preview-card hidden" id="filePreviewCard">
-                  <div class="file-preview-icon">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                  </div>
-                  <div class="file-preview-details">
-                    <span class="file-preview-name" id="filePreviewName"></span>
-                    <span class="file-preview-size" id="filePreviewSize"></span>
-                  </div>
-                  <div class="file-preview-actions">
-                    <button type="button" class="file-action-btn file-replace-btn" id="fileReplaceBtn" title="Change file">Change</button>
-                    <button type="button" class="file-action-btn file-remove-btn" id="fileRemoveBtn" title="Remove file" aria-label="Remove file">✕</button>
-                  </div>
-                </div>
-                <p class="file-error-msg hidden" id="fileErrorMsg" role="alert"></p>
-              </div>
-            </div>
-
-            <!-- Message Field -->
-            <div class="field full">
-              <label for="message">Please let us know how we can assist you. Thank you!</label>
-              <textarea id="message" name="message" placeholder="Tell us about your coverage needs, current policy details, or specific questions…"></textarea>
-            </div>
-
-            <!-- Binding Notice Checkbox -->
-            <div class="field full">
-              <label class="binding-notice-label">
-                <input type="checkbox" id="acknowledgeBinding" name="acknowledgeBinding" required checked>
-                <span>By checking this box, I acknowledge and understand that insurance coverage cannot be bound, changed, or cancelled via voicemail, email, text messaging, or messaging from this website, and that, in order to bind, change, or cancel insurance coverage, I must speak directly with a licensed insurance agent from Upshot Insurance.</span>
-              </label>
-            </div>
-          </div>
-            <!-- Trust & Security Reassurance Card (Share Your Information) -->
-            <div class="form-trust-container">
-              <div class="form-trust-header">
-                <span class="form-trust-eyebrow">Personal &amp; Commercial Insurance</span>
-                <h3 class="form-trust-title">Share Your Information</h3>
-              </div>
-              <div class="form-trust-card">
-                <div class="form-trust-item">
-                  <div class="form-trust-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  </div>
-                  <div class="form-trust-details">
-                    <strong>Encrypted</strong>
-                    <span>Your data stays secure</span>
-                  </div>
-                </div>
-
-                <div class="form-trust-item">
-                  <div class="form-trust-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-                  </div>
-                  <div class="form-trust-details">
-                    <strong>Private</strong>
-                    <span>Shared only with Upshot Insurance</span>
-                  </div>
-                </div>
-
-                <div class="form-trust-item">
-                  <div class="form-trust-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  <div class="form-trust-details">
-                    <strong>No commitment</strong>
-                    <span>Get your quotes first, then decide</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button class="btn btn-primary form-submit" type="submit" id="submitQuoteBtn"><span>Continue</span> <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-
-            <p class="form-legal-agree">By selecting Continue you agree to the <button type="button" class="form-legal-link open-terms-trigger">Terms</button> and <button type="button" class="form-legal-link open-privacy-trigger">Privacy Policy</button></p>
-
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        </form>
+        <iframe
+          id="JotFormIFrame-263254193937061"
+          title="Insurance Quote Request"
+          onload="window.parent.scrollTo(0,0)"
+          allowtransparency="true"
+          allow="geolocation; microphone; camera; fullscreen; payment"
+          src="https://form.jotform.com/263254193937061"
+          frameborder="0"
+          style="min-width:100%;max-width:100%;height:539px;border:none;"
+          scrolling="no"
+        >
+        </iframe>
+        <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+        <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-263254193937061']", "https://form.jotform.com/")</script>
       </div>
-      <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h3>We’ve got it!</h3><p>Thanks for reaching out. An advisor will contact you shortly to discuss your coverage.</p><button class="btn btn-primary" id="successClose">Done</button></div>
     </div>
   </div>
 
@@ -2746,8 +2560,8 @@
     const formSuccess = document.getElementById('formSuccess');
     const coverage = document.getElementById('coverage');
     const formStatus = document.getElementById('formStatus');
-    const submitButton = form.querySelector('[type="submit"]');
-    const submitLabel = submitButton.querySelector('span');
+    const submitButton = form ? form.querySelector('[type="submit"]') : null;
+    const submitLabel = submitButton ? submitButton.querySelector('span') : null;
     // Secure Proxy Endpoint: Hides backend webhook from client inspection
     // When running on server, calls /api/quote; falls back to obfuscated handler for static hosts
     const SECURE_ENDPOINT = window.location.protocol.startsWith('http') && window.location.origin !== 'null'
@@ -3148,30 +2962,17 @@
     }
 
     function openModal(service = '') {
-      formContent.style.display = 'block';
-      formSuccess.classList.remove('show');
-      form.reset();
-      clearSelectedFile();
-      if (fileErrorMsg) {
-        fileErrorMsg.classList.add('hidden');
-        fileErrorMsg.textContent = '';
+      if (modal) {
+        modal.classList.add('open');
+        document.body.classList.add('locked');
       }
-      if (coverageError) coverageError.classList.remove('show');
-      formStatus.textContent = '';
-      submitButton.disabled = false;
-      submitLabel.textContent = 'Continue';
-
-      selectedCoverages = service ? [service] : [];
-      updateCoverageUI();
-
-      modal.classList.add('open');
-      document.body.classList.add('locked');
-      setTimeout(() => document.getElementById('firstName').focus(), 50);
     }
 
     function closeModal() {
-      modal.classList.remove('open');
-      document.body.classList.remove('locked');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.classList.remove('locked');
+      }
     }
 
     document.querySelectorAll('.open-quote').forEach(button => button.addEventListener('click', () => openModal(button.dataset.service || '')));
@@ -3184,123 +2985,12 @@
       else if (modal.classList.contains('open')) closeModal();
     });
 
-    let isSubmitting = false;
-
-    form.addEventListener('submit', async event => {
-      event.preventDefault();
-      if (isSubmitting) return;
-
-      // Validate at least one coverage is chosen
-      if (selectedCoverages.length === 0) {
-        if (coverageError) coverageError.classList.add('show');
-        formStatus.textContent = 'Please select at least one coverage type above.';
-        return;
-      }
-
-      if (typeof SECURE_ENDPOINT === 'undefined' || !SECURE_ENDPOINT) {
-        formStatus.textContent = 'Quote form setup is not complete yet. Please call (270) 467-1353.';
-        return;
-      }
-
-      isSubmitting = true;
-      submitButton.disabled = true;
-
-      try {
-        let base64Data = null;
-        let fileName = null;
-        let fileType = null;
-
-        if (currentSelectedFile) {
-          submitLabel.textContent = 'Uploading file…';
-          formStatus.textContent = 'Uploading attachment and securely saving your quote request…';
-          try {
-            base64Data = await readFileAsBase64(currentSelectedFile);
-            fileName = currentSelectedFile.name;
-            fileType = currentSelectedFile.type || 'application/octet-stream';
-          } catch (err) {
-            formStatus.textContent = 'Could not read the selected file. Please reselect or remove it.';
-            submitButton.disabled = false;
-            submitLabel.textContent = 'Continue';
-            isSubmitting = false;
-            return;
-          }
-        } else {
-          submitLabel.textContent = 'Sending…';
-          formStatus.textContent = 'Securely sending your request…';
-        }
-
-        // Attachment text summary for message
-        let attachmentSummary = '';
-        if (currentSelectedFile) {
-          const sizeFormatted = currentSelectedFile.size < 1024 * 1024
-            ? Math.round(currentSelectedFile.size / 1024) + ' KB'
-            : (currentSelectedFile.size / (1024 * 1024)).toFixed(2) + ' MB';
-          attachmentSummary = '\n\n--- [Attached Document] ---\n• ' + currentSelectedFile.name + ' (' + sizeFormatted + ')';
-        }
-
-        const firstNameVal = (document.getElementById('firstName')?.value || '').trim();
-        const lastNameVal = (document.getElementById('lastName')?.value || '').trim();
-        const emailVal = (document.getElementById('email')?.value || '').trim();
-        const phoneVal = (document.getElementById('phone')?.value || '').trim();
-        const addressVal = (document.getElementById('address')?.value || '').trim();
-        const findUsVal = (document.getElementById('findUs')?.value || '').trim();
-        const selectedMethods = Array.from(document.querySelectorAll('input[name="contactMethod"]:checked')).map(cb => cb.value);
-        const originalMessage = (document.getElementById('message')?.value || '').trim();
-
-        // Clean user message notes (Address & Contact preferences now have dedicated columns)
-        const combinedMessage = originalMessage.trim();
-
-        const payload = {
-          submittedAt: new Date().toISOString(),
-          firstName: firstNameVal,
-          lastName: lastNameVal,
-          email: emailVal,
-          phone: phoneVal,
-          address: addressVal,
-          howDidYouFindUs: findUsVal,
-          preferredContactMethod: selectedMethods.join(', '),
-          coverage: selectedCoverages.join(', '),
-          message: combinedMessage,
-          source: window.location.href,
-          fileName: fileName,
-          fileType: fileType,
-          fileData: base64Data
-        };
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 12000);
-
-        const response = await fetch(SECURE_ENDPOINT, {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-
-        const result = await response.json().catch(() => null);
-
-        if (result && result.success === false) {
-          throw new Error(result.error || 'The server reported an error processing your request.');
-        }
-
-        formContent.style.display = 'none';
-        formSuccess.classList.add('show');
-      } catch (error) {
-        console.error('Submission error:', error);
-        formStatus.textContent = error.name === 'AbortError'
-          ? 'Request timed out. Please check your connection and try again.'
-          : (error.message && !error.message.includes('fetch')
-            ? error.message
-            : 'We could not send your request. Please try again or call (270) 467-1353.');
-        submitButton.disabled = false;
-        submitLabel.textContent = 'Continue';
-      } finally {
-        isSubmitting = false;
-      }
-    });
+    if (form) {
+      let isSubmitting = false;
+      form.addEventListener('submit', async event => {
+        // Handled by Jotform
+      });
+    }
 
     // --- Insurance Partner Carousel ---
     const insurancePartners = [
