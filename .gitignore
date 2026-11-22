@@ -1,0 +1,5 @@
+# Deployment archives and local folders
+godaddy-deploy/
+node_modules/
+.DS_Store
+Thumbs.db
