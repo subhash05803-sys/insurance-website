@@ -3,7 +3,7 @@
 Comprehensive documentation, architecture guide, and maintenance manual for the **Upshot Insurance** website.
 
 > **Project Reference & Work Log:** [Gemini Pair Programming Log](https://share.gemini.google/usGwLutWb7sj)  
-> **Application Builder:** **Subhash** (India)  
+> **Application Developer & AI Engineer:** **Subhash** (India)  
 > **Builder Contact Email:** [subhashtelugu4@gmail.com](mailto:subhashtelugu4@gmail.com)  
 > **Official Website:** [https://upshotinsurance.com/](https://upshotinsurance.com/)
 
@@ -126,7 +126,7 @@ If you ever want to host directly on GoDaddy Linux/cPanel Web Hosting instead of
   - **Privacy Policy** (`#privacyModal`)
   - **Terms of Service** (`#termsModal`)
   - **24/7 Client Claims Guide** (`#claimsModal`)
-  - **Application Builder / Developer Details** (`#builderModal`)
+  - **Application Developer & AI Engineer / Developer Details** (`#builderModal`)
 - Managed centrally by `openLegalModal(id)` and `closeLegalModal(id)`.
 - Closes automatically on backdrop click or pressing the **Escape** key.
 
@@ -146,8 +146,20 @@ If you ever want to host directly on GoDaddy Linux/cPanel Web Hosting instead of
 
 ## 6. Project Credits & Maintenance Contact
 
-- **Application Builder:** **Subhash**
+- **Application Developer & AI Engineer:** **Subhash**
 - **Location:** India 🇮🇳
 - **Developer Email:** [subhashtelugu4@gmail.com](mailto:subhashtelugu4@gmail.com)
 - **Work Trajectory & Log:** [https://share.gemini.google/usGwLutWb7sj](https://share.gemini.google/usGwLutWb7sj)
 - **Client Organization:** Upshot Insurance (13261 O'Bannon Station Way, Louisville, KY 40223)
+
+---
+
+## 7. Operational Account Details & Credentials Reference
+
+For system handovers, domain DNS management, and form administration, the following registered accounts are connected to this project:
+
+| Service | Registered / Administrative Email | Purpose |
+| :--- | :--- | :--- |
+| **Cloudflare** | `remote.upshot@gmail.com` | DNS management, SSL/TLS certificates, CDN caching, and domain routing |
+| **Jotform** | `contact@upshotinsurance.com` | Form submissions dashboard, lead tables, file storage, and email notifications |
+| **Developer Contact** | `subhashtelugu4@gmail.com` | Application Developer & AI Engineer support |
