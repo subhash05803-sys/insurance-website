@@ -160,6 +160,10 @@ For system handovers, domain DNS management, and form administration, the follow
 
 | Service | Registered / Administrative Email | Purpose |
 | :--- | :--- | :--- |
+| **GoDaddy** | Legacy / Original Hosting Account | Original domain registrar and hosting account for `https://upshotinsurance.com/` |
 | **Cloudflare** | `remote.upshot@gmail.com` | DNS management, SSL/TLS certificates, CDN caching, and domain routing |
 | **Jotform** | `contact@upshotinsurance.com` | Form submissions dashboard, lead tables, file storage, and email notifications |
-| **Developer Contact** | `subhashtelugu4@gmail.com` | Application Developer & AI Engineer support |
+| **Developer Contact** | `subhashtelugu4@gmail.com` | Application Developer & AI Engineer support (Subhash) |
+
+> **GoDaddy Legacy Account Note:**
+> The domain [https://upshotinsurance.com/](https://upshotinsurance.com/) was originally registered and hosted under Upshot's GoDaddy account. Ready-to-deploy static website packages (`website-godaddy.zip`) are maintained in this repository and on the Desktop for direct upload to GoDaddy cPanel File Manager (`public_html/`) if ever needed.
