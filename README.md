@@ -1,45 +1,90 @@
-# Upshot Insurance Website
+# Upshot Insurance Website — Complete Operational & Maintenance Manual
 
-Comprehensive documentation, architecture guide, and maintenance manual for the **Upshot Insurance** website.
-
-> **Project Reference & Work Log:** [Gemini Pair Programming Log](https://share.gemini.google/usGwLutWb7sj)  
-> **Application Developer & AI Engineer:** **Subhash** (India)  
-> **Builder Contact Email:** [subhashtelugu4@gmail.com](mailto:subhashtelugu4@gmail.com)  
-> **Official Website:** [https://upshotinsurance.com/](https://upshotinsurance.com/)
+> **Official Live Website:** [https://upshotinsurance.com/](https://upshotinsurance.com/)  
+> **Brokerage Office:** 13261 O'Bannon Station Way, Louisville, KY 40223  
+> **Office Phone:** (270) 467-1353  
+> **Office Email:** [contact@upshotinsurance.com](mailto:contact@upshotinsurance.com)
 
 ---
 
-## 1. Project Overview & Architecture
-
-This application is a modern, responsive website for **Upshot Insurance**, an independent insurance brokerage based in Louisville, Kentucky.
-
-### Core Technology Stack:
-- **Frontend:** Pure semantic HTML5, modern CSS3 (Custom Variables, CSS Grid, Flexbox, Fluid Typography via `clamp()`), and Vanilla JavaScript (ES6+).
-- **Backend & Form Processing:** **Jotform Cloud Platform** (No dedicated server or database required for form submission).
-- **Local Dev Server:** Built-in Node.js static server (`server.js`) running on port `3000`.
-- **Hosting & CDN:** GitHub Pages with custom domain `upshotinsurance.com` (plus optional GoDaddy cPanel hosting package).
+## Table of Contents
+1. [Overview & Live Architecture](#1-overview--live-architecture)
+2. [Hosting & DNS Setup (GoDaddy + Cloudflare)](#2-hosting--dns-setup-godaddy--cloudflare)
+3. [Operational Accounts Reference](#3-operational-accounts-reference)
+4. [Quote Request Form System (Jotform)](#4-quote-request-form-system-jotform)
+5. [Frontend Components & Structure](#5-frontend-components--structure)
+6. [Maintenance & Content Update Guide](#6-maintenance--content-update-guide)
+   - [Updating Phone Numbers, Email, and Address](#1-updating-phone-numbers-email-and-address)
+   - [Managing Insurance Carrier Logos](#2-managing-insurance-carrier-logos)
+   - [Updating Legal Policies & Disclaimers](#3-updating-legal-policies--disclaimers)
+   - [Updating or Replacing the Quote Form](#4-updating-or-replacing-the-quote-form)
+   - [Publishing Updates to GoDaddy](#5-publishing-updates-to-godaddy)
 
 ---
 
-## 2. Jotform Quote Form System
+## 1. Overview & Live Architecture
 
-The quote request form on the website is powered by **Jotform** (Form ID: `263255342465054`, Title: *"Get in touch."*).
+The **Upshot Insurance** website is a modern, responsive, high-performance static web application built for independent commercial and personal insurance brokerage operations.
 
-### Submissions Dashboard
-- Every submission, customer detail, contact preference, and uploaded file is stored in your private Jotform Tables:  
-  👉 **[https://www.jotform.com/tables/263255342465054](https://www.jotform.com/tables/263255342465054)**
-- From Jotform Tables, you can filter, search, manage leads, or export directly to **Excel (.xlsx)** or **CSV**.
+### Core Stack:
+- **Frontend:** Semantic HTML5, CSS3 (Modern Custom Properties, CSS Grid, Flexbox, Fluid Typography), and Vanilla JavaScript (ES6+).
+- **Backend & Lead Processing:** **Jotform Cloud Platform** (serverless, secure submission handling, file attachments, and notification routing).
+- **Live Infrastructure:** Hosted on **GoDaddy** web hosting and routed through **Cloudflare** for DNS, CDN caching, DDoS protection, and SSL/TLS security.
+
+---
+
+## 2. Hosting & DNS Setup (GoDaddy + Cloudflare)
+
+The production website [https://upshotinsurance.com/](https://upshotinsurance.com/) is live and operational using the following configuration:
+
+1. **Domain & Web Hosting (GoDaddy):**
+   - The domain `upshotinsurance.com` and website files reside in the GoDaddy hosting account.
+   - All website production files (`index.html`, `images/`, logos, and favicons) are deployed in the **`public_html`** root directory of the cPanel File Manager.
+   - A pre-packaged, ready-to-deploy archive (`website-godaddy.zip`) is maintained for quick uploads and backups.
+
+2. **DNS & Network Security (Cloudflare):**
+   - **Administrative Account:** `remote.upshot@gmail.com`
+   - Cloudflare acts as the authoritative DNS manager and reverse-proxy CDN.
+   - Handles global SSL/TLS certificates (HTTPS encryption), web caching, edge routing, and automated security rules.
+
+---
+
+## 3. Operational Accounts Reference
+
+For ongoing management, renewals, and system handovers:
+
+| Service | Account / Administrative Email | Purpose |
+| :--- | :--- | :--- |
+| **GoDaddy** | Upshot Insurance Account | Primary domain registration and web hosting (`public_html/`) |
+| **Cloudflare** | `remote.upshot@gmail.com` | DNS management, SSL/TLS certificates, speed caching, and security rules |
+| **Jotform** | `contact@upshotinsurance.com` | Quote request submissions, lead records, uploaded policy files, and alerts |
+
+---
+
+## 4. Quote Request Form System (Jotform)
+
+The quote request workflow is powered by **Jotform** (Form ID: `263255342465054`, Title: *"Get in touch."*).
+
+### Submissions & Leads Dashboard
+Every customer inquiry, contact preference, and uploaded policy document is recorded in the secure Jotform Tables database:
+👉 **[https://www.jotform.com/tables/263255342465054](https://www.jotform.com/tables/263255342465054)**
+
+From this dashboard, staff can:
+- Review incoming leads in real-time with full timestamps.
+- View and download uploaded declaration pages or existing policies.
+- Filter and search submissions by customer name, phone, or policy type.
+- Export records directly to **Excel (.xlsx)** or **CSV** for CRM imports.
 
 ### Email Notifications
-- Instant email notifications with customer details and file attachments are sent to the brokerage email.
-- To add, remove, or change notification recipient emails:
-  1. Open [Jotform Workspace](https://www.jotform.com/workspace/).
-  2. Select form `263255342465054` &rarr; Click **Edit Form**.
-  3. Go to **Settings** &rarr; **Emails** &rarr; Edit **Notification 1**.
-  4. Under the **Recipients** tab, add or edit the recipient email addresses.
+Instant notifications with lead details and attached files are automatically delivered to `contact@upshotinsurance.com`.
+- **To update recipient emails:**
+  1. Log into [Jotform Workspace](https://www.jotform.com/workspace/).
+  2. Select form `263255342465054` &rarr; click **Edit Form**.
+  3. Go to **Settings** &rarr; **Emails** &rarr; **Notification 1**.
+  4. Under the **Recipients** tab, add or edit the destination email addresses.
 
-### How the Embed Works in `index.html`
-The form is embedded in the modal popup (`#quoteModal`) using Jotform's responsive embed code:
+### Embed Code in `index.html`
+The form is embedded in the quote modal popup (`#quoteModal`):
 ```html
 <iframe
   id="JotFormIFrame-263255342465054"
@@ -57,113 +102,72 @@ The form is embedded in the modal popup (`#quoteModal`) using Jotform's responsi
 <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-263255342465054']", "https://form.jotform.com/")</script>
 ```
 
-> **Note on Changing Form in the Future:** If you ever build a brand-new form on Jotform with a new Form ID, replace the numbers `263255342465054` in the 3 spots in `index.html` with your new Form ID.
-
 ---
 
-## 3. Deployment & Hosting Options
+## 5. Frontend Components & Structure
 
-### Option A: GitHub Pages + GoDaddy Domain (Active Production Setup)
-The site is hosted for free on GitHub Pages with automatic SSL/HTTPS.
-
-1. **GitHub Repository:** `https://github.com/subhash05803-sys/insurance-website`
-2. **Auto-Deployment:** Any push to the `main` branch automatically triggers GitHub Actions (`.github/workflows/pages.yml`) to build and deploy the site within 1–2 minutes.
-3. **Custom Domain Configuration:**
-   - The file `CNAME` in the root contains `upshotinsurance.com`.
-   - In GoDaddy DNS Management for `upshotinsurance.com`:
-     - **4 A Records** (Name: `@`):
-       - `185.199.108.153`
-       - `185.199.109.153`
-       - `185.199.110.153`
-       - `185.199.111.153`
-     - **1 CNAME Record** (Name: `www`):
-       - Points to: `subhash05803-sys.github.io`
-
-### Option B: GoDaddy cPanel Web Hosting
-If you ever want to host directly on GoDaddy Linux/cPanel Web Hosting instead of GitHub:
-1. Open the pre-packaged zip file on your Desktop: `website-godaddy.zip` (also available in `godaddy-deploy/website-godaddy.zip`).
-2. Log into GoDaddy &rarr; **My Products** &rarr; **Web Hosting (cPanel)** &rarr; **File Manager**.
-3. Open the **`public_html`** directory.
-4. Upload `website-godaddy.zip` and click **Extract**.
-5. All site assets (`index.html`, `images/`, logos, and favicons) will go live immediately.
-
----
-
-## 4. Key Interactive Components & Guidelines for Developers
-
-### 1. Quote Modal Trigger System (Desktop & Mobile)
-- Any button with class `.open-quote` will trigger the quote modal popup.
-- **Event Delegation:** To ensure buttons created anywhere in the DOM (including inside dynamic cards, hero sections, and the mobile sticky action bar) always trigger the modal, a global click listener is registered in `index.html`:
-  ```javascript
-  document.addEventListener('click', (event) => {
-    const quoteBtn = event.target.closest('.open-quote');
-    if (quoteBtn) {
-      event.preventDefault();
-      openModal(quoteBtn.dataset.service || '');
-    }
-  });
-  ```
+### 1. Global Quote Modal Triggers
+Any element with the class `.open-quote` triggers the quote popup. A delegated event listener handles clicks across the entire page (header, hero, feature cards, and sticky bar):
+```javascript
+document.addEventListener('click', (event) => {
+  const quoteBtn = event.target.closest('.open-quote');
+  if (quoteBtn) {
+    event.preventDefault();
+    openModal(quoteBtn.dataset.service || '');
+  }
+});
+```
 
 ### 2. Mobile Quick-Action Sticky Bar
-- On screens `<= 768px`, a sticky bar appears at the bottom with 3 quick actions:
-  - **Call:** Direct `tel:+12704671353` link
-  - **Text:** Direct `sms:+12704671353` link
-  - **Quote:** Triggers the modal popup with Jotform
-- The sticky bar HTML is positioned right before `#quoteModal` in the DOM to ensure proper loading order.
-- On mobile devices, `body` has a bottom padding of `60px` to prevent page content from being obscured by the sticky bar.
+On mobile screens (`<= 768px`), a fixed bottom bar provides instant touch shortcuts:
+- **Call:** `tel:+12704671353`
+- **Text:** `sms:+12704671353`
+- **Quote:** Triggers the Jotform quote modal
 
-### 3. Infinite Partner Logos Carousel
-- The partner logos section (`#partnersTrack`) uses `initPartnersCarousel()`.
-- Logos are duplicated in the track for seamless continuous looping.
-- Features:
-  - Automatic pause on hover/focus.
-  - Touch/pointer drag support for swiping through logos.
-  - Smooth `prev` and `next` arrow navigation buttons.
-  - Fallback text monogram badges if any carrier logo image fails to load.
+### 3. Carrier Partner Logos Carousel
+- Located in `#partnersTrack` and powered by `initPartnersCarousel()`.
+- Features smooth continuous looping, touch/drag gesture support, pause-on-hover, and fallback initials monograms if any logo image fails to load.
 
-### 4. Legal & Info Modals
-- The site contains 4 dedicated modal cards:
-  - **Privacy Policy** (`#privacyModal`)
-  - **Terms of Service** (`#termsModal`)
-  - **24/7 Client Claims Guide** (`#claimsModal`)
-  - **Application Developer & AI Engineer / Developer Details** (`#builderModal`)
-- Managed centrally by `openLegalModal(id)` and `closeLegalModal(id)`.
-- Closes automatically on backdrop click or pressing the **Escape** key.
+### 4. Legal Modals
+Accessible modal overlays for:
+- **Privacy Policy** (`#privacyModal`)
+- **Terms of Service** (`#termsModal`)
+- **24/7 Claims Guide** (`#claimsModal`)
 
 ---
 
-## 5. Local Development & Testing
+## 6. Maintenance & Content Update Guide
 
-### Running the Site Locally:
-1. Ensure Node.js is installed.
-2. Open terminal in the project directory:
-   ```bash
-   node server.js
+### 1. Updating Phone Numbers, Email, and Address
+To update agency contact information in `index.html`:
+- Search for `(270) 467-1353` and `+12704671353` (found in top bar, hero action badges, footer, and mobile bar).
+- Search for `contact@upshotinsurance.com` for email links.
+- Search for `13261 O'Bannon Station Way` for the office location.
+
+### 2. Managing Insurance Carrier Logos
+1. Place the new logo image into the `images/` directory.
+2. In `index.html`, locate the `#partnersTrack` section and add or edit the `<div class="partner-card">` entry:
+   ```html
+   <div class="partner-card">
+     <img src="images/carrier-name.png" alt="Carrier Name Logo" loading="lazy">
+   </div>
    ```
-3. Open [http://localhost:3000](http://localhost:3000) in any browser.
 
----
+### 3. Updating Legal Policies & Disclaimers
+Legal texts are contained directly in their respective modal markup near the bottom of `index.html`:
+- `#privacyModal` &rarr; Privacy Policy
+- `#termsModal` &rarr; Terms of Service
+- `#claimsModal` &rarr; Claims procedures and hotline numbers
 
-## 6. Project Credits & Maintenance Contact
+### 4. Updating or Replacing the Quote Form
+If a new form is created on Jotform:
+1. Copy the new 15-digit form ID.
+2. In `index.html`, replace `263255342465054` in the `<iframe>` id, `src`, and `jotformEmbedHandler` call.
+3. Update the Jotform Tables link in this documentation.
 
-- **Application Developer & AI Engineer:** **Subhash**
-- **Location:** India 🇮🇳
-- **Developer Email:** [subhashtelugu4@gmail.com](mailto:subhashtelugu4@gmail.com)
-- **Work Trajectory & Log:** [https://share.gemini.google/usGwLutWb7sj](https://share.gemini.google/usGwLutWb7sj)
-- **Client Organization:** Upshot Insurance (13261 O'Bannon Station Way, Louisville, KY 40223)
-
----
-
-## 7. Operational Account Details & Credentials Reference
-
-For system handovers, domain DNS management, and form administration, the following registered accounts are connected to this project:
-
-| Service | Registered / Administrative Email | Purpose |
-| :--- | :--- | :--- |
-| **GoDaddy** | Legacy / Original Hosting Account | Original domain registrar and hosting account for `https://upshotinsurance.com/` |
-| **Cloudflare** | `remote.upshot@gmail.com` | DNS management, SSL/TLS certificates, CDN caching, and domain routing |
-| **Jotform** | `contact@upshotinsurance.com` | Form submissions dashboard, lead tables, file storage, and email notifications |
-| **Developer Contact** | `subhashtelugu4@gmail.com` | Application Developer & AI Engineer support (Subhash) |
-
-> **GoDaddy Legacy Account Note:**
-> The domain [https://upshotinsurance.com/](https://upshotinsurance.com/) was originally registered and hosted under Upshot's GoDaddy account. Ready-to-deploy static website packages (`website-godaddy.zip`) are maintained in this repository and on the Desktop for direct upload to GoDaddy cPanel File Manager (`public_html/`) if ever needed.
+### 5. Publishing Updates to GoDaddy
+1. Place all updated files (`index.html`, `images/`, etc.) into a zip file, or use the pre-packaged `website-godaddy.zip`.
+2. Log into **GoDaddy** &rarr; **My Products** &rarr; **Web Hosting (cPanel)**.
+3. Open **File Manager** &rarr; go to **`public_html`**.
+4. Upload the zip and click **Extract** (replace existing files).
+5. The live website at [https://upshotinsurance.com/](https://upshotinsurance.com/) will reflect the updates immediately.
