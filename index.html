@@ -597,7 +597,7 @@
     blockquote { margin: 24px 0; color: var(--navy); font-family: "Manrope", sans-serif; font-size: clamp(1.25rem, 2.4vw, 2rem); font-weight: 700; line-height: 1.45; letter-spacing: -.025em; }
     .customer strong { display: block; }
     .customer span { color: var(--muted); font-size: .82rem; }
-    .cta { padding: 0 0 110px; }
+    .cta { padding: 0 0 50px; }
     .cta-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 35px; overflow: hidden; padding: 57px 65px; border-radius: 22px; background: var(--teal); color: var(--white); }
     .cta-inner::after { position: absolute; top: -150px; right: 23%; width: 360px; height: 360px; border: 70px solid rgba(255,255,255,.06); border-radius: 50%; content: ""; }
     .cta h2 { position: relative; z-index: 1; max-width: 650px; margin: 0; color: var(--white); font-size: clamp(1.8rem, 3.6vw, 3rem); }
@@ -1142,18 +1142,18 @@
 
 
     /* Footer */
-    footer { padding: 72px 0 25px; background: #050505; color: rgba(255,255,255,.62); }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr .75fr .85fr 1.1fr; gap: 55px; padding-bottom: 55px; }
+    footer { padding: 44px 0 20px; background: #050505; color: rgba(255,255,255,.62); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr .75fr .85fr 1.1fr; gap: 40px; padding-bottom: 28px; }
     footer .logo { color: var(--white); }
-    .footer-intro p { max-width: 300px; margin: 20px 0; font-size: .86rem; }
+    .footer-intro p { max-width: 300px; margin: 16px 0; font-size: .86rem; }
     .footer-socials { display: flex; gap: 9px; }
     .footer-socials a { display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; color: var(--white); font-size: .76rem; font-weight: 700; }
-    footer h3 { margin-bottom: 22px; color: var(--white); font-size: .92rem; }
-    .footer-links { display: grid; gap: 12px; font-size: .83rem; }
+    footer h3 { margin-bottom: 16px; color: var(--white); font-size: .92rem; }
+    .footer-links { display: grid; gap: 10px; font-size: .83rem; }
     .footer-links a:hover { color: #e8b1b5; }
-    .contact-item { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin-bottom: 15px; font-size: .83rem; }
+    .contact-item { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin-bottom: 12px; font-size: .83rem; }
     .contact-item svg { width: 16px; height: 16px; fill: none; stroke: #e8b1b5; stroke-width: 2; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 23px; border-top: 1px solid rgba(255,255,255,.1); font-size: .73rem; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; }
 
     /* Modal */
     .modal { position: fixed; z-index: 100; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(7,24,44,.72); backdrop-filter: blur(7px); }
@@ -1487,7 +1487,7 @@
       .service-detail-actions { flex-direction: column; }
       .service-detail-actions .btn, .service-detail-call { width: 100%; }
       .service-detail-close { top: 12px; right: 12px; }
-      .cta { padding-bottom: 78px; }
+      .cta { padding-bottom: 35px; }
       .cta-inner { align-items: flex-start; padding: 40px 28px; flex-direction: column; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 38px 25px; }
       .footer-intro { grid-column: 1 / -1; }
@@ -1628,9 +1628,9 @@
 
     /* Footer Legal Bar & License */
     .footer-legal-bar {
-      margin-top: 50px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       text-align: center;
     }
     .footer-legal-links {
@@ -1638,8 +1638,8 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 10px;
+      margin-bottom: 8px;
     }
     .legal-btn {
       background: none;
@@ -2009,7 +2009,27 @@
         display: flex;
       }
       body {
-        padding-bottom: 64px; /* Space for sticky bar */
+        padding-bottom: 60px; /* Space for sticky bar */
+      }
+      .quote-card {
+        display: none !important; /* Hide hero quote card on mobile to prevent overlapping */
+      }
+      footer {
+        padding: 36px 0 16px;
+      }
+      .footer-grid {
+        gap: 24px 18px;
+        padding-bottom: 20px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding-top: 14px;
+      }
+      .footer-legal-bar {
+        margin-top: 12px;
+        padding-top: 12px;
       }
     }
 
@@ -2402,7 +2422,23 @@
     </article>
   </div>
 
-    <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+      <!-- Sticky Mobile Quick-Action Bar -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick contact actions">
+    <a href="tel:+12704671353" class="mobile-action-btn mobile-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="sms:+12704671353" class="mobile-action-btn mobile-text">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Text</span>
+    </a>
+    <button type="button" class="mobile-action-btn mobile-quote open-quote" aria-label="Request a Quote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>Quote</span>
+    </button>
+  </div>
+
+  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
     <div class="modal-dialog modal-dialog-jotform">
       <button class="modal-close" id="modalClose" aria-label="Close quote form">×</button>
       <div id="formContent">
@@ -2975,6 +3011,15 @@
       }
     }
 
+        // Delegated click handler: guarantees all .open-quote buttons (desktop, mobile bar, cards) trigger the modal
+    document.addEventListener('click', (event) => {
+      const quoteBtn = event.target.closest('.open-quote');
+      if (quoteBtn) {
+        event.preventDefault();
+        openModal(quoteBtn.dataset.service || '');
+      }
+    });
+
     document.querySelectorAll('.open-quote').forEach(button => button.addEventListener('click', () => openModal(button.dataset.service || '')));
     modalClose.addEventListener('click', closeModal);
     const successClose = document.getElementById('successClose');
@@ -3317,22 +3362,6 @@
     });
 
   </script>
-
-  <!-- Sticky Mobile Quick-Action Bar -->
-  <div class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick contact actions">
-    <a href="tel:+12704671353" class="mobile-action-btn mobile-call">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>Call</span>
-    </a>
-    <a href="sms:+12704671353" class="mobile-action-btn mobile-text">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      <span>Text</span>
-    </a>
-    <button type="button" class="mobile-action-btn mobile-quote open-quote">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      <span>Quote</span>
-    </button>
-  </div>
 
 </body>
 </html>
