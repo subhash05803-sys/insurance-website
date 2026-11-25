@@ -1627,6 +1627,25 @@
     .faq-answer p { margin: 0; }
 
     /* Footer Legal Bar & License */
+    .builder-btn {
+      color: #FFA600 !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      background: rgba(255, 166, 0, 0.12) !important;
+      padding: 3px 10px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(255, 166, 0, 0.32) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      transition: all .2s ease !important;
+    }
+    .builder-btn:hover {
+      background: rgba(255, 166, 0, 0.24) !important;
+      color: #ffc34d !important;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(255, 166, 0, 0.25);
+    }
     .footer-legal-bar {
       margin-top: 14px;
       padding-top: 14px;
@@ -2399,7 +2418,7 @@
           <span class="legal-sep">•</span>
           <button type="button" class="legal-btn" id="openClaimsBtn">24/7 Claims Guide</button>
           <span class="legal-sep">•</span>
-          <button type="button" class="legal-btn builder-btn" id="openBuilderBtn" title="View Application Builder">Built by Subhash</button>
+          <button type="button" class="legal-btn builder-btn" id="openBuilderBtn" title="View Application Builder Details">⚡ Built by Subhash with AI</button>
         </div>
         <p class="license-notice">Upshot Insurance Agency is an independent insurance brokerage covered in all states in the USA.</p>
       </div>
@@ -2491,33 +2510,42 @@
     <div class="legal-modal-card" style="max-width: 480px; text-align: center; border-radius: 24px; padding: 34px 28px;">
       <button class="legal-modal-close" id="closeBuilderBtn" aria-label="Close Builder Information">×</button>
       <div class="legal-modal-body">
-        <div style="width: 68px; height: 68px; margin: 0 auto 16px; border-radius: 50%; background: linear-gradient(135deg, #FFA600 0%, #087F7A 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.9rem; font-weight: 800; box-shadow: 0 8px 24px rgba(255, 166, 0, 0.35);">
+        <div style="width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, #FFA600 0%, #087F7A 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800; box-shadow: 0 8px 24px rgba(255, 166, 0, 0.35);">
           S
         </div>
-        <h2 id="builderTitle" style="margin: 0 0 4px; font-size: 1.6rem; color: var(--navy); font-weight: 800;">Subhash</h2>
-        <p style="color: var(--teal); font-weight: 700; font-size: 0.92rem; margin: 0 0 20px;">Application Builder &amp; Full-Stack Developer</p>
+        <h2 id="builderTitle" style="margin: 0 0 6px; font-size: 1.65rem; color: #07182c; font-weight: 800;">Subhash</h2>
+        <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; background: rgba(8, 127, 122, 0.12); color: #087F7A; font-weight: 800; font-size: 0.82rem; margin-bottom: 18px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 14px; height: 14px;"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+          AI Application Builder
+        </div>
         
-        <div style="background: #f8f6f0; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 18px 20px; text-align: left; margin-bottom: 22px; font-size: 0.88rem; line-height: 1.75;">
+        <div style="background: #f8f6f0; border: 1px solid rgba(0,0,0,0.08); border-radius: 16px; padding: 18px 20px; text-align: left; margin-bottom: 22px; font-size: 0.88rem; line-height: 1.8;">
           <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.06);">
-            <strong style="color: var(--navy);">Role:</strong>
-            <span style="color: var(--ink); font-weight: 600;">Application Builder</span>
+            <strong style="color: #07182c;">Builder:</strong>
+            <span style="color: #142c45; font-weight: 700;">Subhash</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
-            <strong style="color: var(--navy);">Location:</strong>
-            <span style="color: var(--ink); font-weight: 600;">India 🇮🇳</span>
+            <strong style="color: #07182c;">Technology:</strong>
+            <span style="color: #087F7A; font-weight: 700;">Full-Stack &amp; Gemini AI ⚡</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
-            <strong style="color: var(--navy);">Email:</strong>
-            <a href="mailto:subhashtelugu4@gmail.com" style="color: var(--teal); font-weight: 700; text-decoration: underline;">subhashtelugu4@gmail.com</a>
+            <strong style="color: #07182c;">Location:</strong>
+            <span style="color: #142c45; font-weight: 600;">India 🇮🇳</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <strong style="color: #07182c;">Email:</strong>
+            <a href="mailto:subhashtelugu4@gmail.com" style="color: #087F7A; font-weight: 700; text-decoration: underline;">subhashtelugu4@gmail.com</a>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px;">
-            <strong style="color: var(--navy);">Project:</strong>
-            <span style="color: var(--ink); font-weight: 600;">Upshot Insurance Platform</span>
+            <strong style="color: #07182c;">Platform:</strong>
+            <span style="color: #142c45; font-weight: 600;">Upshot Insurance Website</span>
           </div>
         </div>
 
-        <a href="mailto:subhashtelugu4@gmail.com" class="btn btn-primary" style="display: inline-flex; justify-content: center; width: 100%; padding: 13px; text-decoration: none; font-size: 0.92rem; font-weight: 700;">
-          Contact Subhash via Email
+        <!-- High-Contrast Bulletproof Dark Navy Button with Pure White Text -->
+        <a href="mailto:subhashtelugu4@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 14px 20px; border-radius: 12px; background: #07182c; color: #ffffff !important; font-size: 0.96rem; font-weight: 800; text-decoration: none; box-shadow: 0 4px 16px rgba(7, 24, 44, 0.35); transition: background .2s, transform .2s;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span style="color: #ffffff !important; font-weight: 800; font-family: 'Manrope', sans-serif;">Contact Subhash via Email</span>
         </a>
       </div>
     </div>
