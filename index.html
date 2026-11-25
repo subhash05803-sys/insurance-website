@@ -2398,6 +2398,8 @@
           <button type="button" class="legal-btn" id="openTermsBtn">Terms of Service</button>
           <span class="legal-sep">•</span>
           <button type="button" class="legal-btn" id="openClaimsBtn">24/7 Claims Guide</button>
+          <span class="legal-sep">•</span>
+          <button type="button" class="legal-btn builder-btn" id="openBuilderBtn" title="View Application Builder">Built by Subhash</button>
         </div>
         <p class="license-notice">Upshot Insurance Agency is an independent insurance brokerage covered in all states in the USA.</p>
       </div>
@@ -2485,6 +2487,41 @@
   </svg>
 
   <!-- Info & Legal Modals -->
+  <div class="legal-modal-backdrop" id="builderModal" role="dialog" aria-modal="true" aria-labelledby="builderTitle" aria-hidden="true">
+    <div class="legal-modal-card" style="max-width: 480px; text-align: center; border-radius: 24px; padding: 34px 28px;">
+      <button class="legal-modal-close" id="closeBuilderBtn" aria-label="Close Builder Information">×</button>
+      <div class="legal-modal-body">
+        <div style="width: 68px; height: 68px; margin: 0 auto 16px; border-radius: 50%; background: linear-gradient(135deg, #FFA600 0%, #087F7A 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.9rem; font-weight: 800; box-shadow: 0 8px 24px rgba(255, 166, 0, 0.35);">
+          S
+        </div>
+        <h2 id="builderTitle" style="margin: 0 0 4px; font-size: 1.6rem; color: var(--navy); font-weight: 800;">Subhash</h2>
+        <p style="color: var(--teal); font-weight: 700; font-size: 0.92rem; margin: 0 0 20px;">Application Builder &amp; Full-Stack Developer</p>
+        
+        <div style="background: #f8f6f0; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 18px 20px; text-align: left; margin-bottom: 22px; font-size: 0.88rem; line-height: 1.75;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <strong style="color: var(--navy);">Role:</strong>
+            <span style="color: var(--ink); font-weight: 600;">Application Builder</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <strong style="color: var(--navy);">Location:</strong>
+            <span style="color: var(--ink); font-weight: 600;">India 🇮🇳</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <strong style="color: var(--navy);">Email:</strong>
+            <a href="mailto:subhashtelugu4@gmail.com" style="color: var(--teal); font-weight: 700; text-decoration: underline;">subhashtelugu4@gmail.com</a>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px;">
+            <strong style="color: var(--navy);">Project:</strong>
+            <span style="color: var(--ink); font-weight: 600;">Upshot Insurance Platform</span>
+          </div>
+        </div>
+
+        <a href="mailto:subhashtelugu4@gmail.com" class="btn btn-primary" style="display: inline-flex; justify-content: center; width: 100%; padding: 13px; text-decoration: none; font-size: 0.92rem; font-weight: 700;">
+          Contact Subhash via Email
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="legal-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
     <div class="legal-modal-card">
       <button class="legal-modal-close" id="closePrivacyBtn" aria-label="Close Privacy Policy">×</button>
@@ -3325,8 +3362,18 @@
       });
       document.getElementById('closeClaimsBtn')?.addEventListener('click', () => closeLegalModal('claimsModal'));
 
+      // Builder Triggers
+      document.querySelectorAll('#openBuilderBtn').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openLegalModal('builderModal');
+        });
+      });
+      document.getElementById('closeBuilderBtn')?.addEventListener('click', () => closeLegalModal('builderModal'));
+
       // Close on backdrop click & Escape
-      ['privacyModal', 'termsModal', 'claimsModal'].forEach(id => {
+      ['privacyModal', 'termsModal', 'claimsModal', 'builderModal'].forEach(id => {
         const modal = document.getElementById(id);
         if (!modal) return;
         modal.addEventListener('click', (e) => {
@@ -3339,6 +3386,7 @@
           closeLegalModal('privacyModal');
           closeLegalModal('termsModal');
           closeLegalModal('claimsModal');
+          closeLegalModal('builderModal');
         }
       });
     }
